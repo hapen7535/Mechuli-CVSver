@@ -56,8 +56,8 @@
 
 
         <Button
-            android:layout_width="371dp"
-            android:layout_height="70dp"
+            android:layout_width="317dp"
+            android:layout_height="59dp"
             android:background="@drawable/mainbtn"
             android:id="@+id/signIn_btn"
             app:layout_constraintTop_toBottomOf="@id/subtitle_tv"
@@ -66,13 +66,13 @@
             android:layout_marginTop="50dp"
             android:text="로그인"
             android:textColor="@color/text_black_color"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:fontFamily="@font/notosanskrbold"
             />
 
         <Button
-            android:layout_width="371dp"
-            android:layout_height="70dp"
+            android:layout_width="317dp"
+            android:layout_height="59dp"
             android:background="@drawable/subbtn"
             android:id="@+id/signUp_btn"
             app:layout_constraintTop_toBottomOf="@id/signIn_btn"
@@ -81,7 +81,7 @@
             android:layout_marginTop="20dp"
             android:text="회원가입"
             android:textColor="@color/text_black_color"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:fontFamily="@font/notosanskrbold"
             />
 
