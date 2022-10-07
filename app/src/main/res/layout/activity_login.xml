@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:id="@+id/title_layout"
+        >
+
+        <ImageView
+            android:layout_width="134dp"
+            android:layout_height="142dp"
+            android:src="@drawable/mainicon"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gugi"
+                android:textColor="#5B5B5B"
+                android:text="메추리"
+                android:textSize="55sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:text="편의점 음식 메뉴 추리기"
+                android:textColor="#5B5B5B"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:background="@drawable/inputimg"
+        android:id="@+id/inputId_et"
+        app:layout_constraintTop_toBottomOf="@id/title_layout"
+        app:layout_constraintStart_toStartOf="@id/title_layout"
+        app:layout_constraintEnd_toEndOf="@id/title_layout"
+        android:layout_marginTop="110dp"
+        android:text="ID"
+        android:fontFamily="@font/notosanskrbold"
+        android:textColor="#5B5B5B"
+        android:paddingStart="20dp"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:background="@drawable/inputimg"
+        android:id="@+id/inputPw_et"
+        app:layout_constraintTop_toBottomOf="@id/inputId_et"
+        app:layout_constraintStart_toStartOf="@id/inputId_et"
+        app:layout_constraintEnd_toEndOf="@id/inputId_et"
+        android:layout_marginTop="26dp"
+        android:text="Password"
+        android:fontFamily="@font/notosanskrbold"
+        android:textColor="#5B5B5B"
+        android:paddingStart="20dp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:text="로그인"
+        android:background="@drawable/mainbtn"
+        android:fontFamily="@font/notosanskrbold"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/inputPw_et"
+        app:layout_constraintStart_toStartOf="@id/inputPw_et"
+        app:layout_constraintEnd_toEndOf="@id/inputPw_et"
+        android:layout_marginTop="30dp"
+        android:id="@+id/login_btn"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
