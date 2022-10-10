@@ -3,9 +3,9 @@ package com.example.mechulicvs
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class LoginActivity : AppCompatActivity() {
+class MainMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main_menu)
     }
 }
