@@ -16,10 +16,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/entire_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
         android:id="@+id/constraint_layout_with_title"
         >
 
@@ -98,36 +109,36 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/constraint_layout_with_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraint_layout_with_title"
+        android:layout_marginTop="40dp"
         >
 
         <ImageView
+            android:src="@drawable/mainmenu_recomend_btn"
             android:layout_width="151dp"
             android:layout_height="155dp"
-            android:src="@drawable/mainmenu_recomend_btn"
-            android:id="@+id/menu_recommend_btn"
+            android:id="@+id/mainmenu_recommend_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             />
 
         <ImageView
             android:layout_width="151dp"
             android:layout_height="155dp"
             android:src="@drawable/mainmenu_community_btn"
-            android:id="@+id/menu_community_btn"
-            app:layout_constraintStart_toEndOf="@id/menu_recommend_btn"
+            app:layout_constraintStart_toEndOf="@id/mainmenu_recommend_btn"
+            android:layout_marginStart="35dp"
+            android:id="@+id/mainmenu_community_btn"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
