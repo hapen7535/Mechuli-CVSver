@@ -1,4 +1,4 @@
-package com.example.mechulicvs.Model
+package com.example.mechulicvs
 
 data class UserIdDataBindingClass (
 

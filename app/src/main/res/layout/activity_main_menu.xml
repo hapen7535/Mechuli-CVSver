@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="userId"
-            type="com.example.mechulicvs.Model.UserIdDataBindingClass" />
+            name="UserIdDataBindingClass"
+            type="com.example.mechulicvs.UserIdDataBindingClass" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,7 +90,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{userId, default = id}"
+            android:text="@{UserIdDataBindingClass.userId, default = id}"
             android:fontFamily="@font/notosanskrbold"
             android:textSize="24sp"
             android:textColor="#000000"
