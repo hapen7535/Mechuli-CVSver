@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1365" />
+        <entry key="app/src/main/res/drawable/ratingstarstyle.xml" value="0.194" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21739130434782608" />
+        <entry key="app/src/main/res/layout/activity_sign_up_rating.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_sign_up_info.xml" value="0.15670289855072464" />
         <entry key="app/src/main/res/layout/fragment_sign_up_rating.xml" value="0.21739130434782608" />
