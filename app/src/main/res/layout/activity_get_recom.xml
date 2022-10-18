@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecommendActivity">
+    tools:context=".GetRecomActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -67,84 +68,42 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/menu_layout"
-        android:layout_marginBottom="30dp"
-        >
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="메뉴 추리기"
+        android:text="추천 메뉴는 다음과 같습니다"
         android:fontFamily="@font/notosanskrbold"
-        android:textColor="@color/black"
-        android:textSize="26sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#5B5B5B"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/title_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/menu_activity_title_tv"
+        android:layout_marginTop="20dp"
+        android:id="@+id/subscription_tv"
         />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_rating_layout"
-            app:layout_constraintTop_toBottomOf="@id/menu_activity_title_tv"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listofrecommend_rv"
+        app:layout_constraintTop_toBottomOf="@id/subscription_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        />
 
-            <Button
-                android:layout_width="341dp"
-                android:layout_height="117dp"
-                android:background="@drawable/recommendmenu_add_btn"
-                android:id="@+id/add_btn"
-                app:layout_constraintTop_toBottomOf="@id/menu_star_iv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp"
-                />
-
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:src="@drawable/recommendmenu_star"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/add_btn"
-                android:id="@+id/menu_star_iv"/>
-
-            <Button
-                android:layout_width="341dp"
-                android:layout_height="117dp"
-                android:background="@drawable/recommendmenu_recom_btn"
-                app:layout_constraintTop_toBottomOf="@id/menu_menu_iv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/recommend_btn"
-                />
-
-            <ImageView
-                android:layout_width="71dp"
-                android:layout_height="72dp"
-                android:src="@drawable/recommendmenu_menu"
-                android:id="@+id/menu_menu_iv"
-                app:layout_constraintTop_toBottomOf="@id/add_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="50dp"
-                />
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:background="@drawable/mainbtn"
+        app:layout_constraintTop_toBottomOf="@id/listofrecommend_rv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="홈으로"
+        android:fontFamily="@font/notosanskrbold"
+        android:textSize="20sp"
+        android:id="@+id/next_btn"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

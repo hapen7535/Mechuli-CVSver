@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MechuliCVS">
         <activity
+            android:name=".AddRatingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetRecomActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecommendActivity"
             android:exported="false" />
         <activity

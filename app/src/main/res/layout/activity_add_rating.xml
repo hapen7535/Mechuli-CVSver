@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecommendActivity">
+    tools:context=".AddRatingActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -67,84 +68,48 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:id="@+id/searchView_layout"
         app:layout_constraintTop_toBottomOf="@id/title_layout"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/menu_layout"
-        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/inputimg"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
         >
 
+        <EditText
+            android:id="@+id/searchView_et"
+            android:layout_width="230dp"
+            android:layout_height="57dp"
+            android:background="@null"
+            android:hint="상품명을 입력하세요"
+            android:fontFamily="@font/notosanskrbold"
+            android:textSize="18sp"
+            android:textColor="#5F5F5F"
+            />
 
-    <TextView
+        <Button
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:background="@drawable/recommendmenu_add_search_icon"
+            android:id="@+id/search_btn"
+            android:layout_marginStart="15dp"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="메뉴 추리기"
-        android:fontFamily="@font/notosanskrbold"
-        android:textColor="@color/black"
-        android:textSize="26sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/menu_activity_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/searchView_layout"
+        android:layout_marginTop="30dp"
+        android:id="@+id/item_list_rv"
         />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/add_rating_layout"
-            app:layout_constraintTop_toBottomOf="@id/menu_activity_title_tv"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-
-            <Button
-                android:layout_width="341dp"
-                android:layout_height="117dp"
-                android:background="@drawable/recommendmenu_add_btn"
-                android:id="@+id/add_btn"
-                app:layout_constraintTop_toBottomOf="@id/menu_star_iv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="16dp"
-                />
-
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="54dp"
-                android:src="@drawable/recommendmenu_star"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/add_btn"
-                android:id="@+id/menu_star_iv"/>
-
-            <Button
-                android:layout_width="341dp"
-                android:layout_height="117dp"
-                android:background="@drawable/recommendmenu_recom_btn"
-                app:layout_constraintTop_toBottomOf="@id/menu_menu_iv"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/recommend_btn"
-                />
-
-            <ImageView
-                android:layout_width="71dp"
-                android:layout_height="72dp"
-                android:src="@drawable/recommendmenu_menu"
-                android:id="@+id/menu_menu_iv"
-                app:layout_constraintTop_toBottomOf="@id/add_btn"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="50dp"
-                />
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
