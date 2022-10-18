@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecommendActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_layout"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/backpressbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/backpress_btn"
+            />
+
+        <ImageView
+            android:layout_marginStart="20dp"
+            android:layout_width="79dp"
+            android:layout_height="79dp"
+            android:src="@drawable/mainicon"
+            app:layout_constraintStart_toEndOf="@+id/backpress_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/mainicon_iv"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메추리"
+            android:textSize="32sp"
+            android:fontFamily="@font/gugi"
+            android:textColor="#5B5B5B"
+            app:layout_constraintStart_toEndOf="@id/mainicon_iv"
+            android:layout_marginStart="24dp"
+            android:id="@+id/title_tv"
+            app:layout_constraintBottom_toTopOf="@+id/subtitle_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/subtitle_tv"
+            android:text="편의점 음식 메뉴 추리기"
+            android:textSize="12sp"
+            android:fontFamily="@font/notosanskrbold"
+            app:layout_constraintStart_toEndOf="@id/mainicon_iv"
+            app:layout_constraintTop_toBottomOf="@id/title_tv"
+            android:layout_marginStart="10dp"
+            android:textColor="#5B5B5B"
+            android:paddingEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/menu_layout"
+        android:layout_marginBottom="50dp"
+        >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메뉴 추리기"
+        android:fontFamily="@font/notosanskrbold"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/menu_activity_title_tv"
+        />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_rating_layout"
+            app:layout_constraintTop_toBottomOf="@id/menu_activity_title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <Button
+                android:layout_width="341dp"
+                android:layout_height="117dp"
+                android:background="@drawable/recommendmenu_add_btn"
+                android:id="@+id/add_btn"
+                app:layout_constraintTop_toBottomOf="@id/menu_star_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                />
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="54dp"
+                android:src="@drawable/recommendmenu_star"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/add_btn"
+                android:id="@+id/menu_star_iv"/>
+
+            <Button
+                android:layout_width="341dp"
+                android:layout_height="117dp"
+                android:background="@drawable/recommendmenu_recom_btn"
+                app:layout_constraintTop_toBottomOf="@id/menu_menu_iv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/recommend_btn"
+                />
+
+            <ImageView
+                android:layout_width="71dp"
+                android:layout_height="72dp"
+                android:src="@drawable/recommendmenu_menu"
+                android:id="@+id/menu_menu_iv"
+                app:layout_constraintTop_toBottomOf="@id/add_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="50dp"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
