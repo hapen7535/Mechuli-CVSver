@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/ratingstarstyle.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/recommendmenu_add_btn.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_add_rating.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_community.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_get_recom.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
