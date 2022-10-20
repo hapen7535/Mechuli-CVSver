@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1365" />
+        <entry key="app/src/main/res/drawable/draw_line_shape.xml" value="0.248" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/input_background_shape.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/input_short_background_shape.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/ratingstarstyle.xml" value="0.194" />

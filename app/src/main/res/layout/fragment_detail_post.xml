@@ -1,14 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailPostFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="레시피명"
+        android:fontFamily="@font/notosanskrbold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/recipe_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/community_detail_icon"
+        android:layout_marginEnd="30dp"
+        android:id="@+id/detail_icon_iv"
+        app:layout_constraintTop_toTopOf="@id/recipe_title_tv"
+        app:layout_constraintBottom_toBottomOf="@id/recipe_title_tv"
+        app:layout_constraintEnd_toEndOf="@id/divider_line_view"
+        />
+
+    <TextView
+        android:includeFontPadding="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipe_date_tv"
+        android:text="recipe_date"
+        android:fontFamily="@font/notosanskrmedium"
+        android:textColor="#464646"
+        app:layout_constraintTop_toBottomOf="@id/recipe_title_tv"
+        app:layout_constraintEnd_toEndOf="@id/detail_icon_iv"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_rating_layout"
+        app:layout_constraintTop_toBottomOf="@id/recipe_date_tv"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/divider_line_view"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        >
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/comment_icon_iv"
+            android:src="@drawable/community_comment_icon"
+            android:paddingTop="2dp"
+            />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/comment_count_tv"
+            android:fontFamily="@font/notosanskrmedium"
+            android:textSize="15sp"
+            android:includeFontPadding="false"
+            />
+
+        <ImageView
+            android:layout_marginStart="15dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/community_rating_icon"
+            android:id="@+id/rating_icon_iv"
+            android:paddingBottom="2dp"
+            />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:id="@+id/rating_count_tv"
+            android:fontFamily="@font/notosanskrmedium"
+            android:includeFontPadding="false"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nickname"
+        android:fontFamily="@font/notosanskrmedium"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/recipe_date_tv"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@id/recipe_date_tv"
+        />
+
+    <View
+        app:layout_constraintTop_toBottomOf="@id/comment_rating_layout"
+        android:layout_marginTop="10dp"
+        android:layout_width="376dp"
+        android:layout_height="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/divider_line_view"
+        android:background="#A6A6A6"/>
+
+    <ScrollView
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll_entire_layout"
+        app:layout_constraintTop_toBottomOf="@id/divider_line_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scroll_inside_layout"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="재료"
+                android:fontFamily="@font/notosanskrbold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/recipe_ingr_title_tv"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_ingr_tv"
+                android:fontFamily="@font/notosanskrmedium"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="재료 10개 이내로 들어감"
+                app:layout_constraintStart_toEndOf="@id/recipe_ingr_title_tv"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비용"
+                android:fontFamily="@font/notosanskrbold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/recipe_ingr_title_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/recipe_cost_title_tv"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_cost_tv"
+                android:fontFamily="@font/notosanskrmedium"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="0"
+                app:layout_constraintStart_toStartOf="@id/recipe_ingr_title_tv"
+                app:layout_constraintEnd_toEndOf="@id/recipe_ingr_tv"
+                android:layout_marginStart="35dp"
+                app:layout_constraintTop_toBottomOf="@id/recipe_ingr_tv"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_cost_unit_tv"
+                android:text="원"
+                android:fontFamily="@font/notosanskrmedium"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/recipe_cost_tv"
+                app:layout_constraintTop_toBottomOf="@id/recipe_ingr_tv"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
