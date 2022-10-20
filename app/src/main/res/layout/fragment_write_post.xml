@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WritePostFragment">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskrbold"
+        android:text="글쓰기"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/fragment_title_tv"
+        />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/entire_layout"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_title_tv"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scroll_entire_layout">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrbold"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:text="레시피명"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/recipe_title_tv"
+            />
+
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:background="@drawable/inputimg"
+                android:text="10자 이내"
+                android:includeFontPadding="false"
+                android:paddingStart="5dp"
+                android:fontFamily="@font/notosanskrbold"
+                android:textColor="#6F6F6F"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@id/recipe_title_tv"
+                android:layout_marginStart="25dp"
+                android:id="@+id/recipe_title_et"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskrbold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="재료"
+                    app:layout_constraintTop_toBottomOf="@id/recipe_title_tv"
+                    app:layout_constraintStart_toStartOf="@id/recipe_title_tv"
+                    app:layout_constraintEnd_toEndOf="@id/recipe_title_tv"
+                    android:id="@+id/recipe_ingr_tv"
+                    />
+
+                <EditText
+                    android:layout_marginTop="15dp"
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/inputimg"
+                    android:text="10자 이내"
+                    android:includeFontPadding="false"
+                    android:paddingStart="5dp"
+                    android:fontFamily="@font/notosanskrbold"
+                    android:textColor="#6F6F6F"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/recipe_title_et"
+                    android:id="@+id/recipe_ingr_et"
+                    app:layout_constraintTop_toBottomOf="@id/recipe_title_et"
+                    />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ingr_list_rv"
+                app:layout_constraintTop_toBottomOf="@id/recipe_ingr_et"
+                app:layout_constraintStart_toStartOf="@id/recipe_ingr_et"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="비용"
+                app:layout_constraintTop_toBottomOf="@id/ingr_list_rv"
+                app:layout_constraintStart_toStartOf="@id/recipe_title_tv"
+                app:layout_constraintEnd_toEndOf="@id/recipe_title_tv"
+                android:id="@+id/recipe_cost_tv"
+                />
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:background="@drawable/inputimg"
+                app:layout_constraintStart_toStartOf="@id/recipe_ingr_et"
+                android:id="@+id/recipe_cost_et"
+                app:layout_constraintTop_toBottomOf="@id/ingr_list_rv"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_cost_unit_tv"
+                android:text="원"
+                android:fontFamily="@font/notosanskrbold"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/recipe_cost_et"
+                app:layout_constraintTop_toBottomOf="@id/ingr_list_rv"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="16dp"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="내용"
+                app:layout_constraintTop_toBottomOf="@id/recipe_cost_tv"
+                app:layout_constraintStart_toStartOf="@id/recipe_title_tv"
+                app:layout_constraintEnd_toEndOf="@id/recipe_title_tv"
+                android:id="@+id/recipe_contents_tv"
+                />
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:id="@+id/recipe_contents_et"
+                app:layout_constraintStart_toStartOf="@id/recipe_cost_et"
+                app:layout_constraintTop_toBottomOf="@id/recipe_contents_tv"
+                android:text="조리 방법과 식평을 작성해보세요.\n 500자 이내"
+                android:fontFamily="@font/notosanskrbold"
+                android:textColor="#6F6F6F"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:text="사진"
+                app:layout_constraintTop_toBottomOf="@id/recipe_contents_et"
+                app:layout_constraintStart_toStartOf="@id/recipe_title_tv"
+                app:layout_constraintEnd_toEndOf="@id/recipe_title_tv"
+                android:id="@+id/recipe_pictures_tv"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:background="@drawable/mainbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="글쓰기"
+        android:fontFamily="@font/notosanskrbold"
+        android:textSize="18sp"
+        android:id="@+id/write_post_btn"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommunityMainFragment">
+
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:id="@+id/searchView_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:background="@drawable/inputimg"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        >
+
+        <EditText
+            android:id="@+id/searchView_et"
+            android:layout_width="230dp"
+            android:layout_height="57dp"
+            android:background="@null"
+            android:hint="상품명을 입력하세요"
+            android:fontFamily="@font/notosanskrbold"
+            android:textSize="18sp"
+            android:textColor="#5F5F5F"
+            />
+
+        <Button
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:background="@drawable/recommendmenu_add_search_icon"
+            android:id="@+id/search_btn"
+            android:layout_marginStart="15dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자신만의 편의점 레시피를 공유해보세요"
+        android:fontFamily="@font/notosanskrbold"
+        android:textSize="16sp"
+        android:textColor="#5B5B5B"
+        app:layout_constraintTop_toBottomOf="@id/searchView_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/subtitle_tv"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:id="@+id/post_list_rv"
+        />
+
+    <Button
+        android:layout_width="317dp"
+        android:layout_height="60dp"
+        android:background="@drawable/mainbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="글쓰기"
+        android:fontFamily="@font/notosanskrbold"
+        app:layout_constraintTop_toBottomOf="@id/post_list_rv"
+        android:textSize="20sp"
+        android:id="@+id/write_post_btn"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

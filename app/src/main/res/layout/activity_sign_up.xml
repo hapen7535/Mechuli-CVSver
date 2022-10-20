@@ -207,7 +207,7 @@
         app:layout_constraintStart_toStartOf="@id/srcollinput_layout"
         android:text="다음"
         android:fontFamily="@font/notosanskrbold"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:id="@+id/next_btn"
         />
 
