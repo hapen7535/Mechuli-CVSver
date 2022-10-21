@@ -10,6 +10,9 @@
         <entry key="app/src/main/res/drawable/input_short_background_shape.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/ratingstarstyle.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/recommendmenu_add_btn.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/tablayout_indicator_entire.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/viewpager_indicator_default.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/viewpager_indicator_dot.xml" value="0.1805" />
         <entry key="app/src/main/res/layout/activity_add_rating.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_community.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_get_recom.xml" value="0.165" />
