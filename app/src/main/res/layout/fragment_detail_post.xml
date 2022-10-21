@@ -105,6 +105,7 @@
         android:textSize="15sp"
         android:textColor="@color/black"
         android:includeFontPadding="false"
+        android:id="@+id/nick_name_tv"
         app:layout_constraintTop_toBottomOf="@id/recipe_date_tv"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@id/recipe_date_tv"
@@ -215,7 +216,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/recipe_images_vp"
-                >
+                />
 
            <com.google.android.material.tabs.TabLayout
                android:layout_width="wrap_content"
@@ -228,8 +229,6 @@
                app:layout_constraintStart_toStartOf="@id/recipe_images_vp"
                app:layout_constraintEnd_toEndOf="parent"
                />
-
-            </androidx.viewpager2.widget.ViewPager2>
 
             <TextView
                 android:layout_marginTop="22dp"
@@ -295,9 +294,79 @@
                 app:layout_constraintTop_toBottomOf="@id/comment_divider_line_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/comment_list_rv"
+                android:id="@+id/comments_list_rv"
                 />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/comments_list_rv"
+                android:id="@+id/comment_add_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/comment_nick_name_add_tv"
+                    android:text="nickname"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosanskrbold"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/input_comment_et"
+                    />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:id="@+id/comment_rating_add_rb"
+                    app:layout_constraintTop_toTopOf="@id/comment_nick_name_add_tv"
+                    app:layout_constraintBottom_toBottomOf="@id/comment_nick_name_add_tv"
+                    app:layout_constraintStart_toEndOf="@id/comment_nick_name_add_tv"
+                    android:stepSize="0.5"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+
+                <EditText
+                    android:id="@+id/input_comment_et"
+                    android:layout_width="320dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/input_short_background_shape"
+                    app:layout_constraintTop_toBottomOf="@id/comment_nick_name_add_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="5dp"
+                    android:text="댓글 입력"
+                    android:fontFamily="@font/notosanskrbold"
+                    android:textSize="14sp"
+                    android:includeFontPadding="false"
+                    android:textColor="#5F5F5F"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/notosanskrbold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="댓글쓰기"
+                    android:id="@+id/add_comment_btn"
+                    android:background="@null"
+                    app:layout_constraintTop_toBottomOf="@id/input_comment_et"
+                    app:layout_constraintEnd_toEndOf="@id/input_comment_et"
+                    android:layout_marginTop="10dp"
+                    android:includeFontPadding="false"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
