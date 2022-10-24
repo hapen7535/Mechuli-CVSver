@@ -1,4 +1,4 @@
-package com.example.mechulicvs.View
+package com.example.mechulicvs.Controller
 
 import android.os.Bundle
 import android.view.View
@@ -16,11 +16,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
-    }
+        binding.loginBtn.setOnClickListener {
+            //login 데이터 보내기
 
-    fun onClickLoginBtn(view : View){
-        //login 데이터 보내기
-        //response에 따라 화면 전환
+        }
 
     }
 
