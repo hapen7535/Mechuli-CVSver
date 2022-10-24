@@ -53,5 +53,7 @@ dependencies {
 //    implementation 'gun0912.ted:tedbottompicker:2.0.1'
 //    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
 
 }

@@ -1,8 +1,14 @@
 package com.example.mechulicvs.Model
 
-data class LoginData (
+data class LoginDataResult (
 
-    var user_id : String,
-    var user_pw : String
+    val isSuccess : Boolean,
+    val result : getId
+
+        )
+
+data class getId (
+
+    val user_id : String,
 
         )
