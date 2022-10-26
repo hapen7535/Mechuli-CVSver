@@ -4,7 +4,7 @@ import com.example.mechulicvs.Model.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object LoginAPI {
+object UserDataAPI {
 
     private val retrofit by lazy{ //by lazy로 인해 api 변수가 사용될 때 초기화될 수 있다.
         Retrofit.Builder()
@@ -15,6 +15,10 @@ object LoginAPI {
 
     val service : SendLoginData by lazy {
         retrofit.create(SendLoginData::class.java)
+    }
+
+    val signUpService : SendSingupData by lazy {
+        retrofit.create(SendSingupData::class.java)
     }
 
 }

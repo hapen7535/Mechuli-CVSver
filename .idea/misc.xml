@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/input_short_background_shape.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/ratingstarstyle.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/recommendmenu_add_btn.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/subbtn_enable_check.xml" value="0.194" />
         <entry key="app/src/main/res/drawable/tablayout_indicator_entire.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/viewpager_indicator_default.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/viewpager_indicator_dot.xml" value="0.1805" />
@@ -20,7 +21,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_recommend.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.21739130434782608" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_sign_up_rating.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.2" />
         <entry key="app/src/main/res/layout/comment_recylcerview_item.xml" value="0.22" />

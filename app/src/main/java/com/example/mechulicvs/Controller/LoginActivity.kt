@@ -2,13 +2,11 @@ package com.example.mechulicvs.Controller
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.mechulicvs.MainMenuActivity
-import com.example.mechulicvs.Model.LoginAPI
-import com.example.mechulicvs.Model.SendLoginData
+import com.example.mechulicvs.Model.UserDataAPI
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityLoginBinding
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
         lifecycleScope.launch{
             val res = withContext(Dispatchers.IO){
-                LoginAPI.service.userLogin(id, pw)
+                UserDataAPI.service.userLogin(id, pw)
             }
             val answer = res.isSuccess
             val userId = res.result.user_id

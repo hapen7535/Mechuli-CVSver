@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mechulicvs.Controller.LoginActivity
+import com.example.mechulicvs.Controller.SignUpActivity
 import com.example.mechulicvs.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

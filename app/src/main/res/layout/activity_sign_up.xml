@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".Controller.SignUpActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -112,6 +112,21 @@
         android:layout_marginTop="5dp"
         />
 
+        <TextView
+            android:fontFamily="@font/notosanskrbold"
+            android:includeFontPadding="false"
+            android:textColor="#FF2424"
+            android:visibility="invisible"
+            android:id="@+id/Duplicate_tv"
+            app:layout_constraintTop_toTopOf="@id/duplicateCheck_tv"
+            app:layout_constraintBottom_toBottomOf="@id/duplicateCheck_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="해당 아이디가 사용 중 입니다."
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -201,11 +216,13 @@
     <Button
         android:layout_width="317dp"
         android:layout_height="60dp"
-        android:background="@drawable/subbtn"
+        android:gravity="center"
+        android:background="@drawable/input_short_background_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="30dp"
         app:layout_constraintStart_toStartOf="@id/srcollinput_layout"
         android:text="다음"
+        android:includeFontPadding="false"
         android:fontFamily="@font/notosanskrbold"
         android:textSize="18sp"
         android:id="@+id/next_btn"
