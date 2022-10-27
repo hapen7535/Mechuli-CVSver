@@ -22,7 +22,7 @@
             android:name=".RecommendActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpRatingActivity"
+            android:name=".Controller.SignUpRatingActivity"
             android:exported="false" />
         <activity
             android:name=".Controller.SignUpActivity"

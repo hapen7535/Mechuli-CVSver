@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mechulicvs.Model.IdDataAPI
 import com.example.mechulicvs.Model.UserData
 import com.example.mechulicvs.R
-import com.example.mechulicvs.SignUpRatingActivity
 import com.example.mechulicvs.databinding.ActivitySignUpBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,8 +43,6 @@ class SignUpActivity : AppCompatActivity() {
         binding.nextBtn.setOnClickListener {
             sendUserData(userId, userPw, nickName)
         }
-
-
 
     }
 
