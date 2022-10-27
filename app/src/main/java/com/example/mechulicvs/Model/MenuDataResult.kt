@@ -4,7 +4,7 @@ import java.lang.IllegalStateException
 
 data class MenuDataResult (
     val isSuccess : Boolean,
-    val result : MenuList
+    val result : List<MenuList>
         )
 
 data class MenuList (
