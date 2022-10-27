@@ -21,4 +21,8 @@ object UserDataAPI {
         retrofit.create(SendSingupData::class.java)
     }
 
+    val signupMenuDataService : GetMenuData by lazy {
+        retrofit.create(GetMenuData::class.java)
+    }
+
 }

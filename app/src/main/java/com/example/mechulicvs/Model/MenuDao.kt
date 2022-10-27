@@ -1,5 +1,6 @@
 package com.example.mechulicvs.Model
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -12,7 +13,7 @@ interface MenuDao {
     fun delete(menu : Menu)
 
     @Query("SELECT * FROM menu")
-    fun getAllMenu() : List<Menu>
+    fun getAllMenu() : LiveData<List<Menu>>
 
     @Query("SELECT store_name FROM menu")
     fun getStoreName() : List<String>
