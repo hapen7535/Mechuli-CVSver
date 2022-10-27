@@ -16,7 +16,7 @@ abstract class MenuDataBase : RoomDatabase() {
         @Synchronized
         fun getInstance(context : Context) : MenuDataBase? {
             if(instance == null){
-                synchronized(MenuDataBase::class){
+                synchronized(MenuDataBase::class){ //synchronized : ThreadSafe하게 인스턴스를 사용하기 위함.
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         MenuDataBase::class.java,
