@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface MenuDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE) //Primary Key가 겹칠 때, 덮어쓴다.
     fun insertAllMenu(vararg menus : Menu)
 
     @Delete
