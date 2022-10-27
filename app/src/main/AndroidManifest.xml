@@ -31,7 +31,7 @@
             android:name=".MainMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.LoginView"
+            android:name=".Controller.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

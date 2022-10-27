@@ -6,17 +6,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.example.mechulicvs.MainMenuActivity
 import com.example.mechulicvs.Model.IdDataAPI
 import com.example.mechulicvs.Model.UserData
 import com.example.mechulicvs.R
 import com.example.mechulicvs.SignUpRatingActivity
 import com.example.mechulicvs.databinding.ActivitySignUpBinding
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 
 class SignUpActivity : AppCompatActivity() {
 
