@@ -39,6 +39,11 @@ class SignUpRatingActivity : AppCompatActivity() {
         var ratingList = mutableMapOf<Int, Double>()
 
         binding = ActivitySignUpRatingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.backpressBtn.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         val signInfo = intent.getSerializableExtra("userInfo") as UserData
 //        userid = signInfo.userId;userpw = signInfo.userPw;nickname = signInfo.nickName
@@ -49,8 +54,22 @@ class SignUpRatingActivity : AppCompatActivity() {
         var ratingBars = arrayListOf(binding.itemRatingRv, binding.itemRatingRv2, binding.itemRatingRv3, binding.itemRatingRv4, binding.itemRatingRv5)
 
         getMenuImg(itemNameList, imgList, storeNameList)
-        filltheRatings(ratingBars, ratingList)
-        sendUserData(signInfo, ratingList)
+//        filltheRatings(ratingBars, ratingList)
+
+        var i = 0
+
+        menuId.forEach {
+            ratingBars[i].setOnRatingBarChangeListener{ ratingBar, rating, fromUser->
+                Log.d("rating", rating.toString())
+                ratingList[it] = rating.toDouble()
+                Log.d("ratingList", ratingList.toString())
+            }
+            i += 1
+        }
+
+        binding.nextBtn.setOnClickListener {
+            sendUserData(signInfo, ratingList)
+        }
 
     }
 
@@ -69,13 +88,13 @@ class SignUpRatingActivity : AppCompatActivity() {
             if(answer.isSuccess){
                 answer.result.forEach {
                     itemnamelist[i].setText(it.menu_name)
+                    storenamelist[i].setText(it.store_name)
+                    Log.d("store_name", storenamelist.toString())
                     imglist[i].load(it.menu_image)
                     {
                         transformations(CircleCropTransformation())
                     }
-                    storenamelist[i].setText(it.store_name)
                     menuId.add(it.menu_id)
-                    Log.d("menuid", menuId.toString())
                     i += 1
                 }
             }
@@ -86,16 +105,6 @@ class SignUpRatingActivity : AppCompatActivity() {
 
     private fun filltheRatings(ratingbars : ArrayList<RatingBar>, ratings: MutableMap<Int, Double>){
 
-        var i = 0
-
-        menuId.forEach {
-            ratingbars[i].setOnRatingBarChangeListener{ ratingBar, rating, fromUser->
-                ratingBar.rating
-                ratings[it] = rating.toDouble()
-                Log.d("ratingList", ratings.toString())
-            }
-            i += 1
-        }
     }
 
     private fun sendUserData(userData: UserData,ratings : MutableMap<Int, Double>){

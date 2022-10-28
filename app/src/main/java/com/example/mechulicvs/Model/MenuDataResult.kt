@@ -1,5 +1,6 @@
 package com.example.mechulicvs.Model
 
+import com.google.gson.annotations.SerializedName
 import java.lang.IllegalStateException
 
 data class MenuDataResult (
@@ -9,7 +10,7 @@ data class MenuDataResult (
 
 data class MenuList (
     val menu_id : Int,
-    val store_name : String,
+    @SerializedName("cvs_name")val store_name : String,
     val menu_name : String,
     val menu_image : String,
         )

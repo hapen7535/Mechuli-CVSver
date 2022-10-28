@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         SignInBtn = findViewById<Button>(R.id.signIn_btn)
         SignUpBtn = findViewById<Button>(R.id.signUp_btn)
 

@@ -93,7 +93,7 @@
         >
 
         <ScrollView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listofrating_listview"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,18 +102,9 @@
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/firstrating_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
 
             <ImageView
                 android:layout_width="100dp"
@@ -125,11 +116,13 @@
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/ratingSample_iv"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/withoutimglayout1"
+                app:layout_constraintTop_toTopOf="@id/ratingSample_iv"
+                app:layout_constraintBottom_toBottomOf="@id/ratingSample_iv"
                 >
 
             <LinearLayout
@@ -169,6 +162,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
+                android:theme="@style/RatingBar"
+                android:isIndicator="false"
                 app:layout_constraintTop_toBottomOf="@id/detailInfo_layout"
                 app:layout_constraintStart_toStartOf="parent"
                 android:stepSize="0.5"
@@ -182,17 +177,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/secondrating_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/firstrating_layout"
-            >
 
             <ImageView
                 android:layout_width="100dp"
@@ -200,22 +184,25 @@
                 android:src="@drawable/ratingimgsample"
                 android:id="@+id/ratingSample_iv2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingSample_iv"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/ratingSample_iv2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/withoutimglayout1"
+                app:layout_constraintEnd_toEndOf="@id/withoutimglayout1"
+                app:layout_constraintTop_toTopOf="@id/ratingSample_iv2"
+                app:layout_constraintBottom_toBottomOf="@id/ratingSample_iv2"
+                android:id="@+id/withoutimglayout2"
                 >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/detailInfo_layout2"
                     android:orientation="horizontal"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -236,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskrbold"
                         android:textColor="@color/black"
-                        android:text="삼립)노티드연유소라빵"
+                        android:text="삼립)노티드빵"
                         android:textSize="14sp"
                         android:layout_marginStart="3dp"
                         android:id="@+id/itemName_tv2"
@@ -253,6 +240,8 @@
                     android:stepSize="0.5"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
+                    android:theme="@style/RatingBar"
+                    android:isIndicator="false"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/itemRating_rv2"
@@ -261,17 +250,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/thirdrating_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/secondrating_layout"
-            >
 
             <ImageView
                 android:layout_width="100dp"
@@ -279,15 +258,17 @@
                 android:src="@drawable/ratingimgsample"
                 android:id="@+id/ratingSample_iv3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingSample_iv2"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/ratingSample_iv3"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/withoutimglayout2"
+                app:layout_constraintEnd_toEndOf="@id/withoutimglayout2"
+                app:layout_constraintTop_toTopOf="@id/ratingSample_iv3"
+                app:layout_constraintBottom_toBottomOf="@id/ratingSample_iv3"
+                android:id="@+id/withoutimglayout3"
                 >
 
                 <LinearLayout
@@ -332,6 +313,8 @@
                     android:stepSize="0.5"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
+                    android:theme="@style/RatingBar"
+                    android:isIndicator="false"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/itemRating_rv3"
@@ -340,33 +323,25 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fourthrating_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thirdrating_layout"
-            >
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ratingimgsample"
                 android:id="@+id/ratingSample_iv4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@id/ratingSample_iv"
+                app:layout_constraintEnd_toEndOf="@id/ratingSample_iv"
+                app:layout_constraintTop_toBottomOf="@id/ratingSample_iv3"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/ratingSample_iv4"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/withoutimglayout3"
+                app:layout_constraintEnd_toEndOf="@id/withoutimglayout3"
+                android:id="@+id/withoutimglayout4"
+                app:layout_constraintTop_toTopOf="@id/ratingSample_iv4"
+                app:layout_constraintBottom_toBottomOf="@id/ratingSample_iv4"
                 >
 
                 <LinearLayout
@@ -394,7 +369,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskrbold"
                         android:textColor="@color/black"
-                        android:text="삼립)노티드연유소라빵"
+                        android:text="삼립)노티드"
                         android:textSize="14sp"
                         android:layout_marginStart="3dp"
                         android:id="@+id/itemName_tv4"
@@ -411,6 +386,8 @@
                     android:stepSize="0.5"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
+                    android:theme="@style/RatingBar"
+                    android:isIndicator="false"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/itemRating_rv4"
@@ -419,33 +396,23 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fifthrating_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fourthrating_layout"
-            >
-
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ratingimgsample"
                 android:id="@+id/ratingSample_iv5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@id/ratingSample_iv4"
+                app:layout_constraintEnd_toEndOf="@id/ratingSample_iv4"
+                app:layout_constraintTop_toBottomOf="@id/ratingSample_iv4"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/ratingSample_iv5"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/withoutimglayout4"
+                app:layout_constraintEnd_toEndOf="@id/withoutimglayout4"
+                app:layout_constraintTop_toTopOf="@id/ratingSample_iv5"
+                app:layout_constraintBottom_toBottomOf="@id/ratingSample_iv5"
                 >
 
                 <LinearLayout
@@ -490,12 +457,12 @@
                     android:stepSize="0.5"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
+                    android:theme="@style/RatingBar"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:id="@+id/itemRating_rv5"
+                    android:isIndicator="false"
                     />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val Id : String = binding.inputIdEt.text.toString()
         val Pw : String = binding.inputPwEt.text.toString()

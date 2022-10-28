@@ -17,6 +17,7 @@ class RecommendActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recommend)
 
        binding = ActivityRecommendBinding.inflate(layoutInflater)
+       setContentView(binding.root)
 
        binding.backpressBtn.setOnClickListener {
            onBackPressedDispatcher.onBackPressed()

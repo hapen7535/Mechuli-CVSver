@@ -5,7 +5,6 @@ import retrofit2.http.GET
 
 interface SendIdData {
 
-    @FormUrlEncoded
     @GET("/users")
     suspend fun isDuplicated(
     ) : isDuplicated

@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Controller.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/entire_scroll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topparent_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -122,7 +141,7 @@
             app:layout_constraintBottom_toBottomOf="@id/duplicateCheck_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="해당 아이디가 사용 중 입니다."
+            android:text="사용 가능한 아이디입니다."
             android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -156,6 +175,7 @@
         android:id="@+id/inputpw_et"
         android:layout_width="317dp"
         android:layout_height="60dp"
+        android:inputType="textPassword"
         android:background="@drawable/inputimg"
         app:layout_constraintTop_toBottomOf="@id/inputpw_tv"
         app:layout_constraintStart_toStartOf="@id/inputpw_tv"
@@ -179,6 +199,7 @@
         android:id="@+id/inputpw2_et"
         android:layout_width="317dp"
         android:layout_height="60dp"
+        android:inputType="textPassword"
         android:background="@drawable/inputimg"
         app:layout_constraintTop_toBottomOf="@id/inputpw2_tv"
         app:layout_constraintStart_toStartOf="@id/inputpw2_tv"
@@ -217,7 +238,7 @@
         android:layout_width="317dp"
         android:layout_height="60dp"
         android:gravity="center"
-        android:background="@drawable/input_short_background_shape"
+        android:background="@drawable/subbtn_enable_check"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="30dp"
         app:layout_constraintStart_toStartOf="@id/srcollinput_layout"
@@ -244,5 +265,8 @@
 <!--        android:layout_height="match_parent"-->
 <!--        android:name="com.example.mechulicvs.SignUpInfoFragment" />-->
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
