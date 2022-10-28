@@ -176,6 +176,7 @@
                 android:scaleY="1.5"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/itemRating_rv"
                 />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -254,6 +255,7 @@
                     android:scaleY="1.5"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/itemRating_rv2"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -332,6 +334,7 @@
                     android:scaleY="1.5"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/itemRating_rv3"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -410,6 +413,7 @@
                     android:scaleY="1.5"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/itemRating_rv4"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -488,6 +492,7 @@
                     android:scaleY="1.5"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/itemRating_rv5"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
