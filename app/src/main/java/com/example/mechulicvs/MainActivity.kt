@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
     lateinit var SignInBtn : Button
+    lateinit var SignUpBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,17 +21,18 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         SignInBtn = findViewById<Button>(R.id.signIn_btn)
+        SignUpBtn = findViewById<Button>(R.id.signUp_btn)
 
         SignInBtn.setOnClickListener {
 
-            Log.d("setonclicklistner","클릭됨")
+//            Log.d("setonclicklistner","클릭됨")
             val intent = Intent(this, LoginActivity::class.java) //login의 View로 이동
             startActivity(intent)
 
         }
 
-        binding.signUpBtn.setOnClickListener {
-
+        SignUpBtn.setOnClickListener { view ->
+            Log.d("singupbtn","클릭됨")
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
 

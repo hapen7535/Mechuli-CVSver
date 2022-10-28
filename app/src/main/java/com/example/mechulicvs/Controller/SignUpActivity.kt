@@ -23,9 +23,10 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        binding.nextBtn.isEnabled = false
-
         binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.nextBtn.isEnabled = false
 
         val userId = binding.inputidEt.text.toString()
         val userPw = binding.inputpw2Et.text.toString()
@@ -35,7 +36,11 @@ class SignUpActivity : AppCompatActivity() {
             checkIdDuplicate(userId)
         }
 
-        if(Idcheck){
+        binding.backpressBtn.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        if(Idcheck && userId.isNotEmpty() && userPw.isNotEmpty() && nickName.isNotEmpty()){
             binding.nextBtn.isEnabled = true
             binding.nextBtn.setBackgroundResource(R.drawable.subbtn_enable_check)
         }
