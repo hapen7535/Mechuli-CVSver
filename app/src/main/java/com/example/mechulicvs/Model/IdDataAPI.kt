@@ -31,4 +31,8 @@ object IdDataAPI {
         retrofit.create(SendIdData::class.java)
     }
 
+    val recomservice : GetRecomData by lazy {
+        retrofit.create(GetRecomData::class.java)
+    }
+
 }
