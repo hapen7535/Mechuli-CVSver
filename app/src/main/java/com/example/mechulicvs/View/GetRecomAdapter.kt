@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.mechulicvs.Model.ItemData
+import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.R
 
-class GetRecomAdapter(val context: Context, val itemList : List<ItemData>) : RecyclerView.Adapter<GetRecomAdapter.ViewHolder>(){
+class GetRecomAdapter(val context: Context, val itemList : List<MenuList>) : RecyclerView.Adapter<GetRecomAdapter.ViewHolder>(){
 
-    var datas = mutableListOf<ItemData>()
+    var datas = listOf<MenuList>()
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
@@ -22,18 +23,18 @@ class GetRecomAdapter(val context: Context, val itemList : List<ItemData>) : Rec
         val itemName = itemView?.findViewById<TextView>(R.id.item_name_tv)
         val storeName = itemView?.findViewById<TextView>(R.id.item_brand_name_tv)
 
-        fun bind(datas : ItemData, context : Context){
-            if(datas.img != ""){
+        fun bind(datas : MenuList, context : Context){
+            if(datas.menu_image != ""){
 //              val resourceId = context.resources.getIdentifier(datas.img, "drawable", context.packageName)
 //              itemImg?.setImageResource(resourceId)
-                itemImg.load(datas.img){
+                itemImg.load(datas.menu_image){
                     transformations(CircleCropTransformation())
                 }
             } else{
                 itemImg?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
             }
-            itemName?.text = datas.itemName
-            storeName?.text = datas.storeName
+            itemName?.text = datas.menu_name
+            storeName?.text = datas.store_name
         }
     }
 

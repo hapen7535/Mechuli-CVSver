@@ -2,6 +2,7 @@ package com.example.mechulicvs.Repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.mechulicvs.Model.IdDataAPI
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.UserDataAPI
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +19,7 @@ class GetRecomRepository {
 
             CoroutineScope(Dispatchers.Default).launch {
                 launch(Dispatchers.IO) {
-                    var response = UserDataAPI.signupMenuDataService.getSignupMenuData()
+                    var response = IdDataAPI.recomservice.getRecommend()
                     withContext(Dispatchers.Default){
                         response.let {
                             if(response.isSuccess){

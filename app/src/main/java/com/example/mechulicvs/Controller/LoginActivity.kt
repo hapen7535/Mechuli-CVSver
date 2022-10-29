@@ -26,10 +26,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val Id : String = binding.inputIdEt.text.toString()
-        val Pw : String = binding.inputPwEt.text.toString()
-
         binding.loginBtn.setOnClickListener {
+
+            val Id : String = binding.inputIdEt.text.toString()
+            val Pw : String = binding.inputPwEt.text.toString()
+
             val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
             editor.putString("userId", Id)
             editor.apply()
@@ -42,19 +43,18 @@ class LoginActivity : AppCompatActivity() {
 
     private fun sendUserLoginData(id : String, pw : String){
 
-
         lifecycleScope.launch{
             val res = withContext(Dispatchers.IO){
                 UserDataAPI.service.userLogin(id, pw)
             }
             val answer = res.isSuccess
-            val userId = res.result.user_id
+            val userid = res.result.user_id
             if(answer){
                 val intent = Intent(this@LoginActivity, MainMenuActivity::class.java)
                 Toast.makeText(this@LoginActivity, "로그인이 완료되었습니다.", Toast.LENGTH_LONG).show()
-//                intent.putExtra("id", userid)
+                intent.putExtra("id", userid)
                 val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
-                editor.putString("userId", userId)
+                editor.putString("userId", id)
                 editor.apply()
                 startActivity(intent)
 
