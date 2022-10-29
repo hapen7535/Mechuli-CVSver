@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.LoginView">
+    tools:context=".Controller.LoginActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -85,6 +85,7 @@
         app:layout_constraintStart_toStartOf="@id/inputId_et"
         app:layout_constraintEnd_toEndOf="@id/inputId_et"
         android:layout_marginTop="26dp"
+        android:inputType="textPassword"
         android:hint="Password"
         android:fontFamily="@font/notosanskrbold"
         android:textColor="#5B5B5B"
@@ -104,7 +105,6 @@
         app:layout_constraintEnd_toEndOf="@id/inputPw_et"
         android:layout_marginTop="30dp"
         android:id="@+id/login_btn"
-        android:onClick="onClickLoginBtn"
         />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

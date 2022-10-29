@@ -32,107 +32,35 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userId = binding.inputidEt.text.toString()
-        val userPw = binding.inputpwEt.text.toString()
-        val checkingPw = binding.inputpw2Et.text.toString()
-        val nickName = binding.inputnicknameEt.text.toString()
+        var userId = binding.inputidEt.text
+        var userPw = binding.inputpwEt.text
+        var checkingPw = binding.inputpw2Et.text
+        var nickName = binding.inputnicknameEt.text
 
         binding.duplicateCheckTv.setOnClickListener {
-            checkIdDuplicate(userId)
+            val id = userId.toString()
+            checkIdDuplicate(id)
         }
 
         binding.backpressBtn.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-//        fun enableSubmitIfReady(editText: EditText) {
-//            val isReady: Boolean = editText.getText().toString().length > 2
-//            if(isReady) nextBtnCount += 1
-//            Log.d("count", nextBtnCount.toString())
-//        }
-//
-//        binding.inputidEt.addTextChangedListener(object : TextWatcher {
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                enableSubmitIfReady(binding.inputidEt)
-//            }
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//        })
-//
-//        binding.inputpwEt.addTextChangedListener(object : TextWatcher {
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                enableSubmitIfReady(binding.inputpwEt)
-//            }
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//        })
-//
-//        binding.inputpw2Et.addTextChangedListener(object : TextWatcher {
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                enableSubmitIfReady(binding.inputpw2Et)
-//            }
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//        })
-//
-//        binding.inputnicknameEt.addTextChangedListener(object : TextWatcher {
-//
-//            override fun afterTextChanged(p0: Editable?) {
-//                enableSubmitIfReady(binding.inputnicknameEt)
-//                binding.nextBtn.isEnabled = true
-//                binding.nextBtn.setBackgroundColor(R.drawable.subbtn_enable_check)
-//            }
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//
-//            }
-//        })
-
-//        if(nextBtnCount > 4){
-//            Log.d("btn","버튼 가능 ")
-//            binding.nextBtn.isEnabled = true
-//            binding.nextBtn.setBackgroundResource(R.drawable.subbtn_enable_check)
-//        }
-
         binding.nextBtn.setOnClickListener {
-            if(userPw != checkingPw){
+
+            val id = userId.toString()
+            val pw = userPw.toString()
+            val checkpw = checkingPw.toString()
+            val nick = nickName.toString()
+
+            if(pw != checkpw){
                 Toast.makeText(applicationContext, "두 비밀번호가 같지 않습니다.", Toast.LENGTH_LONG).show()
             } else{
-                    sendUserData(userId, userPw, nickName)
+                    sendUserData(id, pw, nick)
             }
         }
 
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        if(nextBtnCount < 4){
-//            Log.d("btn","버튼 불가능 ")
-//            binding.nextBtn.isEnabled = false
-//            binding.nextBtn.setBackgroundResource(R.drawable.input_short_background_shape)
-//        } else{
-//            Log.d("btn","버튼 가능 ")
-//            binding.nextBtn.isEnabled = true
-//            binding.nextBtn.setBackgroundColor(R.drawable.subbtn_enable_check)
-//        }
-//    }
 
     private fun sendUserData(id : String, pw : String, nickname : String){
         val intent = Intent(this, SignUpRatingActivity::class.java)
