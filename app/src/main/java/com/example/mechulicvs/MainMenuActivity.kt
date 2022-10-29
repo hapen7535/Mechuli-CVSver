@@ -16,6 +16,11 @@ class MainMenuActivity : AppCompatActivity() {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val spf = getSharedPreferences("userInfo", MODE_PRIVATE)
+        val userid = spf.getString("userId", "")!!
+
+        binding.userIdTv.setText(userid)
+
         binding.mainmenuCommunityBtn.setOnClickListener {
             val intent = Intent(this, CommunityActivity::class.java)
             startActivity(intent)

@@ -30,6 +30,9 @@ class LoginActivity : AppCompatActivity() {
         val Pw : String = binding.inputPwEt.text.toString()
 
         binding.loginBtn.setOnClickListener {
+            val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
+            editor.putString("userId", Id)
+            editor.apply()
             //login 데이터 보내기
             sendUserLoginData(Id, Pw)
             
