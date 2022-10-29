@@ -15,7 +15,7 @@ import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.UserData
 import com.example.mechulicvs.Model.UserDataAPI.signUpService
 import com.example.mechulicvs.R
-import com.example.mechulicvs.SignUpViewModel
+import com.example.mechulicvs.ViewModel.SignUpViewModel
 import com.example.mechulicvs.databinding.ActivitySignUpRatingBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

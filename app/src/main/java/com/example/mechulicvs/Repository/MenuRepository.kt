@@ -1,4 +1,4 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.Repository
 
 import androidx.lifecycle.LiveData
 import com.example.mechulicvs.Model.Menu

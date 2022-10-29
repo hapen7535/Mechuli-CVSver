@@ -1,4 +1,4 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import com.example.mechulicvs.Controller.LoginActivity
 import com.example.mechulicvs.Controller.SignUpActivity
+import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

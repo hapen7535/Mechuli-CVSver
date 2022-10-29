@@ -1,4 +1,4 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.Repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

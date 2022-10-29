@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetRecomActivity">
+    tools:context=".Controller.GetRecomActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

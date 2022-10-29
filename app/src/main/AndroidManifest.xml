@@ -18,7 +18,7 @@
             android:name=".AddRatingActivity"
             android:exported="false" />
         <activity
-            android:name=".GetRecomActivity"
+            android:name=".Controller.GetRecomActivity"
             android:exported="false" />
         <activity
             android:name=".View.RecommendActivity"
@@ -36,7 +36,7 @@
             android:name=".Controller.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
