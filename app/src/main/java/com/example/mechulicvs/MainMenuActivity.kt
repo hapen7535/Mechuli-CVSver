@@ -3,6 +3,7 @@ package com.example.mechulicvs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mechulicvs.View.RecommendActivity
 import com.example.mechulicvs.databinding.ActivityMainMenuBinding
 
 class MainMenuActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainMenuActivity : AppCompatActivity() {
         }
 
         binding.mainmenuRecommendBtn.setOnClickListener {
-            val intent = Intent(this, GetRecomActivity::class.java)
+            val intent = Intent(this, RecommendActivity::class.java)
             startActivity(intent)
         }
 
