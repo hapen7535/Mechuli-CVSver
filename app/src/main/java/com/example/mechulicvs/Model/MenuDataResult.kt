@@ -5,7 +5,8 @@ import java.lang.IllegalStateException
 
 data class MenuDataResult (
     val isSuccess : Boolean,
-    val result : List<MenuList>
+    val result : List<MenuList>,
+    val message : String
         )
 
 data class MenuList (
@@ -13,4 +14,6 @@ data class MenuList (
     @SerializedName("cvs_name")val store_name : String,
     val menu_name : String,
     val menu_image : String,
-        )
+        ) {
+            constructor() : this(0, "", "", "")
+}

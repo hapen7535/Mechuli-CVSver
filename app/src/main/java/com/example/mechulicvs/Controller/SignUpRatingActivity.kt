@@ -1,25 +1,26 @@
 package com.example.mechulicvs.Controller
 
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
+import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.room.Room
-import coil.imageLoader
 import coil.load
-import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
+import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.UserData
 import com.example.mechulicvs.Model.UserDataAPI.signUpService
 import com.example.mechulicvs.Model.UserDataAPI.signupMenuDataService
 import com.example.mechulicvs.R
-import com.example.mechulicvs.databinding.ActivitySignUpBinding
+import com.example.mechulicvs.SignUpViewModel
 import com.example.mechulicvs.databinding.ActivitySignUpRatingBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,14 +30,14 @@ class SignUpRatingActivity : AppCompatActivity() {
 
     lateinit var binding : ActivitySignUpRatingBinding
     lateinit var userid : String; lateinit var userpw : String; lateinit var nickname : String
+    lateinit var signUpViewModel: SignUpViewModel
 
+    var ratingList = mutableMapOf<Int, Double>()
     lateinit var menuId : MutableList<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_rating)
-
-        var ratingList = mutableMapOf<Int, Double>()
 
         binding = ActivitySignUpRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -53,59 +54,74 @@ class SignUpRatingActivity : AppCompatActivity() {
         var storeNameList = arrayListOf(binding.companyNameTv,binding.companyNameTv2, binding.companyNameTv3, binding.companyNameTv4, binding.companyNameTv5)
         var ratingBars = arrayListOf(binding.itemRatingRv, binding.itemRatingRv2, binding.itemRatingRv3, binding.itemRatingRv4, binding.itemRatingRv5)
 
-        getMenuImg(itemNameList, imgList, storeNameList)
+        signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+
+//        getMenuImg(itemNameList, imgList, storeNameList)
 //        filltheRatings(ratingBars, ratingList)
 
         var i = 0
 
-        menuId.forEach {
-            ratingBars[i].setOnRatingBarChangeListener{ ratingBar, rating, fromUser->
-                Log.d("rating", rating.toString())
-                ratingList[it] = rating.toDouble()
-                Log.d("ratingList", ratingList.toString())
+        val observer = Observer<List<MenuList>> { list ->
+            list.forEach {
+                itemNameList[i].setText(it.menu_name)
+                storeNameList[i].setText(it.store_name)
+                ratingBars[i].setOnRatingBarChangeListener(OnRatingBarChangeListener { ratingBar, rating, fromUser ->
+                   Log.d("rating", "ratingChanged" + rating.toString())
+                    ratingList[it.menu_id] = ratingBar.rating.toDouble()
+                    Log.d("ratingList", ratingList.toString())
+                })
+                imgList[i].load(it.menu_image){
+                    transformations(CircleCropTransformation())
+                }
+                Log.d("list", itemNameList.toString() + storeNameList.toString() + ratingList.toString())
+                i += 1
             }
-            i += 1
+
         }
+
+        signUpViewModel.getResultRepository()!!.observe(this, observer)
 
         binding.nextBtn.setOnClickListener {
-            sendUserData(signInfo, ratingList)
+            Log.d("rating Size", "${ratingList.size}")
+            if(ratingList.size < 5){
+                Toast.makeText(this, "해당 메뉴의 점수를 모두 매겨주세요.", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                sendUserData(signInfo, ratingList)
+            }
         }
 
     }
 
-
-    private fun getMenuImg(itemnamelist : ArrayList<TextView>, imglist : ArrayList<ImageView>, storenamelist : ArrayList<TextView>){
-
-        var i = 0
-        menuId = mutableListOf()
-
-        lifecycleScope.launch {
-            Log.d("myTag", "서버 요청 실행")
-            val res = withContext(Dispatchers.IO) {
-                signupMenuDataService.getSignupMenuData()
-            }
-            val answer = res
-            if(answer.isSuccess){
-                answer.result.forEach {
-                    itemnamelist[i].setText(it.menu_name)
-                    storenamelist[i].setText(it.store_name)
-                    Log.d("store_name", storenamelist.toString())
-                    imglist[i].load(it.menu_image)
-                    {
-                        transformations(CircleCropTransformation())
-                    }
-                    menuId.add(it.menu_id)
-                    i += 1
-                }
-            }
-
-        }
-
-    }
-
-    private fun filltheRatings(ratingbars : ArrayList<RatingBar>, ratings: MutableMap<Int, Double>){
-
-    }
+//
+//    private fun getMenuImg(itemnamelist : ArrayList<TextView>, imglist : ArrayList<ImageView>, storenamelist : ArrayList<TextView>){
+//
+//        var i = 0
+//        menuId = mutableListOf()
+//
+//        lifecycleScope.launch {
+//            Log.d("myTag", "서버 요청 실행")
+//            val res = withContext(Dispatchers.IO) {
+//                signupMenuDataService.getSignupMenuData()
+//            }
+//            val answer = res
+//            if(answer.isSuccess){
+//                answer.result.forEach {
+//                    itemnamelist[i].setText(it.menu_name)
+//                    storenamelist[i].setText(it.store_name)
+//                    Log.d("store_name", storenamelist.toString())
+//                    imglist[i].load(it.menu_image)
+//                    {
+//                        transformations(CircleCropTransformation())
+//                    }
+//                    menuId.add(it.menu_id)
+//                    i += 1
+//                }
+//            }
+//
+//        }
+//
+//    }
 
     private fun sendUserData(userData: UserData,ratings : MutableMap<Int, Double>){
         lifecycleScope.launch{
