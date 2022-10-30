@@ -3,7 +3,7 @@ package com.example.mechulicvs.View//package com.example.mechulicvs.
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mechulicvs.AddRatingActivity
+import com.example.mechulicvs.Controller.AddRatingActivity
 import com.example.mechulicvs.Controller.GetRecomActivity
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityRecommendBinding

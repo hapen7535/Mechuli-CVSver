@@ -14,31 +14,30 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object IdDataAPI {
+object getRecomAPI {
 
-    var userId : String = ""
+    val userid = MainApplication.prefs.getString("userId", "")
 
     private val okHttpClient = OkHttpClient.Builder()
         .addNetworkInterceptor {
             val request = it.request()
                 .newBuilder()
-                .addHeader("userId", userId)
+                .addHeader("userId", userid)
                 .build()
             it.proceed(request)
         }
         .build()
 
-        private val retrofit by lazy {
-            Retrofit.Builder()
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-        }
-
-    val service : SendIdData by lazy {
-        retrofit.create(SendIdData::class.java)
+    private val retrofit by lazy {
+        Retrofit.Builder()
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
     }
 
+    val recomservice : GetRecomData by lazy {
+        retrofit.create(GetRecomData::class.java)
+    }
 
 }

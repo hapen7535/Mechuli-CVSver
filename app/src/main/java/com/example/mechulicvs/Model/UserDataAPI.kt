@@ -25,4 +25,8 @@ object UserDataAPI {
         retrofit.create(GetMenuData::class.java)
     }
 
+    val setRatingService : SendRatingData by lazy {
+        retrofit.create(SendRatingData::class.java)
+    }
+
 }
