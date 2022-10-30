@@ -3,6 +3,7 @@ package com.example.mechulicvs.Controller
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
@@ -17,6 +18,8 @@ import com.example.mechulicvs.View.AddRatingAdapter
 import com.example.mechulicvs.View.GetRecomAdapter
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
+import java.util.*
+import java.util.Base64.getEncoder
 
 class AddRatingActivity : AppCompatActivity() {
 
@@ -42,7 +45,8 @@ class AddRatingActivity : AppCompatActivity() {
 
         binding.searchBtn.setOnClickListener {
             val keyword =  binding.searchViewEt.text.toString()
-            MainApplication.prefs.setString("keyword", keyword)
+            val encodedString: String = Base64.getEncoder().encodeToString(keyword.toByteArray())
+            MainApplication.prefs.setString("keyword", encodedString)
             getRatingListViewmodel = ViewModelProvider(this).get(GetRatingListViewModel::class.java)
 
             val observer = Observer<List<MenuList>>{ list ->
