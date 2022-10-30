@@ -1,13 +1,22 @@
 package com.example.mechulicvs.Model
 
+import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.Model.Constants.Companion.BASE_URL
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object IdDataAPI {
 
-    var userId : String = ""
+    val userId = MainApplication.prefs.getString("userId", "")
 
     private val okHttpClient = OkHttpClient.Builder()
         .addNetworkInterceptor {

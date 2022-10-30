@@ -72,7 +72,6 @@ class SignUpActivity : AppCompatActivity() {
         lifecycleScope.launch{
             val id = userid
             val res = withContext(Dispatchers.IO){
-                IdDataAPI.userId = id
                 IdDataAPI.service.isDuplicated()
             }
             val answer = res.isSuccess

@@ -25,13 +25,14 @@ class GetRecomActivity : AppCompatActivity() {
         binding = ActivityGetRecomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         getRecomViewModel = ViewModelProvider(this).get(GetRecomViewModel::class.java)
 
         val observer = Observer<List<MenuList>>{ list ->
             dataList = list
         }
 
-        getRecomViewModel.getResultRepository()!!.observe(this, observer)
+        getRecomViewModel.getResultRepository().observe(this, observer)
 
 
         val itemAdapter = GetRecomAdapter(this, dataList)

@@ -1,9 +1,10 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mechulicvs.View.RecommendActivity
+import com.example.mechulicvs.CommunityActivity
+import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityMainMenuBinding
 
 class MainMenuActivity : AppCompatActivity() {

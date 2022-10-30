@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.mechulicvs.MainMenuActivity
+import com.example.mechulicvs.View.MainMenuActivity
 import com.example.mechulicvs.Model.UserDataAPI
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityLoginBinding
