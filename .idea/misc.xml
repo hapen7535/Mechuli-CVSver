@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1365" />
+        <entry key="app/src/main/res/drawable/custom_progress_bar.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/custom_progress_bar2.xml" value="0.172" />
         <entry key="app/src/main/res/drawable/draw_line_shape.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.248" />
         <entry key="app/src/main/res/drawable/input_background_shape.xml" value="0.248" />

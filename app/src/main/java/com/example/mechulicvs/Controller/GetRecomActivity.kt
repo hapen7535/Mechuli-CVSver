@@ -2,6 +2,7 @@ package com.example.mechulicvs.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -26,6 +27,8 @@ class GetRecomActivity : AppCompatActivity() {
         binding = ActivityGetRecomBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        binding.listofrecommendRv.visibility = View.GONE
+        binding.progressBar1.visibility = View.VISIBLE
 
         getRecomViewModel = ViewModelProvider(this).get(GetRecomViewModel::class.java)
 
@@ -44,6 +47,9 @@ class GetRecomActivity : AppCompatActivity() {
                 binding.listofrecommendRv.setHasFixedSize(true)
                 val decoration = DividerItemDecoration(binding.listofrecommendRv.context, LinearLayoutManager(this).orientation)
                 binding.listofrecommendRv.addItemDecoration(decoration)
+
+                binding.progressBar1.visibility = View.GONE
+//                binding.listofrecommendRv.visibility = View.VISIBLE
 
             }
         })

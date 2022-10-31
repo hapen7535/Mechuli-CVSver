@@ -17,26 +17,23 @@ import javax.inject.Inject
 @HiltViewModel
 class GetRecomViewModel @Inject constructor(
     application: Application,
-//    private val sharedPreferences: SharedPreferences,
 ) : AndroidViewModel(application) {
 
     private var resultList = MutableLiveData<List<MenuList>>()
 
-//    val sharedpreferences: SharedPreferences =
-//        application.getSharedPreferences("preference_key", Context.MODE_PRIVATE)
+//    fun getLog() {
+//        Log.d("viewmodel","viewmodel 진입getString(\"userId\", \"\")!!")
+//    }
 
-//    private val context = application.applicationContext
-
-    fun getLog() {
-        Log.d("viewmodel","viewmodel 진입getString(\"userId\", \"\")!!")
-    }
-
-//    private val userid = sharedpreferences.getString("userId", "")!!
 
     fun getResultRepository(): LiveData<List<MenuList>> {
-        getLog()
+//        getLog()
         return resultList
     }
+
+//    fun getLoadingState() : LiveData<Boolean> {
+//        return GetRecomRepository.isLoading
+//    }
 
     init {
         resultList = GetRecomRepository.getResult()!!
