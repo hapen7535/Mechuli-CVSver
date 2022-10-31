@@ -16,21 +16,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object getRecomAPI {
 
-    val userid = MainApplication.prefs.getString("userId", "")
-
-    private val okHttpClient = OkHttpClient.Builder()
-        .addNetworkInterceptor {
-            val request = it.request()
-                .newBuilder()
-                .addHeader("userId", userid)
-                .build()
-            it.proceed(request)
-        }
-        .build()
+//    private val okHttpClient = OkHttpClient.Builder()
+//        .addNetworkInterceptor {
+//            val request = it.request()
+//                .newBuilder()
+//                .addHeader("userId", userid)
+//                .build()
+//            it.proceed(request)
+//        }
+//        .build()
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()

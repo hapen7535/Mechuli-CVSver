@@ -17,6 +17,7 @@ object KeywordDataAPI {
                 .build()
             it.proceed(request)
         }
+        .retryOnConnectionFailure(true)
         .build()
 
     private val retrofit by lazy {

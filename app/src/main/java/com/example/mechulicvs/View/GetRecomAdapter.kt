@@ -13,28 +13,24 @@ import com.example.mechulicvs.Model.ItemData
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.R
 
-class GetRecomAdapter(val context: Context, val itemList : List<MenuList>) : RecyclerView.Adapter<GetRecomAdapter.ViewHolder>(){
-
-    var datas = listOf<MenuList>()
+class GetRecomAdapter(private val context: Context, val itemList : List<MenuList>) : RecyclerView.Adapter<GetRecomAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val itemImg = itemView?.findViewById<ImageView>(R.id.item_image_iv)
-        val itemName = itemView?.findViewById<TextView>(R.id.item_name_tv)
-        val storeName = itemView?.findViewById<TextView>(R.id.item_brand_name_tv)
+        private val itemImg = itemView.findViewById<ImageView>(R.id.item_image_iv)
+        private val itemName = itemView.findViewById<TextView>(R.id.item_name_tv)
+        private val storeName = itemView.findViewById<TextView>(R.id.item_brand_name_tv)
 
         fun bind(datas : MenuList, context : Context){
             if(datas.menu_image != ""){
-//              val resourceId = context.resources.getIdentifier(datas.img, "drawable", context.packageName)
-//              itemImg?.setImageResource(resourceId)
                 itemImg.load(datas.menu_image){
                     transformations(CircleCropTransformation())
                 }
             } else{
                 itemImg?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
             }
-            itemName?.text = datas.menu_name
-            storeName?.text = datas.store_name
+            itemName.text = datas.menu_name
+            storeName.text = datas.store_name
         }
     }
 
@@ -43,10 +39,10 @@ class GetRecomAdapter(val context: Context, val itemList : List<MenuList>) : Rec
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = datas.size
+    override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: GetRecomAdapter.ViewHolder, position: Int) {
-        holder.bind(datas[position], context)
+        holder.bind(itemList[position], context)
     }
 
 

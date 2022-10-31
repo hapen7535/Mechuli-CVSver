@@ -45,7 +45,8 @@ class AddRatingActivity : AppCompatActivity() {
 
         binding.searchBtn.setOnClickListener {
             val keyword =  binding.searchViewEt.text.toString()
-            val encodedString: String = Base64.getEncoder().encodeToString(keyword.toByteArray())
+            val byte = keyword.toByteArray(charset("UTF-8"))
+            val encodedString: String = Base64.getEncoder().encodeToString(byte)
             MainApplication.prefs.setString("keyword", encodedString)
             getRatingListViewmodel = ViewModelProvider(this).get(GetRatingListViewModel::class.java)
 

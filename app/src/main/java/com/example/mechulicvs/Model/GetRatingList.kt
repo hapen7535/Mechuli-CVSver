@@ -1,6 +1,7 @@
 package com.example.mechulicvs.Model
 
 import retrofit2.http.GET
+import retrofit2.http.Header
 
 interface GetRatingList {
 

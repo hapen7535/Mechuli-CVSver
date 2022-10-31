@@ -32,14 +32,22 @@ class GetRecomActivity : AppCompatActivity() {
             dataList = list
         }
 
-        getRecomViewModel.getResultRepository().observe(this, observer)
+        getRecomViewModel.getResultRepository().observe(this, Observer{
+            if(it.isNotEmpty()){
 
+                val itemAdapter = GetRecomAdapter(this, it)
+                binding.listofrecommendRv.adapter = itemAdapter
 
-        val itemAdapter = GetRecomAdapter(this, dataList)
-        binding.listofrecommendRv.adapter = itemAdapter
+                val layoutManager = LinearLayoutManager(this)
+                binding.listofrecommendRv.layoutManager = layoutManager
+                binding.listofrecommendRv.setHasFixedSize(true)
 
-        val layoutManager = LinearLayoutManager(this)
-        binding.listofrecommendRv.layoutManager = layoutManager
-        binding.listofrecommendRv.setHasFixedSize(true)
+            }
+        })
+
+        binding.backpressBtn.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
     }
 }
