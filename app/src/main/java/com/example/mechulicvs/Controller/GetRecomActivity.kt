@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechulicvs.Model.ItemData
 import com.example.mechulicvs.Model.MenuList
@@ -41,6 +42,8 @@ class GetRecomActivity : AppCompatActivity() {
                 val layoutManager = LinearLayoutManager(this)
                 binding.listofrecommendRv.layoutManager = layoutManager
                 binding.listofrecommendRv.setHasFixedSize(true)
+                val decoration = DividerItemDecoration(binding.listofrecommendRv.context, LinearLayoutManager(this).orientation)
+                binding.listofrecommendRv.addItemDecoration(decoration)
 
             }
         })
