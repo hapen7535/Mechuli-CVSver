@@ -45,9 +45,11 @@ class AddRatingActivity : AppCompatActivity() {
 
         binding.searchBtn.setOnClickListener {
             val keyword =  binding.searchViewEt.text.toString()
-            val byte = keyword.toByteArray(charset("UTF-8"))
-            val encodedString: String = Base64.getEncoder().encodeToString(byte)
-            MainApplication.prefs.setString("keyword", encodedString)
+            keyword = URLEncoder.encode(keyword, "utf-8") 
+            //sharedPreference에 keyword를 저장, API에서 getString하여 header에 추가
+//             val byte = keyword.toByteArray(charset("UTF-8"))
+//             val encodedString: String = Base64.getEncoder().encodeToString(byte)
+            MainApplication.prefs.setString("keyword", keyword)
             getRatingListViewmodel = ViewModelProvider(this).get(GetRatingListViewModel::class.java)
 
             val observer = Observer<List<MenuList>>{ list ->
