@@ -33,6 +33,10 @@ class AddRatingActivity : AppCompatActivity() {
 
         binding = ActivityAddRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+      binding.backpressBtn.setOnClickListener {
+           onBackPressedDispatcher.onBackPressed()
+       }
 
         binding.itemListRv.visibility = View.GONE
 
