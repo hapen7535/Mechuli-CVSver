@@ -18,6 +18,7 @@ import com.example.mechulicvs.View.AddRatingAdapter
 import com.example.mechulicvs.View.GetRecomAdapter
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
+import java.net.URLEncoder
 import java.util.*
 import java.util.Base64.getEncoder
 
@@ -48,8 +49,8 @@ class AddRatingActivity : AppCompatActivity() {
         binding.itemListRv.setHasFixedSize(true)
 
         binding.searchBtn.setOnClickListener {
-            val keyword =  binding.searchViewEt.text.toString()
-            keyword = URLEncoder.encode(keyword, "utf-8") 
+            var keyword =  binding.searchViewEt.text.toString()
+            keyword = URLEncoder.encode(keyword, "utf-8");
             //sharedPreference에 keyword를 저장, API에서 getString하여 header에 추가
 //             val byte = keyword.toByteArray(charset("UTF-8"))
 //             val encodedString: String = Base64.getEncoder().encodeToString(byte)
