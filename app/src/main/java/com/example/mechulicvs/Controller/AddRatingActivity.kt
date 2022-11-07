@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import com.example.mechulicvs.MainApplication
@@ -26,7 +27,6 @@ class AddRatingActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityAddRatingBinding
     lateinit var getRatingListViewmodel : GetRatingListViewModel
-    var dataList = listOf<MenuList>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +39,6 @@ class AddRatingActivity : AppCompatActivity() {
            onBackPressedDispatcher.onBackPressed()
        }
 
-        binding.itemListRv.visibility = View.GONE
-
-        val itemAdapter = AddRatingAdapter(dataList, binding)
-        binding.itemListRv.adapter = itemAdapter
-
         val layoutManager = LinearLayoutManager(this)
         binding.itemListRv.layoutManager = layoutManager
         binding.itemListRv.setHasFixedSize(true)
@@ -51,19 +46,24 @@ class AddRatingActivity : AppCompatActivity() {
         binding.searchBtn.setOnClickListener {
             var keyword =  binding.searchViewEt.text.toString()
             keyword = URLEncoder.encode(keyword, "utf-8");
-            //sharedPreference에 keyword를 저장, API에서 getString하여 header에 추가
-//             val byte = keyword.toByteArray(charset("UTF-8"))
-//             val encodedString: String = Base64.getEncoder().encodeToString(byte)
             MainApplication.prefs.setString("keyword", keyword)
+
             getRatingListViewmodel = ViewModelProvider(this).get(GetRatingListViewModel::class.java)
 
-            val observer = Observer<List<MenuList>>{ list ->
-                dataList = list
-            }
+            getRatingListViewmodel.getResultRepository().observe(this, Observer {
+                if (it.isNotEmpty()){
 
-            getRatingListViewmodel.getResultRepository().observe(this, observer)
+                    val itemAdapter = AddRatingAdapter(this, it)
+                    binding.itemListRv.adapter = itemAdapter
+                    val layoutManager = LinearLayoutManager(this)
+                    binding.itemListRv.layoutManager = layoutManager
+                    binding.itemListRv.setHasFixedSize(true)
+                    val decoration = DividerItemDecoration(binding.itemListRv.context, LinearLayoutManager(this).orientation)
+                    binding.itemListRv.addItemDecoration(decoration)
 
-            binding.itemListRv.visibility = View.VISIBLE
+                }
+            })
+
         }
 
 

@@ -22,10 +22,13 @@ class GetRatingListRepository {
 
             CoroutineScope(Dispatchers.Default).launch {
                 launch(Dispatchers.IO) {
+                    Log.d("keyword in repository", MainApplication.prefs.getString("keyword", ""))
+                    KeywordDataAPI.keyword = MainApplication.prefs.getString("keyword", "")
                     var response = KeywordDataAPI.getRatingDataService.getRatingList()
                     withContext(Dispatchers.Default){
                         response.let {
                             if(response.isSuccess){
+                                Log.d("list", response.result.toString())
                                 RatingListLiveData.postValue(response.result)
                             } else{
                                 Log.d("error", response.message)

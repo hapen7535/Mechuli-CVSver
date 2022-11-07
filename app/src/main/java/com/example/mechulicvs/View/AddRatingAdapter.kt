@@ -17,9 +17,8 @@ import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
 
 class AddRatingAdapter(
-    private val itemList: List<MenuList>,
-    val binding: ActivityAddRatingBinding
-) : RecyclerView.Adapter<AddRatingAdapter.ViewHolder>(), Filterable {
+    private val context: Context, val itemList : List<MenuList>
+) : RecyclerView.Adapter<AddRatingAdapter.ViewHolder>(){
 
     private lateinit var itemClickListener : OnItemClickListener
 
@@ -31,74 +30,36 @@ class AddRatingAdapter(
         this.itemClickListener = onItemClickListener
     }
 
-
     var datas = listOf<MenuList>()
-    var datasFilterd = listOf<MenuList>()
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        private val context = binding.root.context
+        private val itemImg = itemView.findViewById<ImageView>(R.id.item_image_iv)
+        private val itemName = itemView.findViewById<TextView>(R.id.item_name_tv)
+        private val storeName = itemView.findViewById<TextView>(R.id.item_brand_name_tv)
 
-        val itemImg = itemView?.findViewById<ImageView>(R.id.item_image_iv)
-        val itemName = itemView?.findViewById<TextView>(R.id.item_name_tv)
-        val storeName = itemView?.findViewById<TextView>(R.id.item_brand_name_tv)
-
-
-        fun bind(datas : MenuList){
+        fun bind(datas : MenuList, context : Context){
             if(datas.menu_image != ""){
-//              val resourceId = context.resources.getIdentifier(datas.img, "drawable", context.packageName)
-//              itemImg?.setImageResource(resourceId)
                 itemImg.load(datas.menu_image){
                     transformations(CircleCropTransformation())
                 }
             } else{
                 itemImg?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
             }
-            itemName?.text = datas.menu_name
-            storeName?.text = datas.store_name
-
-            itemView.setOnClickListener {
-                val intent = Intent(context, DetailAddRatingActivity::class.java)
-                intent.run { context.startActivity(this) }
-            }
-
+            itemName.text = datas.menu_name
+            storeName.text = datas.store_name
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recommend_list_recycler_item, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddRatingAdapter.ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.recommend_list_recycler_item, parent, false)
         return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(datas[position], context)
-        holder.itemView.setOnClickListener {
-            itemClickListener.onClick(it, position)
-        }
     }
 
     override fun getItemCount(): Int = datas.size
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString = constraint?.toString() ?: ""
-                if(charString.isEmpty()) datasFilterd = datas else{
-                    val filteredList = ArrayList<MenuList>()
-                    datas.filter {
-                        (it.menu_name.contains(constraint!!))
-                    }
-                        .forEach { filteredList.toMutableList().add(it)}
-                    datasFilterd = filteredList
-                }
-                return FilterResults().apply{ values = datasFilterd }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                datasFilterd = results?.values as ArrayList<MenuList>
-                notifyDataSetChanged()
-            }
-
-        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(itemList[position], context)
     }
+
 }

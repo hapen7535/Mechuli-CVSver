@@ -32,9 +32,9 @@ class GetRecomActivity : AppCompatActivity() {
 
         getRecomViewModel = ViewModelProvider(this).get(GetRecomViewModel::class.java)
 
-        val observer = Observer<List<MenuList>>{ list ->
-            dataList = list
-        }
+//        val observer = Observer<List<MenuList>>{ list ->
+//            dataList = list
+//        }
 
         getRecomViewModel.getResultRepository().observe(this, Observer{
             if(it.isNotEmpty()){

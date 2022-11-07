@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object KeywordDataAPI {
 
-    val keyword = MainApplication.prefs.getString("keyword", "")
+    var keyword : String = ""
 
     private val okHttpClient = OkHttpClient.Builder()
         .addNetworkInterceptor {
