@@ -20,17 +20,17 @@ class AddRatingAdapter(
     private val context: Context, val itemList : List<MenuList>
 ) : RecyclerView.Adapter<AddRatingAdapter.ViewHolder>(){
 
-    private lateinit var itemClickListener : OnItemClickListener
+    private lateinit var itemClickListener : AdapterView.OnItemClickListener
 
-    interface OnItemClickListener {
-        fun onClick(view : View, pos: Int)
-    }
-
-    fun setOnItemClickListener( onItemClickListener: OnItemClickListener) {
-        this.itemClickListener = onItemClickListener
-    }
-
-    var datas = listOf<MenuList>()
+//    interface OnItemClickListener {
+//        fun onClick(view : View, pos: Int)
+//    }
+//
+//    fun setOnItemClickListener( onItemClickListener: OnItemClickListener) {
+//        this.itemClickListener = onItemClickListener
+//    }
+//
+//    var datas = listOf<MenuList>()
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
@@ -56,7 +56,7 @@ class AddRatingAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = datas.size
+    override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position], context)
