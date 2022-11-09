@@ -1,6 +1,7 @@
 package com.example.mechulicvs.Controller
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
+import com.example.mechulicvs.DetailAddRatingActivity
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.R
@@ -28,12 +30,15 @@ class AddRatingActivity : AppCompatActivity() {
     lateinit var binding : ActivityAddRatingBinding
     lateinit var getRatingListViewmodel : GetRatingListViewModel
 
+    lateinit var itemAdapter : AddRatingAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_rating)
 
         binding = ActivityAddRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         
       binding.backpressBtn.setOnClickListener {
            onBackPressedDispatcher.onBackPressed()
@@ -53,7 +58,7 @@ class AddRatingActivity : AppCompatActivity() {
             getRatingListViewmodel.getResultRepository().observe(this, Observer {
                 if (it.isNotEmpty()){
 
-                    val itemAdapter = AddRatingAdapter(this, it)
+                    itemAdapter = AddRatingAdapter(this, it)
                     binding.itemListRv.adapter = itemAdapter
                     val layoutManager = LinearLayoutManager(this)
                     binding.itemListRv.layoutManager = layoutManager
@@ -61,10 +66,20 @@ class AddRatingActivity : AppCompatActivity() {
                     val decoration = DividerItemDecoration(binding.itemListRv.context, LinearLayoutManager(this).orientation)
                     binding.itemListRv.addItemDecoration(decoration)
 
+                    itemAdapter.setOnItemClickListener(object : AddRatingAdapter.OnItemClickListener{
+                        override fun onItemClick(v: View, data: MenuList, pos: Int) {
+                            val intent = Intent(this@AddRatingActivity, DetailAddRatingActivity::class.java).apply {
+                                putExtra("itemId", data.menu_id)
+                            }
+                            startActivity(intent)
+                        }
+                    })
+
                 }
             })
 
         }
+
 
 
     }
