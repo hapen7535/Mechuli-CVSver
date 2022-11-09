@@ -1,20 +1,15 @@
 package com.example.mechulicvs.View
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.DetailAddRatingActivity
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.R
-import com.example.mechulicvs.databinding.ActivityAddRatingBinding
 
 class AddRatingAdapter(
     private val context: Context, val itemList: List<MenuList>

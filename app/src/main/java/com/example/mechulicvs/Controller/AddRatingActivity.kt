@@ -1,29 +1,21 @@
 package com.example.mechulicvs.Controller
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import com.example.mechulicvs.DetailAddRatingActivity
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.R
-import com.example.mechulicvs.Repository.PrefRepository
 import com.example.mechulicvs.View.AddRatingAdapter
-import com.example.mechulicvs.View.GetRecomAdapter
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
 import java.net.URLEncoder
-import java.util.*
-import java.util.Base64.getEncoder
 
 class AddRatingActivity : AppCompatActivity() {
 
@@ -69,7 +61,11 @@ class AddRatingActivity : AppCompatActivity() {
                     itemAdapter.setOnItemClickListener(object : AddRatingAdapter.OnItemClickListener{
                         override fun onItemClick(v: View, data: MenuList, pos: Int) {
                             val intent = Intent(this@AddRatingActivity, DetailAddRatingActivity::class.java).apply {
+                                //나중에 Serialized data class로 보내기
                                 putExtra("itemId", data.menu_id)
+                                putExtra("itemName", data.menu_name)
+                                putExtra("itemImg", data.menu_image)
+                                putExtra("storeName", data.store_name)
                             }
                             startActivity(intent)
                         }
