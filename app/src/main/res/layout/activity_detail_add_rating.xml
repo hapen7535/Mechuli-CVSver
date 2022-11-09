@@ -135,6 +135,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
+                android:isIndicator="false"
+                android:theme="@style/RatingBar"
                 app:layout_constraintTop_toBottomOf="@id/detailInfo_layout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
