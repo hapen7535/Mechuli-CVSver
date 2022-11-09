@@ -17,42 +17,51 @@ import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
 
 class AddRatingAdapter(
-    private val context: Context, val itemList : List<MenuList>
-) : RecyclerView.Adapter<AddRatingAdapter.ViewHolder>(){
+    private val context: Context, val itemList: List<MenuList>
+) : RecyclerView.Adapter<AddRatingAdapter.ViewHolder>() {
 
-    private lateinit var itemClickListener : AdapterView.OnItemClickListener
+    private lateinit var itemClickListener: AdapterView.OnItemClickListener
 
-//    interface OnItemClickListener {
-//        fun onClick(view : View, pos: Int)
-//    }
-//
-//    fun setOnItemClickListener( onItemClickListener: OnItemClickListener) {
-//        this.itemClickListener = onItemClickListener
-//    }
-//
-//    var datas = listOf<MenuList>()
+    interface OnItemClickListener {
+        fun onItemClick(v: View, data: MenuList, pos: Int)
+    }
 
-    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+    private var listener: OnItemClickListener? = null
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val itemImg = itemView.findViewById<ImageView>(R.id.item_image_iv)
         private val itemName = itemView.findViewById<TextView>(R.id.item_name_tv)
         private val storeName = itemView.findViewById<TextView>(R.id.item_brand_name_tv)
 
-        fun bind(datas : MenuList, context : Context){
-            if(datas.menu_image != ""){
-                itemImg.load(datas.menu_image){
+        fun bind(datas: MenuList, context: Context) {
+            if (datas.menu_image != "") {
+                itemImg.load(datas.menu_image) {
                     transformations(CircleCropTransformation())
                 }
-            } else{
+            } else {
                 itemImg?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
             }
             itemName.text = datas.menu_name
             storeName.text = datas.store_name
+
+            val pos = adapterPosition
+            if (pos != RecyclerView.NO_POSITION) {
+                itemView.setOnClickListener {
+                    listener?.onItemClick(itemView, datas, pos)
+                }
+            }
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddRatingAdapter.ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.recommend_list_recycler_item, parent, false)
+        val view = LayoutInflater.from(context)
+            .inflate(R.layout.recommend_list_recycler_item, parent, false)
         return ViewHolder(view)
     }
 
