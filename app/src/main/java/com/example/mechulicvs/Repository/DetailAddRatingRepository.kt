@@ -22,7 +22,9 @@ class DetailAddRatingRepository {
 
             val UserRatingData: MutableLiveData<Result> = MutableLiveData<Result>()
             val userId = MainApplication.prefs.getString("userId", "")
-            val menuId = MainApplication.prefs.getString("menuId", "")
+            val menuId = MainApplication.prefs.getInt("menuId", 0)
+            Log.d("id in repository", MainApplication.prefs.getString("userId", ""))
+            Log.d("menuid in repository", MainApplication.prefs.getInt("menuId", 0).toString())
 
             CoroutineScope(Dispatchers.Default).launch {
                 launch(Dispatchers.IO) {

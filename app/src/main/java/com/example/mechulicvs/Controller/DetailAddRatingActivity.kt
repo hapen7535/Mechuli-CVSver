@@ -28,7 +28,7 @@ class DetailAddRatingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val itemId = intent.getIntExtra("itemId", 0)
-        MainApplication.prefs.setInt("itemId", itemId)
+        MainApplication.prefs.setInt("menuId", itemId)
 
         viewModel = ViewModelProvider(this).get(DetailAddRatingViewModel::class.java)
 

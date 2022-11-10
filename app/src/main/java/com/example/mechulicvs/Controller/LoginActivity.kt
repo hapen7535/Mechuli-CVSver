@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.View.MainMenuActivity
 import com.example.mechulicvs.Model.UserDataAPI
 import com.example.mechulicvs.R
@@ -52,10 +53,11 @@ class LoginActivity : AppCompatActivity() {
             if(answer){
                 val intent = Intent(this@LoginActivity, MainMenuActivity::class.java)
                 Toast.makeText(this@LoginActivity, "로그인이 완료되었습니다.", Toast.LENGTH_LONG).show()
-                intent.putExtra("id", userid)
-                val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
-                editor.putString("userId", id)
-                editor.apply()
+                MainApplication.prefs.setString("userId", userid)
+//                intent.putExtra("id", userid)
+//                val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
+//                editor.putString("userId", id)
+//                editor.apply()
                 startActivity(intent)
 
             } else{
