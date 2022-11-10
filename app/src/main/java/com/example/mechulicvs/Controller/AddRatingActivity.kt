@@ -63,9 +63,9 @@ class AddRatingActivity : AppCompatActivity() {
                             val intent = Intent(this@AddRatingActivity, DetailAddRatingActivity::class.java).apply {
                                 //나중에 Serialized data class로 보내기
                                 putExtra("itemId", data.menu_id)
-                                putExtra("itemName", data.menu_name)
-                                putExtra("itemImg", data.menu_image)
-                                putExtra("storeName", data.store_name)
+//                                putExtra("itemName", data.menu_name)
+//                                putExtra("itemImg", data.menu_image)
+//                                putExtra("storeName", data.store_name)
                             }
                             startActivity(intent)
                         }

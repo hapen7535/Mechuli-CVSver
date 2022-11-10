@@ -37,4 +37,8 @@ object getRecomAPI {
         retrofit.create(GetRecomData::class.java)
     }
 
+    val modifyUserRatingService : GetUserRatingData by lazy {
+        retrofit.create(GetUserRatingData::class.java)
+    }
+
 }

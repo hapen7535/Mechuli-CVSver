@@ -18,16 +18,18 @@ class DetailAddRatingActivity : AppCompatActivity() {
         binding = ActivityDetailAddRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val itemName = intent.getStringExtra("itemName")
-        val itemImg = intent.getStringExtra("itemImg")
-        val storeName = intent.getStringExtra("storeName")
+        val itemId = intent.getIntExtra("itemId", 0)
 
-        binding.ratingSampleIv.load(itemImg) {
-            transformations(CircleCropTransformation())
-        }
+//        val itemName = intent.getStringExtra("itemName")
+//        val itemImg = intent.getStringExtra("itemImg")
+//        val storeName = intent.getStringExtra("storeName")
 
-        binding.itemNameTv.setText(itemName)
-        binding.itemBrandNameTv.setText(storeName)
+//        binding.ratingSampleIv.load(itemImg) {
+//            transformations(CircleCropTransformation())
+//        }
+//
+//        binding.itemNameTv.setText(itemName)
+//        binding.itemBrandNameTv.setText(storeName)
 
     }
 }
