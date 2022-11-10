@@ -40,6 +40,7 @@ class DetailAddRatingActivity : AppCompatActivity() {
 
             binding.itemBrandNameTv.setText(it.cvsName)
             binding.itemNameTv.setText(it.menuName)
+            binding.itemRatingbar.rating = it.score.toFloat()
 
         }
 

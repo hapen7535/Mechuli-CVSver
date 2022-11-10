@@ -134,6 +134,7 @@
             <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/item_ratingbar"
                 android:numStars="5"
                 android:isIndicator="false"
                 android:theme="@style/RatingBar"
