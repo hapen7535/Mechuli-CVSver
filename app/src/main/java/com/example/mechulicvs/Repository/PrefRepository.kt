@@ -19,6 +19,10 @@ class PrefRepository(context : Context){
         prefs.edit().putString(key, str).apply()
     }
 
+    fun setInt(key : String, num : Int){
+        prefs.edit().putInt(key, num).apply()
+    }
+
     private val gson = Gson()
 
 }

@@ -6,7 +6,7 @@ data class UserRatingData(
 
     @SerializedName("isSuccess") val isSuccess : Boolean,
     @SerializedName("message") val message : String,
-    @SerializedName("result") val userRatingData : List<Result>,
+    @SerializedName("result") val userRatingData : Result,
 
 )
 

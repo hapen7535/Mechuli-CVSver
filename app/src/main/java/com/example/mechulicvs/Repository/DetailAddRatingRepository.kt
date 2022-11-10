@@ -16,11 +16,11 @@ import kotlinx.coroutines.withContext
 class DetailAddRatingRepository {
 
     companion object {
-        fun getResult(): MutableLiveData<List<Result>> {
+        fun getResult(): MutableLiveData<Result> {
 
 //            Log.d("keyword in repository", MainApplication.prefs.getString("keyword", ""))
 
-            val UserRatingData: MutableLiveData<List<Result>> = MutableLiveData<List<Result>>()
+            val UserRatingData: MutableLiveData<Result> = MutableLiveData<Result>()
             val userId = MainApplication.prefs.getString("userId", "")
             val menuId = MainApplication.prefs.getString("menuId", "")
 

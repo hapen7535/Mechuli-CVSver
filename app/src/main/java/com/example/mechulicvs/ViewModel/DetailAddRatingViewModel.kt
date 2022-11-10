@@ -10,11 +10,11 @@ import com.example.mechulicvs.Repository.DetailAddRatingRepository.Companion.get
 
 class DetailAddRatingViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var resultList = MutableLiveData<List<Result>>()
+    private var resultList = MutableLiveData<Result>()
 
     private val context = application.applicationContext
 
-    fun getResultRepository(): LiveData<List<Result>> {
+    fun getResultRepository(): LiveData<Result> {
         return resultList
     }
 
