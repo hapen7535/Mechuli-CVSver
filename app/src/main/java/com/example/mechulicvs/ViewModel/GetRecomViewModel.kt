@@ -21,19 +21,9 @@ class GetRecomViewModel @Inject constructor(
 
     private var resultList = MutableLiveData<List<MenuList>>()
 
-//    fun getLog() {
-//        Log.d("viewmodel","viewmodel 진입getString(\"userId\", \"\")!!")
-//    }
-
-
     fun getResultRepository(): LiveData<List<MenuList>> {
-//        getLog()
         return resultList
     }
-
-//    fun getLoadingState() : LiveData<Boolean> {
-//        return GetRecomRepository.isLoading
-//    }
 
     init {
         resultList = GetRecomRepository.getResult()!!

@@ -16,25 +16,26 @@ import kotlinx.coroutines.withContext
 class DetailAddRatingRepository {
 
     companion object {
-        fun getResult() : MutableLiveData<List<Result>>?{
+        fun getResult(): MutableLiveData<List<Result>> {
 
 //            Log.d("keyword in repository", MainApplication.prefs.getString("keyword", ""))
 
-            val UserRatingData : MutableLiveData<List<Result>> = MutableLiveData<List<Result>>()
+            val UserRatingData: MutableLiveData<List<Result>> = MutableLiveData<List<Result>>()
             val userId = MainApplication.prefs.getString("userId", "")
             val menuId = MainApplication.prefs.getString("menuId", "")
 
             CoroutineScope(Dispatchers.Default).launch {
                 launch(Dispatchers.IO) {
 
-                    var response = getRecomAPI.modifyUserRatingService.getUserRatingData(userId, menuId)
+                    var response =
+                        getRecomAPI.modifyUserRatingService.getUserRatingData(userId, menuId)
 
-                    withContext(Dispatchers.Default){
+                    withContext(Dispatchers.Default) {
                         response.let {
-                            if(response.isSuccess){
+                            if (response.isSuccess) {
                                 Log.d("list", response.userRatingData.toString())
                                 UserRatingData.postValue(response.userRatingData)
-                            } else{
+                            } else {
                                 Log.d("error", response.message)
                             }
                         }
