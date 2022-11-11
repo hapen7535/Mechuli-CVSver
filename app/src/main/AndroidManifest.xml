@@ -21,7 +21,7 @@
             android:name=".Controller.DetailAddRatingActivity"
             android:exported="false" />
         <activity
-            android:name=".CommunityActivity"
+            android:name=".View.CommunityActivity"
             android:exported="false" />
         <activity
             android:name=".Controller.AddRatingActivity"

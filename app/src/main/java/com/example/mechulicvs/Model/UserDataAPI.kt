@@ -29,4 +29,8 @@ object UserDataAPI {
         retrofit.create(SendRatingData::class.java)
     }
 
+    val getAllRecipeService : GetAllRecipes by lazy {
+        retrofit.create(GetAllRecipes::class.java)
+    }
+
 }

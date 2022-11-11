@@ -1,8 +1,9 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.View
 
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mechulicvs.MainCommunityFragment
+import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
 
 
