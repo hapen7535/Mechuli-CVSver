@@ -69,7 +69,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/community_fragment_frame"
         app:layout_constraintTop_toBottomOf="@id/title_layout"
@@ -77,5 +77,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        app:backgroundTint="#FFACB7"
+        app:fabSize="normal"
+        android:contentDescription="fab_contrent_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/floating_add_icon"
+        android:id="@+id/write_post_btn"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
