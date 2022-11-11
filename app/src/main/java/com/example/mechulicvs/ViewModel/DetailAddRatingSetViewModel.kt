@@ -6,12 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mechulicvs.Model.Result
 import com.example.mechulicvs.Repository.DetailAddRatingRepository
-import com.example.mechulicvs.Repository.DetailAddRatingRepository.Companion.getResult
+import com.example.mechulicvs.Repository.DetailAddRatingSetRepository
 
-class DetailAddRatingViewModel(application: Application) : AndroidViewModel(application) {
+class DetailAddRatingSetViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var resultList = MutableLiveData<Result>()
-    private var getmenuId = MutableLiveData<Int>()
+    private var resultList = MutableLiveData<Boolean>()
 
     private val context = application.applicationContext
 
@@ -19,11 +18,12 @@ class DetailAddRatingViewModel(application: Application) : AndroidViewModel(appl
 //        getmenuId.postValue(menuId)
 //    }
 
-    fun getResultRepository(): LiveData<Result> {
+    fun getResultRepository(): LiveData<Boolean> {
         return resultList
     }
 
     init {
-        resultList = DetailAddRatingRepository.getResult()!!
+        resultList = DetailAddRatingSetRepository.getResult()!!
     }
+
 }

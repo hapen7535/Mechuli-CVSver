@@ -3,6 +3,7 @@ package com.example.mechulicvs.Controller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
@@ -11,6 +12,7 @@ import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.Result
 import com.example.mechulicvs.R
+import com.example.mechulicvs.ViewModel.DetailAddRatingSetViewModel
 import com.example.mechulicvs.ViewModel.DetailAddRatingViewModel
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityDetailAddRatingBinding
@@ -19,6 +21,7 @@ class DetailAddRatingActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDetailAddRatingBinding
     lateinit var viewModel: DetailAddRatingViewModel
+    lateinit var setViewModel : DetailAddRatingSetViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,10 +45,23 @@ class DetailAddRatingActivity : AppCompatActivity() {
             binding.itemNameTv.setText(it.menuName)
             binding.itemRatingbar.rating = it.score.toFloat()
 
+
         }
 
-        viewModel.getResultRepository().observe(this, observer)
+        binding.itemRatingbar.setOnRatingBarChangeListener{ _, rating, _ ->
+            var changedRating = rating
+            MainApplication.prefs.setFloat("rating", changedRating)
+            setViewModel = ViewModelProvider(this).get(DetailAddRatingSetViewModel::class.java)
+            val setObserver = Observer<Boolean>{
+                if(it){
+                    Toast.makeText(this, "평점 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            setViewModel.getResultRepository().observe(this, setObserver)
+        }
 
+
+        viewModel.getResultRepository().observe(this, observer)
 
     }
 }

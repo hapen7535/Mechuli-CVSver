@@ -19,12 +19,20 @@ class PrefRepository(context : Context){
         return prefs.getInt(key, defValue)
     }
 
+    fun getFloat(key : String, defValue : Float) : Float {
+        return prefs.getFloat(key, defValue)
+    }
+
     fun setString(key : String, str : String){
         prefs.edit().putString(key, str).apply()
     }
 
     fun setInt(key : String, num : Int){
         prefs.edit().putInt(key, num).apply()
+    }
+
+    fun setFloat(key : String, rating: Float){
+        prefs.edit().putFloat(key, rating).apply()
     }
 
     private val gson = Gson()

@@ -10,7 +10,7 @@ interface SendRatingData {
     @PUT("/recommends")
     suspend fun userSingup(
         @Field("user_id") id : String,
-        @Field("menu_id") pw : String,
+        @Field("menu_id") menuId : Int,
         @Field("score") ratings : Double,
     ) : SetRatingData
 
