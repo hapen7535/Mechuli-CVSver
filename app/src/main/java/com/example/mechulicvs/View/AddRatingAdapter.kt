@@ -40,7 +40,7 @@ class AddRatingAdapter(
                     transformations(CircleCropTransformation())
                 }
             } else {
-                itemImg?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
+                itemImg?.setImageResource(R.drawable.community_recipe_thumb_null) //사진 데이터 없을 시
             }
             itemName.text = datas.menu_name
             storeName.text = datas.store_name

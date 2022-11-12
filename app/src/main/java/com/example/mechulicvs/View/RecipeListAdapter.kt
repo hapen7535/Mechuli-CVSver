@@ -27,9 +27,8 @@ class RecipeListAdapter(private val context: Context, val itemList : List<Recipe
         fun bind(datas : Recipeinfo, context : Context){
             if(datas.recipeImgTitle != ""){
                 postThumb.load(datas.recipeImgTitle){
+                    placeholder(R.mipmap.ic_launcher)
                 }
-            } else{
-                postThumb?.setImageResource(R.mipmap.ic_launcher) //사진 데이터 없을 시 안드로이드 기본 사진
             }
             postName.text = datas.recipeTitle
             postDate.text = datas.updateTime
@@ -40,7 +39,7 @@ class RecipeListAdapter(private val context: Context, val itemList : List<Recipe
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeListAdapter.ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.recommend_list_recycler_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.community_postlist_rv_item, parent, false)
         return ViewHolder(view)
     }
 
