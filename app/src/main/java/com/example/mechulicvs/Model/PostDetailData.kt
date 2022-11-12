@@ -12,6 +12,8 @@ data class PostDetail (
     @SerializedName("recipe_id") val recipeId : Int,
     @SerializedName("user_id") val userId : String,
     @SerializedName("user_nickname") val userNickName : String,
+    @SerializedName("recipe_reply_count") val replyCount : Int,
+    @SerializedName("recipe_average_score") val AvgScore : Double,
 
     @SerializedName("recipe_title") val recipeTitle : String,
     @SerializedName("recipe_ingredient") val recipeIngr : String,

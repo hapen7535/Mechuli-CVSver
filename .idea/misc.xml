@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/tablayout_indicator_entire.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/viewpager_indicator_default.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/viewpager_indicator_dot.xml" value="0.1805" />
+        <entry key="app/src/main/res/drawable/viewpager_indicator_selected.xml" value="0.191" />
         <entry key="app/src/main/res/layout/activity_add_rating.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_community.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_detail_add_rating.xml" value="0.335" />
@@ -37,6 +38,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_up_info.xml" value="0.15670289855072464" />
         <entry key="app/src/main/res/layout/fragment_sign_up_rating.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/fragment_write_post.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/post_img_vp_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/recommend_list_add_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/recommend_list_recycler_item.xml" value="0.25" />
       </map>
