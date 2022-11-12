@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="30dp"
+    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_marginTop="15dp"
         >
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +37,9 @@
         >
 
         <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="게시글 제목"
@@ -47,6 +50,9 @@
             />
 
         <TextView
+            app:layout_constraintTop_toBottomOf="@id/post_name_tv"
+            app:layout_constraintStart_toStartOf="@id/post_name_tv"
+            app:layout_constraintEnd_toEndOf="@id/post_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/post_nickname_tv"
@@ -56,7 +62,7 @@
             android:textSize="15sp"
             />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:layout_width="171dp"

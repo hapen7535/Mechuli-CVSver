@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.Recipeinfo
@@ -28,6 +29,7 @@ class RecipeListAdapter(private val context: Context, val itemList : List<Recipe
             if(datas.recipeImgTitle != ""){
                 postThumb.load(datas.recipeImgTitle){
                     placeholder(R.mipmap.ic_launcher)
+                    scale(Scale.FILL)
                 }
             }
             postName.text = datas.recipeTitle
