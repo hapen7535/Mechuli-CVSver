@@ -33,4 +33,8 @@ object UserDataAPI {
         retrofit.create(GetAllRecipes::class.java)
     }
 
+    val getDetailPostService : GetPostDetailData by lazy{
+        retrofit.create(GetPostDetailData::class.java)
+    }
+
 }
