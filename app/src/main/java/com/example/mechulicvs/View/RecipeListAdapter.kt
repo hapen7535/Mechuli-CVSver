@@ -10,24 +10,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.R
 
-class RecipeListAdapter(private val context: Context, val itemList : List<Recipeinfo>) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>(){
+class RecipeListAdapter(
+    private val context: Context,
+    val itemList : List<Recipeinfo>,
+    private val listener: OnItemClickListener
+) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>(){
 
     private lateinit var itemClickListener: AdapterView.OnItemClickListener
 
     interface OnItemClickListener {
-        fun onItemClick(v: View, data: Recipeinfo, pos: Int)
+        fun onItemClick(v: Recipeinfo, pos: Int)
     }
 
-    private var listener: OnItemClickListener? = null
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.listener = listener
-    }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
@@ -61,7 +58,12 @@ class RecipeListAdapter(private val context: Context, val itemList : List<Recipe
     override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: RecipeListAdapter.ViewHolder, position: Int) {
+        val model = itemList.get(position)
+
         holder.bind(itemList[position], context)
+        holder.itemView.setOnClickListener {
+            listener?.onItemClick(model, position)
+        }
     }
 
 

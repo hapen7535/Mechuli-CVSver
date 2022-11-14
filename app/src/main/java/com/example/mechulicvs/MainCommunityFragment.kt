@@ -76,7 +76,13 @@ class MainCommunityFragment : Fragment() {
 
         recipeViewModel.getResultRepository()?.observe(communityActivity, Observer {
             if(it.isNotEmpty()){
-                recipeListAdapter = RecipeListAdapter(communityActivity, it)
+                recipeListAdapter = RecipeListAdapter(communityActivity, it,
+                    object : RecipeListAdapter.OnItemClickListener{
+                        override fun onItemClick(v: Recipeinfo, pos: Int) {
+                            //DetailPostFragment로 이동
+                            communityActivity.changeToDetail()
+                        }
+                    })
                 binding.postListRv.adapter = recipeListAdapter
                 val layoutManager = LinearLayoutManager(communityActivity)
                 binding.postListRv.layoutManager = layoutManager
@@ -84,11 +90,11 @@ class MainCommunityFragment : Fragment() {
                 val decoration = DividerItemDecoration(binding.postListRv.context, LinearLayoutManager(communityActivity).orientation)
                 binding.postListRv.addItemDecoration(decoration)
 
-                recipeListAdapter.setOnItemClickListener(object : RecipeListAdapter.OnItemClickListener{
-                    override fun onItemClick(v: View, data: Recipeinfo, pos: Int) {
-                        val fragment = DetailPostFragment()
-                    }
-                })
+//                recipeListAdapter.setOnItemClickListener(object : RecipeListAdapter.OnItemClickListener{
+//                    override fun onItemClick(v: View, data: Recipeinfo, pos: Int) {
+//                        val fragment = DetailPostFragment()
+//                    }
+//                })
 
             }
         })

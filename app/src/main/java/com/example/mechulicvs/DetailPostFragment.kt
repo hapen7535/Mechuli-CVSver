@@ -2,6 +2,7 @@ package com.example.mechulicvs
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.DetailPostImgVPAdapter
+import com.example.mechulicvs.View.RecipeListAdapter
 import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.ViewModel.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
