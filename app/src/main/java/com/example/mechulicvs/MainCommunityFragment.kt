@@ -1,7 +1,9 @@
 package com.example.mechulicvs
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mechulicvs.Controller.DetailAddRatingActivity
+import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.Model.Recipeinfo
+import com.example.mechulicvs.View.AddRatingAdapter
 import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.RecipeListAdapter
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel
@@ -77,6 +83,13 @@ class MainCommunityFragment : Fragment() {
                 binding.postListRv.setHasFixedSize(true)
                 val decoration = DividerItemDecoration(binding.postListRv.context, LinearLayoutManager(communityActivity).orientation)
                 binding.postListRv.addItemDecoration(decoration)
+
+                recipeListAdapter.setOnItemClickListener(object : RecipeListAdapter.OnItemClickListener{
+                    override fun onItemClick(v: View, data: Recipeinfo, pos: Int) {
+                        val fragment = DetailPostFragment()
+                    }
+                })
+
             }
         })
     }

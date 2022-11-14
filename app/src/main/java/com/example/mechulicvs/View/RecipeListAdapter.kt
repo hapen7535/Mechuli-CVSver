@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,18 @@ import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.R
 
 class RecipeListAdapter(private val context: Context, val itemList : List<Recipeinfo>) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>(){
+
+    private lateinit var itemClickListener: AdapterView.OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(v: View, data: Recipeinfo, pos: Int)
+    }
+
+    private var listener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 

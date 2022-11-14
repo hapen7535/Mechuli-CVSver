@@ -2,6 +2,7 @@ package com.example.mechulicvs.View
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mechulicvs.DetailPostFragment
 import com.example.mechulicvs.MainCommunityFragment
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
@@ -27,4 +28,12 @@ class CommunityActivity : AppCompatActivity() {
 
 
     }
+
+    fun changeToDetail(fragment : DetailPostFragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.community_fragment_frame, fragment)
+        transaction.disallowAddToBackStack()
+        transaction.commit()
+    }
+
 }
