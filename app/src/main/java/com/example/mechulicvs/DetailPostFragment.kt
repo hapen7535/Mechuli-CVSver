@@ -56,6 +56,7 @@ class DetailPostFragment : Fragment() {
             binding.ratingCountTv.text = it.AvgScore.toString()
             binding.recipeIngrTv.text = it.recipeIngr
             binding.recipeCostTv.text = it.recipeCost.toString()
+            binding.nickNameTv.text = it.userNickName
 
             val imagesList = mutableListOf<String>()
             imagesList.add(it.recipeImg1); imagesList.add(it.recipeImg2); imagesList.add(it.recipeImg3); imagesList.add(it.recipeImg4); imagesList.add(it.recipeImg5);

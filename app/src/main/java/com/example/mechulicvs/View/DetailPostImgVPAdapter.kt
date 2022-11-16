@@ -56,6 +56,7 @@ class DetailPostImgVPAdapter(
     ): DetailPostImgVPAdapter.ViewHolder {
         val view = LayoutInflater.from(context)
             .inflate(R.layout.post_img_vp_item, parent, false)
+        view.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
         return ViewHolder(view)
     }
 
