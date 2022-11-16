@@ -44,22 +44,6 @@ class MainCommunityFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_community_main, container, false)
 
 //        val binding = FragmentCommunityMainBinding.inflate(inflater, container, false) //메모리 누수가 일어날 수 있는 방법 추후에 수정 필요
-
-//        recipeViewModel = ViewModelProvider(this).get(RecipeListViewModel::class.java)
-//
-//        recipeViewModel.getResultRepository()?.observe(communityActivity, Observer {
-//            if(it.isNotEmpty()){
-//                recipeRVAdapter = RecipeListAdapter(communityActivity, it)
-//                binding.postListRv.adapter = recipeRVAdapter
-//                val layoutManager = LinearLayoutManager(communityActivity)
-//                binding.postListRv.layoutManager = layoutManager
-//                binding.postListRv.setHasFixedSize(true)
-//                val decoration = DividerItemDecoration(binding.postListRv.context, LinearLayoutManager(communityActivity).orientation)
-//                binding.postListRv.addItemDecoration(decoration)
-//            }
-//        })
-
-//        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,7 +63,7 @@ class MainCommunityFragment : Fragment() {
                 recipeListAdapter = RecipeListAdapter(communityActivity, it,
                     object : RecipeListAdapter.OnItemClickListener{
                         override fun onItemClick(v: Recipeinfo, pos: Int) {
-                            //DetailPostFragment로 이동
+                            MainApplication.prefs.setInt("recipeId", it[pos].recipeId)
                             communityActivity.changeToDetail()
                         }
                     })

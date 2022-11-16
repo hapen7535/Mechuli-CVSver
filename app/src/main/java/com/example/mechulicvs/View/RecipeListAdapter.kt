@@ -62,7 +62,7 @@ class RecipeListAdapter(
 
         holder.bind(itemList[position], context)
         holder.itemView.setOnClickListener {
-            listener?.onItemClick(model, position)
+            listener.onItemClick(model, position)
         }
     }
 

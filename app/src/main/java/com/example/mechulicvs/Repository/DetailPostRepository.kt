@@ -19,6 +19,7 @@ class DetailPostRepository {
 
             val UserRatingData: MutableLiveData<PostDetail> = MutableLiveData<PostDetail>()
             val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+            Log.d("recipeId", recipeId.toString())
 
             CoroutineScope(Dispatchers.Default).launch {
                 launch(Dispatchers.IO) {
