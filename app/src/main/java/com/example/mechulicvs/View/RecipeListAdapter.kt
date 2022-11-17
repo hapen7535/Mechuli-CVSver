@@ -38,7 +38,7 @@ class RecipeListAdapter(
         fun bind(datas : Recipeinfo, context : Context){
             if(datas.recipeImgTitle != ""){
                 postThumb.load(datas.recipeImgTitle){
-                    placeholder(R.mipmap.ic_launcher)
+                    placeholder(R.drawable.recipe_thumbnail_placeholder)
                     scale(Scale.FILL)
                 }
             }

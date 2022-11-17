@@ -3,9 +3,11 @@ package com.example.mechulicvs
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +20,7 @@ import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.ViewModel.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailPostFragment : Fragment() {
@@ -48,6 +51,10 @@ class DetailPostFragment : Fragment() {
         val postImgsVP = binding.recipeImagesVp
         val postImgsTL = binding.viewpagerIndicatorTb
 
+        val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
+        fab?.visibility = View.GONE
+        //다시 메인 커뮤니티로 돌아갈 때 보이게 해야함
+
         detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
         detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
             binding.recipeTitleTv.text = it.recipeTitle
@@ -72,6 +79,10 @@ class DetailPostFragment : Fragment() {
 
 
         })
+    }
+
+    fun dpToPx(context: Context, dp: Float): Float {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics)
     }
 
 }
