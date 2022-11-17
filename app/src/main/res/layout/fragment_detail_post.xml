@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
     tools:context=".DetailPostFragment">
 
 
@@ -144,20 +145,22 @@
                 android:fontFamily="@font/notosanskrbold"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@id/recipe_ingr_tv"
+                app:layout_constraintBottom_toBottomOf="@id/recipe_ingr_tv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/recipe_ingr_tv"
                 android:id="@+id/recipe_ingr_title_tv"
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="207dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/recipe_ingr_tv"
                 android:fontFamily="@font/notosanskrmedium"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:text="재료 10개 이내로 들어감"
+                android:gravity="center"
                 app:layout_constraintStart_toEndOf="@id/recipe_ingr_title_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -170,7 +173,8 @@
                 android:fontFamily="@font/notosanskrbold"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/recipe_ingr_title_tv"
+                app:layout_constraintTop_toTopOf="@id/cost_layout"
+                app:layout_constraintBottom_toBottomOf="@id/cost_layout"
                 app:layout_constraintStart_toStartOf="@id/recipe_ingr_title_tv"
                 app:layout_constraintEnd_toEndOf="@id/recipe_ingr_title_tv"
                 android:id="@+id/recipe_cost_title_tv"
@@ -232,7 +236,7 @@
                app:tabPaddingEnd="4dp"
                app:layout_constraintTop_toBottomOf="@id/recipe_images_vp"
                app:layout_constraintStart_toStartOf="@id/recipe_images_vp"
-               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintEnd_toEndOf="@id/recipe_images_vp"
                />
 
             <TextView
