@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@id/comment_rating_layout"
         android:layout_marginTop="10dp"
         android:layout_width="376dp"
-        android:layout_height="2dp"
+        android:layout_height="0.5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/divider_line_view"
