@@ -255,12 +255,12 @@
                 android:textSize="15sp"
                 />
 
-<!--            <View-->
-<!--                app:layout_constraintTop_toBottomOf="@id/recipe_contents_tv"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="25dp"/>-->
+            <View
+                app:layout_constraintTop_toBottomOf="@id/recipe_contents_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"/>
 
 
             <LinearLayout
