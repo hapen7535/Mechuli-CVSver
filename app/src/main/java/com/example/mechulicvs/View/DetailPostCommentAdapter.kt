@@ -44,9 +44,7 @@ private val context: Context, val commentList: List<Reply>
         TODO("Not yet implemented")
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = commentList.size
 
 
 }
