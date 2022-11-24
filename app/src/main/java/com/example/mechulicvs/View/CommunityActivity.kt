@@ -10,7 +10,7 @@ import com.example.mechulicvs.databinding.ActivityCommunityBinding
 
 class CommunityActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityCommunityBinding
+    lateinit var binding: ActivityCommunityBinding
     val detailFragment = DetailPostFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +26,9 @@ class CommunityActivity : AppCompatActivity() {
             MainCommunityFragment()
         )
         transaction.commit()
-
-
     }
 
-    fun changeToDetail(){
+    fun changeToDetail() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.community_fragment_frame, detailFragment)
         transaction.disallowAddToBackStack()

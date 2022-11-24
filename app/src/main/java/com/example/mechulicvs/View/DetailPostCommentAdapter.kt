@@ -1,6 +1,7 @@
 package com.example.mechulicvs.View
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -19,7 +20,9 @@ private val context: Context, val commentList: List<Reply>
         parent: ViewGroup,
         viewType: Int
     ): DetailPostCommentAdapter.ViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(context)
+            .inflate(R.layout.comment_recylcerview_item, parent, false)
+        return ViewHolder(view)
     }
 
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
