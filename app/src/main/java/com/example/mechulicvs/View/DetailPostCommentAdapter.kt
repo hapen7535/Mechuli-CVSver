@@ -13,9 +13,8 @@ import com.example.mechulicvs.Model.Reply
 import com.example.mechulicvs.R
 
 class DetailPostCommentAdapter(
-private val context: Context, val commentList: List<Reply>
-) : RecyclerView.Adapter<DetailPostCommentAdapter.ViewHolder>()
-{
+    private val context: Context, val commentList: List<Reply>
+) : RecyclerView.Adapter<DetailPostCommentAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -25,7 +24,7 @@ private val context: Context, val commentList: List<Reply>
         return ViewHolder(view)
     }
 
-    inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val commentNickName = view.findViewById<TextView>(R.id.nick_name_tv)
         private val commentContents = view.findViewById<TextView>(R.id.comment_contents_tv)
         private val commentRatings = view.findViewById<RatingBar>(R.id.comment_rating_rb)
@@ -41,7 +40,7 @@ private val context: Context, val commentList: List<Reply>
     }
 
     override fun onBindViewHolder(holder: DetailPostCommentAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(commentList[position], context)
     }
 
     override fun getItemCount(): Int = commentList.size
