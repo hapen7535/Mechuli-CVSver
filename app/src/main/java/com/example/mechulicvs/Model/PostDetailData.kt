@@ -29,7 +29,7 @@ data class PostDetail (
     @SerializedName("recipe_img_url_4") val recipeImg4 : String,
     @SerializedName("recipe_img_url_5") val recipeImg5 : String,
 
-    @SerializedName("recipe_replyList") val replayList : List<Reply>,
+    @SerializedName("recipe_replyList") val replyList : List<Reply>,
         )
 
 data class Reply(
