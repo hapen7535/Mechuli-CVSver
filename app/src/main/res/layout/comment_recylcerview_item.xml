@@ -23,7 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/comment_rating_layout"
         android:textColor="@color/black"
         />
 
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/comment_rating_layout"
             app:layout_constraintStart_toEndOf="@id/nick_name_tv"
-            app:layout_constraintEnd_toEndOf="@id/comment_date_tv"
+            app:layout_constraintEnd_toStartOf="@id/comment_date_tv"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             >
@@ -44,6 +43,7 @@
         android:id="@+id/comment_rating_rb"
         android:stepSize="0.5"
         android:scaleX="1.5"
+        android:theme="@style/RatingBar"
         android:scaleY="1.5"
         style="@style/Widget.AppCompat.RatingBar.Small"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,11 +66,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="83dp"
         android:layout_height="wrap_content"
         android:id="@+id/comment_date_tv"
         android:text="date"
-        app:layout_constraintStart_toEndOf="@id/comment_rating_layout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
