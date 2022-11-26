@@ -11,6 +11,8 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.Model.Reply
@@ -82,6 +84,13 @@ class DetailPostFragment : Fragment() {
             }.attach()
 
             detailPostCommentAdapter = DetailPostCommentAdapter(communityActivity, commentList)
+
+            binding.commentsListRv.adapter = detailPostCommentAdapter
+            val layoutManager = LinearLayoutManager(communityActivity)
+            binding.commentsListRv.layoutManager = layoutManager
+            binding.commentsListRv.setHasFixedSize(true)
+            val decoration = DividerItemDecoration(binding.commentsListRv.context, LinearLayoutManager(communityActivity).orientation)
+            binding.commentsListRv.addItemDecoration(decoration)
 
             binding.recipeContentsTv.text = it.recipeCont
             binding.commentDetailCountTv.text = it.replyCount.toString()

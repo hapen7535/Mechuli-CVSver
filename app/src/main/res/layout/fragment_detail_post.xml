@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     tools:context=".DetailPostFragment">
 
@@ -122,15 +122,23 @@
         android:id="@+id/divider_line_view"
         android:background="#A6A6A6"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_marginTop="35dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scroll_entire_layout"
         app:layout_constraintTop_toBottomOf="@id/divider_line_view"
         app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars = "vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="?attr/actionBarSize"
         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -388,7 +396,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 
