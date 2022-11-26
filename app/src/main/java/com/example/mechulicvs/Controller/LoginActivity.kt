@@ -50,10 +50,12 @@ class LoginActivity : AppCompatActivity() {
             }
             val answer = res.isSuccess
             val userid = res.result.user_id
+            val userNickname = res.result.user_nickname
             if(answer){
                 val intent = Intent(this@LoginActivity, MainMenuActivity::class.java)
                 Toast.makeText(this@LoginActivity, "로그인이 완료되었습니다.", Toast.LENGTH_LONG).show()
                 MainApplication.prefs.setString("userId", userid)
+                MainApplication.prefs.setString("userNickname", userNickname)
 //                intent.putExtra("id", userid)
 //                val editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit()
 //                editor.putString("userId", id)

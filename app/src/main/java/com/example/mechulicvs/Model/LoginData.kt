@@ -10,5 +10,6 @@ data class LoginDataResult (
 data class getId (
 
     val user_id : String,
+    val user_nickname : String,
 
         )

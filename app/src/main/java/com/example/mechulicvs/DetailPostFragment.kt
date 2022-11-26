@@ -60,6 +60,11 @@ class DetailPostFragment : Fragment() {
         fab?.visibility = View.GONE
         //다시 메인 커뮤니티로 돌아갈 때 보이게 해야함
 
+        val loginNickname = MainApplication.prefs.getString("userNickname", "")
+
+        binding.commentNickNameAddTv.text = loginNickname
+
+
         detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
         detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
             binding.recipeTitleTv.text = it.recipeTitle
@@ -69,6 +74,10 @@ class DetailPostFragment : Fragment() {
             binding.recipeIngrTv.text = it.recipeIngr
             binding.recipeCostTv.text = it.recipeCost.toString()
             binding.nickNameTv.text = it.userNickName
+
+            if(it.userNickName != loginNickname){
+                binding.detailIconIv.visibility = View.INVISIBLE
+            }
 
             val imagesList = mutableListOf<String>()
             imagesList.add(it.recipeImg1); imagesList.add(it.recipeImg2); imagesList.add(it.recipeImg3); imagesList.add(
