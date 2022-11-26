@@ -357,6 +357,8 @@
                     android:scaleX="1.5"
                     android:scaleY="1.5"
                     android:layout_marginEnd="30dp"
+                    android:isIndicator="false"
+                    android:theme="@style/RatingBar"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     app:layout_constraintEnd_toEndOf="@id/input_comment_et"
                     />
