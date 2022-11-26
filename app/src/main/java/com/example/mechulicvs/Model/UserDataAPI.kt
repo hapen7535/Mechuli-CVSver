@@ -37,4 +37,8 @@ object UserDataAPI {
         retrofit.create(GetPostDetailData::class.java)
     }
 
+    val sendCommentDataService : SendCommentData by lazy{
+        retrofit.create(SendCommentData::class.java)
+    }
+
 }
