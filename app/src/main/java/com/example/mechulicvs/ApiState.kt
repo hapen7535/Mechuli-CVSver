@@ -1,10 +1,7 @@
 package com.example.mechulicvs
 
-sealed class ApiState<T>(
-    val data : T ? = null,
-    val message : String ?= null
-){
-    class Success<T>(data : T) : ApiState<T>(data)
-    class Error<T>(message : String, data : T? = null) : ApiState<T>(data, message)
-    class Loading<T> : ApiState<T>()
+sealed class ApiState<out T>{
+    data class Success<out T>(val data: T? = null) : ApiState<T>()
+    data class Loading(val nothing: Nothing?=null) : ApiState<Nothing>()
+    data class Error(val msg: String?) : ApiState<Nothing>()
 }
