@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,7 @@ import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.DetailPostCommentAdapter
 import com.example.mechulicvs.View.DetailPostImgVPAdapter
 import com.example.mechulicvs.View.RecipeListAdapter
+import com.example.mechulicvs.ViewModel.CommentViewModel
 import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.ViewModel.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
@@ -40,6 +42,8 @@ class DetailPostFragment : Fragment() {
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
+
+    private val commentViewModel by viewModels <CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
 
     var commentList = mutableListOf<Reply>()
 
@@ -130,8 +134,25 @@ class DetailPostFragment : Fragment() {
         binding.addCommentBtn.setOnClickListener {
             val inputComment = getChangedText(binding.inputCommentEt.text)
             Log.d("inputcomment", inputComment)
-            val ft = parentFragmentManager.beginTransaction()
-            ft.detach(this).attach(this).commit()
+            val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+            val userId = MainApplication.prefs.getString("userId", "")
+            commentViewModel.commentUser(userId, recipeId, inputComment, commentRating)
+
+            commentViewModel.commentResult.observe(viewLifecycleOwner, Observer {
+                when(it){
+                    is ApiState.Loading -> {
+                        Log.d("Loading", it.toString())
+                    }
+                    is ApiState.Success -> {
+                        Log.d("Success", "댓글 등록 성공")
+                        val ft = parentFragmentManager.beginTransaction()
+                        ft.detach(this).attach(this).commit()
+                    }
+                    is ApiState.Error -> {
+                        Log.d("Error", it.msg.toString())
+                    }
+                }
+            })
 
         }
 
@@ -142,44 +163,44 @@ class DetailPostFragment : Fragment() {
 
     }
 
-    fun sendComment(content : String, rating : Double) : MutableLiveData<Reply> {
-        val userId = MainApplication.prefs.getString("userId", "")
-        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+//    fun sendComment(content : String, rating : Double) : MutableLiveData<Reply> {
+//        val userId = MainApplication.prefs.getString("userId", "")
+//        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+//
+//        val result : MutableLiveData<Reply>
+//
+//
+//        lifecycleScope.launch {
+//            val res = withContext(Dispatchers.IO) {
+//                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, rating)
+//            }
+//            if (res.isSuccess) {
+//                Log.d("commentResult", res.message)
+//
+//            }
+//        }
+//    }
 
-        val result : MutableLiveData<Reply>
+//    fun sendCommentResult(content : String, rating : Double){
+//
+//    }
 
 
-        lifecycleScope.launch {
-            val res = withContext(Dispatchers.IO) {
-                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, rating)
-            }
-            if (res.isSuccess) {
-                Log.d("commentResult", res.message)
-
-            }
-        }
-    }
-
-    fun sendCommentResult(content : String, rating : Double){
-
-    }
-
-
-    fun sendAddedComment(content : String, score : Double) : Boolean {
-        val userId = MainApplication.prefs.getString("userId", "")
-        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
-        var result = false
-
-        lifecycleScope.launch {
-            val res = withContext(Dispatchers.IO) {
-                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, score)
-            }
-            if (res.isSuccess) {
-                result = true
-            }
-        }
-        return result
-    }
+//    fun sendAddedComment(content : String, score : Double) : Boolean {
+//        val userId = MainApplication.prefs.getString("userId", "")
+//        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+//        var result = false
+//
+//        lifecycleScope.launch {
+//            val res = withContext(Dispatchers.IO) {
+//                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, score)
+//            }
+//            if (res.isSuccess) {
+//                result = true
+//            }
+//        }
+//        return result
+//    }
 
     fun getChangedText(inputComment : Editable): String{
         var comment = ""

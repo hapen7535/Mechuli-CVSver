@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface SendCommentData {
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
     @POST("posts/recipe/replys")
     suspend fun sendComment(
         @Body commentRequest: CommentRequest
