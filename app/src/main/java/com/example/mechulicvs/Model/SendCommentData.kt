@@ -8,7 +8,7 @@ interface SendCommentData {
 
     @FormUrlEncoded
     @POST("posts/recipe/replys")
-    suspend fun userLogin(
+    suspend fun sendComment(
         @Field("user_id") userId : String,
         @Field("recipe_id") recipeId : Int,
         @Field("reply_content") replyContent : String,

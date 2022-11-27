@@ -1,7 +1,9 @@
 package com.example.mechulicvs
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -11,11 +13,13 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.Model.Reply
+import com.example.mechulicvs.Model.UserDataAPI
 import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.DetailPostCommentAdapter
 import com.example.mechulicvs.View.DetailPostImgVPAdapter
@@ -26,6 +30,9 @@ import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailPostFragment : Fragment() {
 
@@ -47,6 +54,7 @@ class DetailPostFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail_post, container, false)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var fragmentDetailPostBinding: FragmentDetailPostBinding? = null
@@ -55,6 +63,9 @@ class DetailPostFragment : Fragment() {
 
         val postImgsVP = binding.recipeImagesVp
         val postImgsTL = binding.viewpagerIndicatorTb
+
+        var commentRating = 0.0
+
 
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
@@ -106,14 +117,47 @@ class DetailPostFragment : Fragment() {
 
 
         })
+
+
+        binding.commentRatingAddRb.setOnRatingBarChangeListener { _, rating, _ ->
+            commentRating = rating.toDouble()
+        }
+
+        binding.addCommentBtn.setOnClickListener {
+            val inputComment = getChangedText(binding.inputCommentEt.text)
+            Log.d("inputcomment", inputComment)
+            sendAddedComment(inputComment, commentRating)
+            val newCommentIndex = binding.commentsListRv.adapter?.itemCount
+            if (newCommentIndex != null) {
+                binding.commentsListRv.adapter?.notifyItemInserted(newCommentIndex)
+            }
+        }
+
     }
 
-    fun dpToPx(context: Context, dp: Float): Float {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            context.resources.displayMetrics
-        )
+    fun sendAddedComment(content : String, score : Double) : Boolean {
+        val userId = MainApplication.prefs.getString("userId", "")
+        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+        var result = false
+
+        lifecycleScope.launch {
+            val res = withContext(Dispatchers.IO) {
+                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, score)
+            }
+            if (res.isSuccess) {
+                result = true
+            }
+        }
+        return result
+    }
+
+    fun getChangedText(inputComment : Editable): String{
+        var comment = ""
+        if(inputComment.isNotEmpty()){
+            comment = inputComment.toString()
+            return comment
+        }
+        return comment
     }
 
 }
