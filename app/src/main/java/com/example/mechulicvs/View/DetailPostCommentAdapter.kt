@@ -63,5 +63,7 @@ class DetailPostCommentAdapter(
 
     override fun getItemCount(): Int = commentList.size
 
+    fun getRVItemList() : List<Reply> = commentList
+
 
 }

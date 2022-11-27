@@ -43,7 +43,7 @@ class DetailPostFragment : Fragment() {
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
 
-    private val commentViewModel by viewModels <CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
+    private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
 
     var commentList = mutableListOf<Reply>()
 
@@ -92,7 +92,7 @@ class DetailPostFragment : Fragment() {
             binding.recipeCostTv.text = it.recipeCost.toString()
             binding.nickNameTv.text = it.userNickName
 
-            if(it.userNickName != loginNickname){
+            if (it.userNickName != loginNickname) {
                 binding.detailIconIv.visibility = View.INVISIBLE
             }
 
@@ -101,7 +101,7 @@ class DetailPostFragment : Fragment() {
             it.recipeImg4
         ); imagesList.add(it.recipeImg5);
 
-            for(i in 0 until it.replyCount){
+            for (i in 0 until it.replyCount) {
                 commentList.add(it.replyList[i])
             }
 
@@ -117,7 +117,10 @@ class DetailPostFragment : Fragment() {
             val layoutManager = LinearLayoutManager(communityActivity)
             binding.commentsListRv.layoutManager = layoutManager
             binding.commentsListRv.setHasFixedSize(true)
-            val decoration = DividerItemDecoration(binding.commentsListRv.context, LinearLayoutManager(communityActivity).orientation)
+            val decoration = DividerItemDecoration(
+                binding.commentsListRv.context,
+                LinearLayoutManager(communityActivity).orientation
+            )
             binding.commentsListRv.addItemDecoration(decoration)
 
             binding.recipeContentsTv.text = it.recipeCont
@@ -139,14 +142,20 @@ class DetailPostFragment : Fragment() {
             commentViewModel.commentUser(userId, recipeId, inputComment, commentRating)
 
             commentViewModel.commentResult.observe(viewLifecycleOwner, Observer {
-                when(it){
+                when (it) {
                     is ApiState.Loading -> {
                         Log.d("Loading", it.toString())
                     }
                     is ApiState.Success -> {
                         Log.d("Success", "댓글 등록 성공")
-                        val ft = parentFragmentManager.beginTransaction()
-                        ft.detach(this).attach(this).commit()
+                        Log.d("commentList", detailPostCommentAdapter.getRVItemList().toString())
+//                        val currentComments: MutableList<Reply> =
+//                            detailPostCommentAdapter.getRVItemList() as MutableList<Reply>
+//                        currentComments.add(it.data)
+                        commentList.add(detailPostCommentAdapter.itemCount, it.data)
+                        detailPostCommentAdapter.notifyItemInserted(detailPostCommentAdapter.itemCount)
+//                        val ft = parentFragmentManager.beginTransaction()
+//                        ft.detach(this).attach(this).commit()
                     }
                     is ApiState.Error -> {
                         Log.d("Error", it.msg.toString())
@@ -202,9 +211,9 @@ class DetailPostFragment : Fragment() {
 //        return result
 //    }
 
-    fun getChangedText(inputComment : Editable): String{
+    fun getChangedText(inputComment: Editable): String {
         var comment = ""
-        if(inputComment.isNotEmpty()){
+        if (inputComment.isNotEmpty()) {
             comment = inputComment.toString()
             return comment
         }
