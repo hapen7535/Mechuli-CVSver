@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechulicvs.Model.MenuList
 import com.example.mechulicvs.Model.Reply
@@ -15,6 +17,20 @@ import com.example.mechulicvs.R
 class DetailPostCommentAdapter(
     private val context: Context, val commentList: List<Reply>
 ) : RecyclerView.Adapter<DetailPostCommentAdapter.ViewHolder>() {
+
+    private val differCallback = object : DiffUtil.ItemCallback<Reply>(){
+        override fun areItemsTheSame(oldItem: Reply, newItem: Reply): Boolean {
+            return oldItem.replyId == newItem.replyId
+        }
+
+        override fun areContentsTheSame(oldItem: Reply, newItem: Reply): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    val differ = AsyncListDiffer(this, differCallback) //AsyncListDiffer을 통해 자동으로 백그라운드에서 실행되도록 함
+    //리스트가 많으면 백그라운드에서 실행하는 것이 효율적
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -40,10 +56,12 @@ class DetailPostCommentAdapter(
     }
 
     override fun onBindViewHolder(holder: DetailPostCommentAdapter.ViewHolder, position: Int) {
-        holder.bind(commentList[position], context)
+//        holder.bind(commentList[position], context)
+        val comment = differ.currentList[position]
+        holder.bind(comment, context)
     }
 
-    override fun getItemCount(): Int = commentList.size
+    override fun getItemCount(): Int = differ.currentList.size
 
 
 }

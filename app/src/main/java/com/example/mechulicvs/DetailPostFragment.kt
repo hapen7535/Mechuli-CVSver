@@ -127,10 +127,10 @@ class DetailPostFragment : Fragment() {
             val inputComment = getChangedText(binding.inputCommentEt.text)
             Log.d("inputcomment", inputComment)
             sendAddedComment(inputComment, commentRating)
-            val newCommentIndex = binding.commentsListRv.adapter?.itemCount
-            if (newCommentIndex != null) {
-                binding.commentsListRv.adapter?.notifyItemInserted(newCommentIndex)
-            }
+//            val newCommentIndex = binding.commentsListRv.adapter?.itemCount
+//            if (newCommentIndex != null) {
+//                binding.commentsListRv.adapter?.notifyItemInserted(newCommentIndex)
+//            }
         }
 
     }
