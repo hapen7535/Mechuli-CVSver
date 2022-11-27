@@ -12,10 +12,6 @@ interface SendCommentData {
     @POST("posts/recipe/replys")
     suspend fun sendComment(
         @Body commentRequest: CommentRequest
-//        @Field("user_id") userId : String,
-//        @Field("recipe_id") recipeId : Int,
-//        @Field("reply_content") replyContent : String,
-//        @Field("score") score : Double,
     ) : Response<CommentData>
 
     companion object{

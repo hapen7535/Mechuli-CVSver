@@ -152,8 +152,8 @@ class DetailPostFragment : Fragment() {
 //                        val currentComments: MutableList<Reply> =
 //                            detailPostCommentAdapter.getRVItemList() as MutableList<Reply>
 //                        currentComments.add(it.data)
-                        commentList.add(detailPostCommentAdapter.itemCount, it.data)
-                        detailPostCommentAdapter.notifyItemInserted(detailPostCommentAdapter.itemCount)
+                        it.data?.let { it1 -> commentList.plusAssign(it1.result) }
+                        detailPostCommentAdapter.notifyDataSetChanged()
 //                        val ft = parentFragmentManager.beginTransaction()
 //                        ft.detach(this).attach(this).commit()
                     }

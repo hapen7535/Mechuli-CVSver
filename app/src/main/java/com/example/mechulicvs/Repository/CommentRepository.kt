@@ -6,7 +6,7 @@ import com.example.mechulicvs.Model.SendCommentData
 import retrofit2.Response
 
 class CommentRepository {
-    suspend fun userComment(commentRequest: CommentRequest): Response<CommentData>?{
-        return SendCommentData?.getCommentApi().sendComment(commentRequest = commentRequest)
+    suspend fun userComment(commentRequest: CommentRequest): Response<CommentData> {
+        return SendCommentData.getCommentApi().sendComment(commentRequest = commentRequest)
     }
 }

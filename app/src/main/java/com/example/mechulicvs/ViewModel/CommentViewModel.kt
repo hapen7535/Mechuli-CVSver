@@ -21,11 +21,11 @@ class CommentViewModel(application: Application) : AndroidViewModel(application)
             try {
                 val commentRequest = CommentRequest(userId, recipeId, content, rating)
                 val response = commentRepo.userComment(commentRequest = commentRequest)
-                Log.d("code", response?.code().toString())
-                if (response?.code() == 200) {
+                Log.d("code", response.code().toString())
+                if (response.code() == 200) {
                     commentResult.value = ApiState.Success(response.body())
                 } else {
-                    commentResult.value = ApiState.Error(response?.message())
+                    commentResult.value = ApiState.Error(response.message())
                 }
             } catch (e: Exception) {
                 commentResult.value = ApiState.Error(e.message)
