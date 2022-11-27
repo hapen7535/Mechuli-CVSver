@@ -11,15 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.mechulicvs.Model.Recipeinfo
-import com.example.mechulicvs.Model.Reply
-import com.example.mechulicvs.Model.UserDataAPI
+import com.example.mechulicvs.Model.*
 import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.DetailPostCommentAdapter
 import com.example.mechulicvs.View.DetailPostImgVPAdapter
@@ -30,9 +28,11 @@ import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.suspendCoroutine
 
 class DetailPostFragment : Fragment() {
 
@@ -40,6 +40,8 @@ class DetailPostFragment : Fragment() {
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
+
+    var commentList = mutableListOf<Reply>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,7 +56,7 @@ class DetailPostFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail_post, container, false)
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var fragmentDetailPostBinding: FragmentDetailPostBinding? = null
@@ -95,7 +97,9 @@ class DetailPostFragment : Fragment() {
             it.recipeImg4
         ); imagesList.add(it.recipeImg5);
 
-            val commentList = it.replyList
+            for(i in 0 until it.replyCount){
+                commentList.add(it.replyList[i])
+            }
 
             detailPostImgVPAdapter = DetailPostImgVPAdapter(communityActivity, imagesList)
             postImgsVP.adapter = detailPostImgVPAdapter
@@ -126,14 +130,40 @@ class DetailPostFragment : Fragment() {
         binding.addCommentBtn.setOnClickListener {
             val inputComment = getChangedText(binding.inputCommentEt.text)
             Log.d("inputcomment", inputComment)
-            sendAddedComment(inputComment, commentRating)
-//            val newCommentIndex = binding.commentsListRv.adapter?.itemCount
-//            if (newCommentIndex != null) {
-//                binding.commentsListRv.adapter?.notifyItemInserted(newCommentIndex)
-//            }
+            val ft = parentFragmentManager.beginTransaction()
+            ft.detach(this).attach(this).commit()
+
         }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
+    fun sendComment(content : String, rating : Double) : MutableLiveData<Reply> {
+        val userId = MainApplication.prefs.getString("userId", "")
+        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+
+        val result : MutableLiveData<Reply>
+
+
+        lifecycleScope.launch {
+            val res = withContext(Dispatchers.IO) {
+                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, rating)
+            }
+            if (res.isSuccess) {
+                Log.d("commentResult", res.message)
+
+            }
+        }
+    }
+
+    fun sendCommentResult(content : String, rating : Double){
+
+    }
+
 
     fun sendAddedComment(content : String, score : Double) : Boolean {
         val userId = MainApplication.prefs.getString("userId", "")

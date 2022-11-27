@@ -56,12 +56,12 @@ class DetailPostCommentAdapter(
     }
 
     override fun onBindViewHolder(holder: DetailPostCommentAdapter.ViewHolder, position: Int) {
-//        holder.bind(commentList[position], context)
-        val comment = differ.currentList[position]
-        holder.bind(comment, context)
+        holder.bind(commentList[position], context)
+//        val comment = differ.currentList[position]
+//        holder.bind(comment, context)
     }
 
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int = commentList.size
 
 
 }

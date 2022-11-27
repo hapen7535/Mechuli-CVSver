@@ -2,16 +2,20 @@ package com.example.mechulicvs.View
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.mechulicvs.DetailPostFragment
 import com.example.mechulicvs.MainCommunityFragment
+import com.example.mechulicvs.Model.Reply
 import com.example.mechulicvs.R
+import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
 
 
 class CommunityActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCommunityBinding
-    val detailFragment = DetailPostFragment()
+    private val detailFragment = DetailPostFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,11 @@ class CommunityActivity : AppCompatActivity() {
             MainCommunityFragment()
         )
         transaction.commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     fun changeToDetail() {
