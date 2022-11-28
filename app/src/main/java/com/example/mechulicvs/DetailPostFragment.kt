@@ -147,15 +147,19 @@ class DetailPostFragment : Fragment() {
                         Log.d("Loading", it.toString())
                     }
                     is ApiState.Success -> {
-                        Log.d("Success", "댓글 등록 성공")
-                        Log.d("commentList", detailPostCommentAdapter.getRVItemList().toString())
-//                        val currentComments: MutableList<Reply> =
-//                            detailPostCommentAdapter.getRVItemList() as MutableList<Reply>
-//                        currentComments.add(it.data)
+//                        Log.d("Success", "댓글 등록 성공")
+//                        Log.d("commentList", detailPostCommentAdapter.getRVItemList().toString())
                         it.data?.let { it1 -> commentList.plusAssign(it1.result) }
                         detailPostCommentAdapter.notifyDataSetChanged()
-//                        val ft = parentFragmentManager.beginTransaction()
-//                        ft.detach(this).attach(this).commit()
+                        Log.d("commentCount", commentList.size.toString())
+                        Log.d("ratingCount", ((binding.ratingCountTv.text.toString()
+                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
+                                + it.data!!.result.replyScore) / commentList.size).toString())
+//                        binding.ratingCountTv.text = ((binding.ratingCountTv.text.toString()
+//                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
+//                                + it.data!!.result.replyScore) / commentList.size).toString()
+//                        binding.commentCountTv.text = commentList.size.toString()
+//                        binding.commentDetailCountTv.text = commentList.size.toString()
                     }
                     is ApiState.Error -> {
                         Log.d("Error", it.msg.toString())
@@ -171,45 +175,6 @@ class DetailPostFragment : Fragment() {
         super.onResume()
 
     }
-
-//    fun sendComment(content : String, rating : Double) : MutableLiveData<Reply> {
-//        val userId = MainApplication.prefs.getString("userId", "")
-//        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
-//
-//        val result : MutableLiveData<Reply>
-//
-//
-//        lifecycleScope.launch {
-//            val res = withContext(Dispatchers.IO) {
-//                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, rating)
-//            }
-//            if (res.isSuccess) {
-//                Log.d("commentResult", res.message)
-//
-//            }
-//        }
-//    }
-
-//    fun sendCommentResult(content : String, rating : Double){
-//
-//    }
-
-
-//    fun sendAddedComment(content : String, score : Double) : Boolean {
-//        val userId = MainApplication.prefs.getString("userId", "")
-//        val recipeId = MainApplication.prefs.getInt("recipeId", 0)
-//        var result = false
-//
-//        lifecycleScope.launch {
-//            val res = withContext(Dispatchers.IO) {
-//                UserDataAPI.sendCommentDataService.sendComment(userId, recipeId, content, score)
-//            }
-//            if (res.isSuccess) {
-//                result = true
-//            }
-//        }
-//        return result
-//    }
 
     fun getChangedText(inputComment: Editable): String {
         var comment = ""
