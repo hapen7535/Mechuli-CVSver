@@ -24,17 +24,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        signingConfigs {
-            debug {
-                storeFile file("../debug.keystore")
-            }
-            release {
-                storeFile file("../release.keystore")
-                storePassword "$System.env.KEYSTORE_PASSWORD"
-                keyAlias "$System.env.KEY_ALIAS"
-                keyPassword "$System.env.KEY_PASSWORD"
-            }
-        }
+//        signingConfigs {
+//            debug {
+//                storeFile file("../debug.keystore")
+//            }
+//            release {
+//                storeFile file("../release.keystore")
+//                storePassword "$System.env.KEYSTORE_PASSWORD"
+//                keyAlias "$System.env.KEY_ALIAS"
+//                keyPassword "$System.env.KEY_PASSWORD"
+//            }
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
