@@ -72,10 +72,21 @@
         android:text="date"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/comment_detail_btn_iv"
         android:fontFamily="@font/notosanskrbold"
         android:textColor="#696969"
         />
+        
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/comment_detail_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:id="@+id/comment_detail_btn_iv"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
