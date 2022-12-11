@@ -7,8 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mechulicvs.Model.PostDetail
 import com.example.mechulicvs.Repository.DetailAddRatingSetRepository
 import com.example.mechulicvs.Repository.DetailPostRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DetailPostViewModel(application: Application) : AndroidViewModel(application)  {
+@HiltViewModel
+class DetailPostViewModel @Inject constructor(application: Application) : AndroidViewModel(application)  {
 
     private var resultList = MutableLiveData<PostDetail>()
 

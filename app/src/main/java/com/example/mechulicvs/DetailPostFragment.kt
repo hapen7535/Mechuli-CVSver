@@ -30,15 +30,18 @@ import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.suspendCoroutine
 
+@AndroidEntryPoint
 class DetailPostFragment : Fragment() {
 
     lateinit var detailPostViewModel: DetailPostViewModel
+
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
@@ -147,8 +150,6 @@ class DetailPostFragment : Fragment() {
                         Log.d("Loading", it.toString())
                     }
                     is ApiState.Success -> {
-//                        Log.d("Success", "댓글 등록 성공")
-//                        Log.d("commentList", detailPostCommentAdapter.getRVItemList().toString())
                         it.data?.let { it1 -> commentList.plusAssign(it1.result) }
                         detailPostCommentAdapter.notifyDataSetChanged()
                         Log.d("commentCount", commentList.size.toString())
