@@ -40,7 +40,8 @@ import kotlin.coroutines.suspendCoroutine
 @AndroidEntryPoint
 class DetailPostFragment : Fragment() {
 
-    lateinit var detailPostViewModel: DetailPostViewModel
+//    lateinit var detailPostViewModel: DetailPostViewModel
+    private val detailPostViewModel : DetailPostViewModel by viewModels<DetailPostViewModel>()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
@@ -85,7 +86,7 @@ class DetailPostFragment : Fragment() {
         binding.commentNickNameAddTv.text = loginNickname
 
 
-        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
+//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
         detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
             binding.recipeTitleTv.text = it.recipeTitle
             binding.recipeDateTv.text = it.createTime
