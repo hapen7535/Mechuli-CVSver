@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         SignUpBtn.setOnClickListener { view ->
-            Log.d("singupbtn","클릭됨")
+//            Log.d("singupbtn","클릭됨")
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
 

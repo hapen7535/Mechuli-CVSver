@@ -20,20 +20,14 @@ class DetailPostViewModel @Inject constructor(
     private val repository: DetailPostRepository
 ) : ViewModel() {
 
-//    private var resultList = MutableLiveData<PostDetail>()
-    private val _resultList = MutableLiveData<PostDetail>()
-    val resultList : LiveData<PostDetail>
-        get() = _resultList
-
-//    private val context = application.applicationContext
+    private var resultList = MutableLiveData<PostDetail>()
 
     fun getResultRepository(): LiveData<PostDetail> {
         return resultList
     }
 
     init {
-            _resultList.value = repository.ge
-//        resultList = DetailPostRepository.getResult()!!
+        resultList = DetailPostRepository.getResult()
     }
 
 }
