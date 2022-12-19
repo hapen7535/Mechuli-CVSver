@@ -14,8 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class DetailPostViewModel @Inject constructor(
+class DetailPostViewModel constructor(
 //    application: Application,
     private val repository: DetailPostRepository
 ) : ViewModel() {
@@ -27,7 +26,7 @@ class DetailPostViewModel @Inject constructor(
     }
 
     init {
-        resultList = DetailPostRepository.getResult()
+        resultList = repository.getResult()
     }
 
 }

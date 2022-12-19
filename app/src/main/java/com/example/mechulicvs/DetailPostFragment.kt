@@ -40,8 +40,8 @@ import kotlin.coroutines.suspendCoroutine
 @AndroidEntryPoint
 class DetailPostFragment : Fragment() {
 
-//    lateinit var detailPostViewModel: DetailPostViewModel
-    private val detailPostViewModel : DetailPostViewModel by viewModels<DetailPostViewModel>()
+    lateinit var detailPostViewModel: DetailPostViewModel
+//    private val detailPostViewModel : DetailPostViewModel by viewModels<DetailPostViewModel>()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
