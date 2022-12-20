@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -19,12 +20,14 @@ object userDataNetworkModule {
 
     @Singleton
     @Provides
-    fun retrofit (baseUrl : String) : GetPostDetailData =
+    fun provideRetrofit (baseUrl : String) : Retrofit =
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(GetPostDetailData::class.java)
 
+    @Provides
+    fun provideDetailData(retrofit: Retrofit) : GetPostDetailData =
+        retrofit.create(GetPostDetailData::class.java)
 
 }
