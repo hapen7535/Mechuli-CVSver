@@ -19,15 +19,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mechulicvs.Model.*
-import com.example.mechulicvs.View.CommunityActivity
-import com.example.mechulicvs.View.DetailPostCommentAdapter
-import com.example.mechulicvs.View.DetailPostImgVPAdapter
-import com.example.mechulicvs.View.RecipeListAdapter
+import com.example.mechulicvs.View.*
 import com.example.mechulicvs.ViewModel.CommentViewModel
 import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.ViewModel.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +48,9 @@ class DetailPostFragment : Fragment() {
     private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
 
     var commentList = mutableListOf<Reply>()
+
+    val postingBottomSheet = BottomSheetFragment()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -76,6 +77,7 @@ class DetailPostFragment : Fragment() {
 
         var commentRating = 0.0
 
+        postingBottomSheet.show(childFragmentManager ,BottomSheetFragment.TAG)
 
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
