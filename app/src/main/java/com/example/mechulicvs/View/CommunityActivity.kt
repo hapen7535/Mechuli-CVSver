@@ -9,6 +9,7 @@ import com.example.mechulicvs.MainCommunityFragment
 import com.example.mechulicvs.Model.Reply
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ViewModel.DetailPostViewModel
+import com.example.mechulicvs.WritePostFragment
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
 
 
@@ -34,7 +35,7 @@ class CommunityActivity : AppCompatActivity() {
         binding.writePostBtn.setOnClickListener {
             transaction.add(
                 R.id.community_fragment_frame,
-                WriteCommunityFragment()
+                WritePostFragment()
             )
             transaction.commit()
         }
