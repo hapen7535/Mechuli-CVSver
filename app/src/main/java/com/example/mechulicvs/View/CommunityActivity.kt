@@ -30,6 +30,14 @@ class CommunityActivity : AppCompatActivity() {
             MainCommunityFragment()
         )
         transaction.commit()
+
+        binding.writePostBtn.setOnClickListener {
+            transaction.add(
+                R.id.community_fragment_frame,
+                WriteCommunityFragment()
+            )
+            transaction.commit()
+        }
     }
 
     override fun onResume() {

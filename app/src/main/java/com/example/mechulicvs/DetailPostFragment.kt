@@ -159,11 +159,7 @@ class DetailPostFragment : Fragment() {
                         Log.d("ratingCount", ((binding.ratingCountTv.text.toString()
                             .toInt() * binding.commentDetailCountTv.text.toString().toInt()
                                 + it.data!!.result.replyScore) / commentList.size).toString())
-//                        binding.ratingCountTv.text = ((binding.ratingCountTv.text.toString()
-//                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
-//                                + it.data!!.result.replyScore) / commentList.size).toString()
-//                        binding.commentCountTv.text = commentList.size.toString()
-//                        binding.commentDetailCountTv.text = commentList.size.toString()
+
                     }
                     is ApiState.Error -> {
                         Log.d("Error", it.msg.toString())

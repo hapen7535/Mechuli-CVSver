@@ -40,10 +40,7 @@ class MainCommunityFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_community_main, container, false)
-
-//        val binding = FragmentCommunityMainBinding.inflate(inflater, container, false) //메모리 누수가 일어날 수 있는 방법 추후에 수정 필요
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,8 +50,6 @@ class MainCommunityFragment : Fragment() {
 
         val binding = FragmentCommunityMainBinding.bind(view)
         fragmentMainComunityBinding = binding
-
-//        recipeListRecyclerView = view.findViewById<RecyclerView>(R.id.post_list_rv)
 
         recipeViewModel = ViewModelProvider(this)[RecipeListViewModel::class.java]
 
