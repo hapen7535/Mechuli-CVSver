@@ -54,7 +54,7 @@ class DetailAddRatingActivity : AppCompatActivity() {
             setViewModel = ViewModelProvider(this).get(DetailAddRatingSetViewModel::class.java)
             val setObserver = Observer<Boolean>{
                 if(it){
-                    Toast.makeText(this, "평점 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "평가 이력 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
             setViewModel.getResultRepository().observe(this, setObserver)

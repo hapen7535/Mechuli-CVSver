@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        >
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/edit_button_icon"
+        android:id="@+id/edit_button_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 수정하기"
+        android:fontFamily="@font/robotobold"
+        app:layout_constraintStart_toEndOf="@id/edit_button_icon"
+        android:textSize="15sp"
+        android:id="@+id/edit_text"
+        android:layout_marginStart="16.67dp"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:id="@+id/delete_layout"
+        app:layout_constraintTop_toBottomOf="@id/edit_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/delete_button_icon"
+        android:id="@+id/delete_button_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="댓글 삭제하기"
+        android:fontFamily="@font/robotobold"
+        app:layout_constraintStart_toEndOf="@id/delete_button_icon"
+        android:textSize="15sp"
+        android:layout_marginStart="16.67dp"
+        android:id="@+id/delete_text"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
