@@ -1,4 +1,4 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.Model
 
 sealed class ApiState<out T>{
     data class Success<out T>(val data: T? = null) : ApiState<T>()

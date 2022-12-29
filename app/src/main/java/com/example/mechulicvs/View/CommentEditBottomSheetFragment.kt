@@ -1,9 +1,10 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.mechulicvs.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CommentEditBottomSheetFragment : BottomSheetDialogFragment() {

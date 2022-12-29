@@ -1,45 +1,31 @@
 package com.example.mechulicvs
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.example.mechulicvs.Model.*
+import com.example.mechulicvs.Model.detailPost.PostElements
 import com.example.mechulicvs.View.*
 import com.example.mechulicvs.ViewModel.CommentViewModel
 import com.example.mechulicvs.ViewModel.DetailPostViewModel
-import com.example.mechulicvs.ViewModel.RecipeListViewModel
-import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.suspendCoroutine
 
 @AndroidEntryPoint
 class DetailPostFragment : Fragment() {
 
     lateinit var detailPostViewModel: DetailPostViewModel
-//    private val detailPostViewModel : DetailPostViewModel by viewModels<DetailPostViewModel>()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
@@ -90,13 +76,14 @@ class DetailPostFragment : Fragment() {
 
 //        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
         detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
-            binding.recipeTitleTv.text = it.recipeTitle
-            binding.recipeDateTv.text = it.createTime
-            binding.commentCountTv.text = it.replyCount.toString()
-            binding.ratingCountTv.text = it.AvgScore.toString()
-            binding.recipeIngrTv.text = it.recipeIngr
-            binding.recipeCostTv.text = it.recipeCost.toString()
-            binding.nickNameTv.text = it.userNickName
+//            binding.recipeTitleTv.text = it.recipeTitle
+//            binding.recipeDateTv.text = it.createTime
+//            binding.commentCountTv.text = it.replyCount.toString()
+//            binding.ratingCountTv.text = it.AvgScore.toString()
+//            binding.recipeIngrTv.text = it.recipeIngr
+//            binding.recipeCostTv.text = it.recipeCost.toString()
+//            binding.nickNameTv.text = it.userNickName
+            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
 
             if (it.userNickName != loginNickname) {
                 binding.detailIconIv.visibility = View.INVISIBLE

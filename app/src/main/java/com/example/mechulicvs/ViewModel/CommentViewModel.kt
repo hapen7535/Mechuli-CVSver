@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.mechulicvs.ApiState
+import com.example.mechulicvs.Model.ApiState
 import com.example.mechulicvs.Model.CommentData
 import com.example.mechulicvs.Model.CommentRequest
 import com.example.mechulicvs.Repository.CommentRepository

@@ -69,12 +69,6 @@ class MainCommunityFragment : Fragment() {
                 val decoration = DividerItemDecoration(binding.postListRv.context, LinearLayoutManager(communityActivity).orientation)
                 binding.postListRv.addItemDecoration(decoration)
 
-//                recipeListAdapter.setOnItemClickListener(object : RecipeListAdapter.OnItemClickListener{
-//                    override fun onItemClick(v: View, data: Recipeinfo, pos: Int) {
-//                        val fragment = DetailPostFragment()
-//                    }
-//                })
-
             }
         })
     }
