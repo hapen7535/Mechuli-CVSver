@@ -1,10 +1,8 @@
 package com.example.mechulicvs.Repository
 
-import androidx.lifecycle.LiveData
-import com.example.mechulicvs.Model.Menu
-import com.example.mechulicvs.Model.MenuDataBase
-import com.example.mechulicvs.Model.UserDataAPI
-import com.example.mechulicvs.Model.UserDataAPI.signupMenuDataService
+import com.example.mechulicvs.model.MenuDataBase
+import com.example.mechulicvs.model.UserDataAPI
+import com.example.mechulicvs.model.UserDataAPI.signupMenuDataService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

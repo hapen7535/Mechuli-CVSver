@@ -3,9 +3,7 @@ package com.example.mechulicvs.Repository
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.Model.Result
-import com.example.mechulicvs.Model.UserDataAPI
-import com.example.mechulicvs.Model.getRecomAPI
+import com.example.mechulicvs.model.UserDataAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

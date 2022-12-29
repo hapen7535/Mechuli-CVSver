@@ -1,9 +1,7 @@
 package com.example.mechulicvs
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mechulicvs.Controller.DetailAddRatingActivity
-import com.example.mechulicvs.Model.MenuList
-import com.example.mechulicvs.Model.Recipeinfo
-import com.example.mechulicvs.View.AddRatingAdapter
+import com.example.mechulicvs.model.Recipeinfo
 import com.example.mechulicvs.View.CommunityActivity
 import com.example.mechulicvs.View.RecipeListAdapter
-import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.ViewModel.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 

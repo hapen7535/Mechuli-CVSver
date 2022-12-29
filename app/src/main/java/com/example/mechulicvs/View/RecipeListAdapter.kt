@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Scale
-import com.example.mechulicvs.Model.Recipeinfo
+import com.example.mechulicvs.model.Recipeinfo
 import com.example.mechulicvs.R
 
 class RecipeListAdapter(

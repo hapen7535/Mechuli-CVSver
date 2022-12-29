@@ -12,8 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechulicvs.Model.*
-import com.example.mechulicvs.Model.detailPost.PostElements
+import com.example.mechulicvs.model.*
+import com.example.mechulicvs.model.detailpost.PostElements
 import com.example.mechulicvs.View.*
 import com.example.mechulicvs.ViewModel.CommentViewModel
 import com.example.mechulicvs.ViewModel.DetailPostViewModel

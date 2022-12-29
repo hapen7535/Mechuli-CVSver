@@ -2,7 +2,7 @@ package com.example.mechulicvs.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.model.MenuList
 import com.example.mechulicvs.Repository.ResultRepository
 
 class SignUpViewModel(application: Application) : AndroidViewModel(application) {

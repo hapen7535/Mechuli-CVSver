@@ -6,12 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import coil.load
-import com.example.mechulicvs.Model.MenuList
-import com.example.mechulicvs.Model.Recipeinfo
 import com.example.mechulicvs.R
 
 class DetailPostImgVPAdapter(

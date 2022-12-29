@@ -7,8 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechulicvs.Model.ItemData
-import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.model.MenuList
 import com.example.mechulicvs.R
 import com.example.mechulicvs.View.GetRecomAdapter
 import com.example.mechulicvs.ViewModel.GetRecomViewModel

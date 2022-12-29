@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.View.MainMenuActivity
-import com.example.mechulicvs.Model.UserDataAPI
+import com.example.mechulicvs.model.UserDataAPI
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityLoginBinding
 import kotlinx.coroutines.Dispatchers

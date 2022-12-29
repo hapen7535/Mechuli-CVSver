@@ -2,13 +2,9 @@ package com.example.mechulicvs.View
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.mechulicvs.DetailPostFragment
 import com.example.mechulicvs.MainCommunityFragment
-import com.example.mechulicvs.Model.Reply
 import com.example.mechulicvs.R
-import com.example.mechulicvs.ViewModel.DetailPostViewModel
 import com.example.mechulicvs.WritePostFragment
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
 

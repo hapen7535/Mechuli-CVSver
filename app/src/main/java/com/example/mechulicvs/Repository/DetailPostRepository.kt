@@ -3,15 +3,12 @@ package com.example.mechulicvs.Repository
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.Model.GetPostDetailData
-import com.example.mechulicvs.Model.PostDetail
-import com.example.mechulicvs.Model.UserDataAPI
-import dagger.hilt.android.scopes.ActivityScoped
+import com.example.mechulicvs.model.PostDetail
+import com.example.mechulicvs.model.UserDataAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class DetailPostRepository {
 

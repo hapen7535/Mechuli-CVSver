@@ -2,17 +2,12 @@ package com.example.mechulicvs.Controller
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
-import com.example.mechulicvs.Model.IdDataAPI
-import com.example.mechulicvs.Model.UserData
+import com.example.mechulicvs.model.IdDataAPI
+import com.example.mechulicvs.model.UserData
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivitySignUpBinding
 import kotlinx.coroutines.Dispatchers

@@ -8,7 +8,7 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.model.MenuList
 import com.example.mechulicvs.R
 
 class AddRatingAdapter(

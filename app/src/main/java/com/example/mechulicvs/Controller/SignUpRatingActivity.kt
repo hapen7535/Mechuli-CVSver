@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.Model.MenuList
-import com.example.mechulicvs.Model.UserData
-import com.example.mechulicvs.Model.UserDataAPI.signUpService
+import com.example.mechulicvs.model.MenuList
+import com.example.mechulicvs.model.UserData
+import com.example.mechulicvs.model.UserDataAPI.signUpService
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ViewModel.SignUpViewModel
 import com.example.mechulicvs.databinding.ActivitySignUpRatingBinding

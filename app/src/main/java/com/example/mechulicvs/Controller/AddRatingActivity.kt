@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.model.MenuList
 import com.example.mechulicvs.R
 import com.example.mechulicvs.View.AddRatingAdapter
 import com.example.mechulicvs.ViewModel.GetRatingListViewModel

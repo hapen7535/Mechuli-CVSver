@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.Model.ItemData
-import com.example.mechulicvs.Model.MenuList
+import com.example.mechulicvs.model.MenuList
 import com.example.mechulicvs.R
 
 class GetRecomAdapter(private val context: Context, val itemList : List<MenuList>) : RecyclerView.Adapter<GetRecomAdapter.ViewHolder>(){

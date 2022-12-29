@@ -2,8 +2,8 @@ package com.example.mechulicvs.Repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mechulicvs.Model.MenuList
-import com.example.mechulicvs.Model.UserDataAPI.signupMenuDataService
+import com.example.mechulicvs.model.MenuList
+import com.example.mechulicvs.model.UserDataAPI.signupMenuDataService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

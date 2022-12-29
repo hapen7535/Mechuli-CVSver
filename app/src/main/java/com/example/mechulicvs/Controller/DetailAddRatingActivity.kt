@@ -2,19 +2,16 @@ package com.example.mechulicvs.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.Model.MenuList
-import com.example.mechulicvs.Model.Result
+import com.example.mechulicvs.model.Result
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ViewModel.DetailAddRatingSetViewModel
 import com.example.mechulicvs.ViewModel.DetailAddRatingViewModel
-import com.example.mechulicvs.ViewModel.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityDetailAddRatingBinding
 
 class DetailAddRatingActivity : AppCompatActivity() {
