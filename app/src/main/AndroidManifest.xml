@@ -18,35 +18,35 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
-            android:name=".Controller.DetailAddRatingActivity"
+            android:name=".ui.recommend.DetailAddRatingActivity"
             android:exported="false" />
         <activity
-            android:name=".View.CommunityActivity"
+            android:name=".ui.community.CommunityActivity"
             android:exported="false"
             />
         <activity
-            android:name=".Controller.AddRatingActivity"
+            android:name=".ui.recommend.AddRatingActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.GetRecomActivity"
+            android:name=".ui.recommend.GetRecomActivity"
             android:exported="false" />
         <activity
-            android:name=".View.RecommendActivity"
+            android:name=".ui.recommend.RecommendActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.SignUpRatingActivity"
+            android:name=".ui.login.SignUpRatingActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.SignUpActivity"
+            android:name=".ui.login.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainMenuActivity"
+            android:name=".ui.login.MainMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".ui.login.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

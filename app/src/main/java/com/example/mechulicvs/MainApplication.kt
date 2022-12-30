@@ -1,7 +1,7 @@
 package com.example.mechulicvs
 
 import android.app.Application
-import com.example.mechulicvs.Repository.PrefRepository
+import com.example.mechulicvs.repository.PrefRepository
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
