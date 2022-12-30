@@ -23,17 +23,20 @@ import com.example.mechulicvs.databinding.FragmentDetailPostBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
+
 class DetailPostFragment : Fragment() {
 
     lateinit var detailPostViewModel: DetailPostViewModel
+//    private val detailPostViewModel by viewModels<DetailPostViewModel>()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
+    private lateinit var commentViewModel: CommentViewModel
 
-    private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
+//    private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
 
     var commentList = mutableListOf<Reply>()
 
@@ -76,7 +79,7 @@ class DetailPostFragment : Fragment() {
         binding.commentNickNameAddTv.text = loginNickname
 
 
-//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
+        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
         detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
 //            binding.recipeTitleTv.text = it.recipeTitle
 //            binding.recipeDateTv.text = it.createTime
