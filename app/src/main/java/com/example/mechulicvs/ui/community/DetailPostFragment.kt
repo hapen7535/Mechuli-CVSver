@@ -28,8 +28,8 @@ import javax.inject.Inject
 
 class DetailPostFragment : Fragment() {
 
-    lateinit var detailPostViewModel: DetailPostViewModel
-//    private val detailPostViewModel by viewModels<DetailPostViewModel>()
+//    lateinit var detailPostViewModel: DetailPostViewModel
+    private val detailPostViewModel by viewModels<DetailPostViewModel>()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
@@ -79,34 +79,20 @@ class DetailPostFragment : Fragment() {
         binding.commentNickNameAddTv.text = loginNickname
 
 
-        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
-        detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
-//            binding.recipeTitleTv.text = it.recipeTitle
-//            binding.recipeDateTv.text = it.createTime
-//            binding.commentCountTv.text = it.replyCount.toString()
-//            binding.ratingCountTv.text = it.AvgScore.toString()
-//            binding.recipeIngrTv.text = it.recipeIngr
-//            binding.recipeCostTv.text = it.recipeCost.toString()
-//            binding.nickNameTv.text = it.userNickName
-            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
-
-            if (it.userNickName != loginNickname) {
-                binding.detailIconIv.visibility = View.INVISIBLE
-            }
-
+//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
+//        detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
+        detailPostViewModel.postInfo.observe(communityActivity, Observer {
+            val postDetailInfo = it.result
+            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
+            if(postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility = View.INVISIBLE
             val imagesList = mutableListOf<String>()
-            imagesList.add(it.recipeImg1); imagesList.add(it.recipeImg2); imagesList.add(it.recipeImg3); imagesList.add(
-            it.recipeImg4
-        ); imagesList.add(it.recipeImg5);
-
-            for (i in 0 until it.replyCount) {
-                commentList.add(it.replyList[i])
+            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2); imagesList.add(postDetailInfo.recipeImg3); imagesList.add(postDetailInfo.recipeImg4); imagesList.add(postDetailInfo.recipeImg5);
+            for (i in 0 until postDetailInfo.replyCount) {
+                commentList.add(postDetailInfo.replyList[i])
             }
-
             detailPostImgVPAdapter = DetailPostImgVPAdapter(communityActivity, imagesList)
             postImgsVP.adapter = detailPostImgVPAdapter
             TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
-
             }.attach()
 
             detailPostCommentAdapter = DetailPostCommentAdapter(communityActivity, commentList)
@@ -121,11 +107,45 @@ class DetailPostFragment : Fragment() {
             )
             binding.commentsListRv.addItemDecoration(decoration)
 
-            binding.recipeContentsTv.text = it.recipeCont
-            binding.commentDetailCountTv.text = it.replyCount.toString()
-
+            binding.recipeContentsTv.text = postDetailInfo.recipeCont
+            binding.commentDetailCountTv.text = postDetailInfo.replyCount.toString()
 
         })
+//            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
+//
+//            if (it.userNickName != loginNickname) {
+//                binding.detailIconIv.visibility = View.INVISIBLE
+//            }
+//
+//            val imagesList = mutableListOf<String>()
+//            imagesList.add(it.recipeImg1); imagesList.add(it.recipeImg2); imagesList.add(it.recipeImg3); imagesList.add(it.recipeImg4); imagesList.add(it.recipeImg5);
+//
+//            for (i in 0 until it.replyCount) {
+//                commentList.add(it.replyList[i])
+//            }
+//
+//            detailPostImgVPAdapter = DetailPostImgVPAdapter(communityActivity, imagesList)
+//            postImgsVP.adapter = detailPostImgVPAdapter
+//            TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
+//            }.attach()
+//
+//            detailPostCommentAdapter = DetailPostCommentAdapter(communityActivity, commentList)
+//
+//            binding.commentsListRv.adapter = detailPostCommentAdapter
+//            val layoutManager = LinearLayoutManager(communityActivity)
+//            binding.commentsListRv.layoutManager = layoutManager
+//            binding.commentsListRv.setHasFixedSize(true)
+//            val decoration = DividerItemDecoration(
+//                binding.commentsListRv.context,
+//                LinearLayoutManager(communityActivity).orientation
+//            )
+//            binding.commentsListRv.addItemDecoration(decoration)
+//
+//            binding.recipeContentsTv.text = it.recipeCont
+//            binding.commentDetailCountTv.text = it.replyCount.toString()
+//
+//
+//        })
 
 
         binding.commentRatingAddRb.setOnRatingBarChangeListener { _, rating, _ ->
@@ -147,10 +167,10 @@ class DetailPostFragment : Fragment() {
                     is ApiState.Success -> {
                         it.data?.let { it1 -> commentList.plusAssign(it1.result) }
                         detailPostCommentAdapter.notifyDataSetChanged()
-                        Log.d("commentCount", commentList.size.toString())
-                        Log.d("ratingCount", ((binding.ratingCountTv.text.toString()
-                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
-                                + it.data!!.result.replyScore) / commentList.size).toString())
+//                        Log.d("commentCount", commentList.size.toString())
+//                        Log.d("ratingCount", ((binding.ratingCountTv.text.toString()
+//                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
+//                                + it.data!!.result.replyScore) / commentList.size).toString())
 
                     }
                     is ApiState.Error -> {
