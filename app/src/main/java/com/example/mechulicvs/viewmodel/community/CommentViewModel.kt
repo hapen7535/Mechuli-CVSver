@@ -21,7 +21,7 @@ class CommentViewModel(application: Application) : AndroidViewModel(application)
             try {
                 val commentRequest = CommentRequest(userId, recipeId, content, rating)
                 val response = commentRepo.userComment(commentRequest = commentRequest)
-                Log.d("code", response.code().toString())
+//                Log.d("code", response.code().toString())
                 if (response.code() == 200) {
                     commentResult.value = ApiState.Success(response.body())
                 } else {
