@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.data.remote.model.PostDetail
+import com.example.mechulicvs.data.remote.model.PostDetailData
 import com.example.mechulicvs.repository.community.DetailPostRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -31,13 +33,16 @@ import javax.inject.Inject
 class DetailPostViewModel constructor(
     detailPostRepository: DetailPostRepository
 ): ViewModel(){
-    private val _postInfo = MutableLiveData<PostDetail>()
-    val postInfo = _postInfo as LiveData<PostDetail>
+
+    val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+
+    private val _postInfo = MutableLiveData<PostDetailData>()
+    val postInfo = _postInfo as LiveData<PostDetailData>
 
     init {
         viewModelScope.launch {
             try{
-                val postInfo = detailPostRepository.getResult()
+                val postInfo = detailPostRepository.getDetailPostInfo(recipeId)
                 _postInfo.value = postInfo
             } catch (error : Exception){
                 //정보 받기 에러 창을 사용자에게 보여준다
