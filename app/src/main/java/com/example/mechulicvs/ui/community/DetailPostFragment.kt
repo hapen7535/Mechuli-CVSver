@@ -83,7 +83,7 @@ class DetailPostFragment : Fragment() {
 //        detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
         detailPostViewModel.postInfo.observe(communityActivity, Observer {
             val postDetailInfo = it.result
-            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
+//            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
             if(postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility = View.INVISIBLE
             val imagesList = mutableListOf<String>()
             imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2); imagesList.add(postDetailInfo.recipeImg3); imagesList.add(postDetailInfo.recipeImg4); imagesList.add(postDetailInfo.recipeImg5);
