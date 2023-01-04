@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -11,12 +12,22 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechulicvs.data.remote.model.Reply
 import com.example.mechulicvs.R
+import com.example.mechulicvs.data.remote.model.Recipeinfo
 
 class DetailPostCommentAdapter(
-    private val context: Context, val commentList: List<Reply>
+    private val context: Context,
+    val commentList: List<Reply>,
+//    private val listener: RecipeListAdapter.OnItemClickListener
 ) : RecyclerView.Adapter<DetailPostCommentAdapter.ViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<Reply>(){
+    private lateinit var itemClickListener: AdapterView.OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(v: Recipeinfo, pos: Int)
+    }
+
+
+    private val differCallback = object : DiffUtil.ItemCallback<Reply>() {
         override fun areItemsTheSame(oldItem: Reply, newItem: Reply): Boolean {
             return oldItem.replyId == newItem.replyId
         }
@@ -61,7 +72,7 @@ class DetailPostCommentAdapter(
 
     override fun getItemCount(): Int = commentList.size
 
-    fun getRVItemList() : List<Reply> = commentList
+    fun getRVItemList(): List<Reply> = commentList
 
 
 }

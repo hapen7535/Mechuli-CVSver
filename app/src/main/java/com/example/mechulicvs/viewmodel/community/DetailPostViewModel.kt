@@ -10,6 +10,7 @@ import com.example.mechulicvs.data.remote.model.PostDetail
 import com.example.mechulicvs.data.remote.model.PostDetailData
 import com.example.mechulicvs.repository.community.DetailPostRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,7 +31,8 @@ import javax.inject.Inject
 //
 //}
 
-class DetailPostViewModel constructor(
+@HiltViewModel
+class DetailPostViewModel @Inject constructor(
     detailPostRepository: DetailPostRepository
 ): ViewModel(){
 
@@ -40,7 +42,7 @@ class DetailPostViewModel constructor(
     val postInfo = _postInfo as LiveData<PostDetailData>
 
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             try{
                 val postInfo = detailPostRepository.getDetailPostInfo(recipeId)
                 _postInfo.value = postInfo

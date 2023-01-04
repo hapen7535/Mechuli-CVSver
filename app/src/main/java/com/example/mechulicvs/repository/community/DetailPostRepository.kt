@@ -7,10 +7,19 @@ import com.example.mechulicvs.data.remote.api.GetPostDetailData
 import com.example.mechulicvs.data.remote.model.PostDetail
 import com.example.mechulicvs.data.remote.api.UserDataAPI
 import com.example.mechulicvs.data.remote.model.PostDetailData
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 //class DetailPostRepository {
 //
@@ -45,9 +54,10 @@ import kotlinx.coroutines.withContext
 //
 //}
 
-class DetailPostRepository constructor(
+class DetailPostRepository @Inject constructor(
     private val detailPostService : GetPostDetailData
 ){
+
     suspend fun getDetailPostInfo(recipeId : Int): PostDetailData {
         return detailPostService.getDetailPostData(recipeId)
     }

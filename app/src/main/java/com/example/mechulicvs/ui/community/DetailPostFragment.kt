@@ -25,7 +25,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class DetailPostFragment : Fragment() {
 
 //    lateinit var detailPostViewModel: DetailPostViewModel
