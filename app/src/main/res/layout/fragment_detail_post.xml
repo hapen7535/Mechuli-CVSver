@@ -7,7 +7,7 @@
     <data>
         <variable
             name="postViewModel"
-            type="com.example.mechulicvs.viewmodel.community.DetailPostViewModel" />
+            type="com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel" />
     </data>
 
     <RelativeLayout

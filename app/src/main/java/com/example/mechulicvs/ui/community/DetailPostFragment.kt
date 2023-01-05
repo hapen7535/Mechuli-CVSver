@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
@@ -16,8 +17,8 @@ import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.*
 import com.example.mechulicvs.data.remote.model.detailpost.PostElements
-import com.example.mechulicvs.viewmodel.community.CommentViewModel
-import com.example.mechulicvs.viewmodel.community.DetailPostViewModel
+import com.example.mechulicvs.ui.viewmodel.community.CommentViewModel
+import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
 import com.example.mechulicvs.data.remote.model.Reply
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,11 +31,13 @@ class DetailPostFragment : Fragment() {
 
 //    lateinit var detailPostViewModel: DetailPostViewModel
     private val detailPostViewModel by viewModels<DetailPostViewModel>()
+//    @Inject lateinit var detailPostViewModel: DetailPostViewModel
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
     private lateinit var commentViewModel: CommentViewModel
+
 
 //    private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
 
@@ -81,12 +84,16 @@ class DetailPostFragment : Fragment() {
 
 //        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
 //        detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
+
         detailPostViewModel.postInfo.observe(communityActivity, Observer {
             val postDetailInfo = it.result
 //            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
-            if(postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility = View.INVISIBLE
+            if (postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility =
+                View.INVISIBLE
             val imagesList = mutableListOf<String>()
-            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2); imagesList.add(postDetailInfo.recipeImg3); imagesList.add(postDetailInfo.recipeImg4); imagesList.add(postDetailInfo.recipeImg5);
+            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2); imagesList.add(
+            postDetailInfo.recipeImg3
+        ); imagesList.add(postDetailInfo.recipeImg4); imagesList.add(postDetailInfo.recipeImg5);
             for (i in 0 until postDetailInfo.replyCount) {
                 commentList.add(postDetailInfo.replyList[i])
             }

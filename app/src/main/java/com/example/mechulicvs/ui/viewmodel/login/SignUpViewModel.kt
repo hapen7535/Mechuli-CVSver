@@ -1,4 +1,4 @@
-package com.example.mechulicvs.viewmodel.login
+package com.example.mechulicvs.ui.viewmodel.login
 
 import android.app.Application
 import androidx.lifecycle.*

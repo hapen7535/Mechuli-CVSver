@@ -1,25 +1,10 @@
 package com.example.mechulicvs.repository.community
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.data.remote.api.GetPostDetailData
-import com.example.mechulicvs.data.remote.model.PostDetail
-import com.example.mechulicvs.data.remote.api.UserDataAPI
+import com.example.mechulicvs.data.DetailPostDataSource
+import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
 import com.example.mechulicvs.data.remote.model.PostDetailData
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.scopes.ViewModelScoped
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import retrofit2.Response
 import javax.inject.Inject
-import javax.inject.Singleton
 
 //class DetailPostRepository {
 //
@@ -54,11 +39,16 @@ import javax.inject.Singleton
 //
 //}
 
-class DetailPostRepository @Inject constructor(
-    private val detailPostService : GetPostDetailData
-){
+//class DetailPostRepository @Inject constructor(
+////    private val detailPostService : GetPostDetailData
+//    private val remoteDataSource: DetailPostDataSource
+//) {
+//
+//    suspend fun getDetailPostInfo(): PostDetailData {
+//        return remoteDataSource.getDetailPostDataInfo()
+//    }
+//}
 
-    suspend fun getDetailPostInfo(recipeId : Int): PostDetailData {
-        return detailPostService.getDetailPostData(recipeId)
-    }
+interface DetailPostRepository {
+    suspend fun getDetailPost(recipeId : Int) : Response<PostDetailData>
 }

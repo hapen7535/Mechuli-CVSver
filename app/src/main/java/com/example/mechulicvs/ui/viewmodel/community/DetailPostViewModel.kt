@@ -1,4 +1,4 @@
-package com.example.mechulicvs.viewmodel.community
+package com.example.mechulicvs.ui.viewmodel.community
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -44,7 +44,7 @@ class DetailPostViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.IO){
             try{
-                val postInfo = detailPostRepository.getDetailPostInfo(recipeId)
+                val postInfo = detailPostRepository.getDetailPostInfo()
                 _postInfo.value = postInfo
             } catch (error : Exception){
                 //정보 받기 에러 창을 사용자에게 보여준다

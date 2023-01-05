@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.data.remote.model.MenuList
 import com.example.mechulicvs.R
-import com.example.mechulicvs.viewmodel.recommend.GetRatingListViewModel
+import com.example.mechulicvs.ui.viewmodel.recommend.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
 import java.net.URLEncoder
 

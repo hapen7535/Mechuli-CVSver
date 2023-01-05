@@ -1,4 +1,4 @@
-package com.example.mechulicvs.viewmodel.community
+package com.example.mechulicvs.ui.viewmodel.community
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

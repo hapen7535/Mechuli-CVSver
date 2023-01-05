@@ -10,8 +10,8 @@ import coil.transform.CircleCropTransformation
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.data.remote.model.Result
 import com.example.mechulicvs.R
-import com.example.mechulicvs.viewmodel.recommend.DetailAddRatingSetViewModel
-import com.example.mechulicvs.viewmodel.recommend.DetailAddRatingViewModel
+import com.example.mechulicvs.ui.viewmodel.recommend.DetailAddRatingSetViewModel
+import com.example.mechulicvs.ui.viewmodel.recommend.DetailAddRatingViewModel
 import com.example.mechulicvs.databinding.ActivityDetailAddRatingBinding
 
 class DetailAddRatingActivity : AppCompatActivity() {

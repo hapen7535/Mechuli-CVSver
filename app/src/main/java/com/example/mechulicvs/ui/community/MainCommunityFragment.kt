@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechulicvs.MainApplication
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.remote.model.Recipeinfo
-import com.example.mechulicvs.viewmodel.community.RecipeListViewModel
+import com.example.mechulicvs.ui.viewmodel.community.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
 
 class MainCommunityFragment : Fragment() {

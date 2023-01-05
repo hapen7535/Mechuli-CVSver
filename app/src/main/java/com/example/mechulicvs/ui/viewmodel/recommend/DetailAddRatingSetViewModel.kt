@@ -1,4 +1,4 @@
-package com.example.mechulicvs.viewmodel.recommend
+package com.example.mechulicvs.ui.viewmodel.recommend
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

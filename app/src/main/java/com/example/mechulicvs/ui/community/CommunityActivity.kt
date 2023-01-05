@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
-
+import dagger.hilt.android.AndroidEntryPoint
 
 class CommunityActivity : AppCompatActivity() {
 

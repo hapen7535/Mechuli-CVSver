@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechulicvs.data.remote.model.MenuList
 import com.example.mechulicvs.R
-import com.example.mechulicvs.viewmodel.recommend.GetRecomViewModel
+import com.example.mechulicvs.ui.viewmodel.recommend.GetRecomViewModel
 import com.example.mechulicvs.databinding.ActivityGetRecomBinding
 
 class GetRecomActivity : AppCompatActivity() {
