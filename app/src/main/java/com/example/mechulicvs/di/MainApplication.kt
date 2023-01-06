@@ -1,4 +1,4 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.di
 
 import android.app.Application
 import com.example.mechulicvs.repository.PrefRepository

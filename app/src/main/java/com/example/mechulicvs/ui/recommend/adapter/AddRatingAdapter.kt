@@ -1,4 +1,4 @@
-package com.example.mechulicvs.ui.recommend
+package com.example.mechulicvs.ui.recommend.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

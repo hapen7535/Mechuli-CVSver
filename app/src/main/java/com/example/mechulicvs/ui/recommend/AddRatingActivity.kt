@@ -9,11 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.data.remote.model.MenuList
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ui.viewmodel.recommend.GetRatingListViewModel
 import com.example.mechulicvs.databinding.ActivityAddRatingBinding
+import com.example.mechulicvs.ui.recommend.adapter.AddRatingAdapter
 import java.net.URLEncoder
 
 class AddRatingActivity : AppCompatActivity() {

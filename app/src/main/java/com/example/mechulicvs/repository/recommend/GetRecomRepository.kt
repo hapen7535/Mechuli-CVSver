@@ -2,7 +2,7 @@ package com.example.mechulicvs.repository.recommend
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.data.remote.model.MenuList
 import com.example.mechulicvs.data.remote.api.getRecomAPI
 import kotlinx.coroutines.CoroutineScope

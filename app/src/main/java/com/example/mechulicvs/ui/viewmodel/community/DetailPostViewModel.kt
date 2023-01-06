@@ -1,53 +1,39 @@
 package com.example.mechulicvs.ui.viewmodel.community
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mechulicvs.MainApplication
-import com.example.mechulicvs.data.remote.model.PostDetail
+import com.example.mechulicvs.data.remote.Resource
 import com.example.mechulicvs.data.remote.model.PostDetailData
 import com.example.mechulicvs.repository.community.DetailPostRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//class DetailPostViewModel constructor(
-//    application: Application,
-////    private val repository: DetailPostRepository
-//) : ViewModel() {
-//
-//    private var resultList = MutableLiveData<PostDetail>()
-//
-//    fun getResultRepository(): LiveData<PostDetail> {
-//        return resultList
-//    }
-//
-//    init {
-//        resultList = DetailPostRepository().getResult()
-//    }
-//
-//}
-
 @HiltViewModel
 class DetailPostViewModel @Inject constructor(
-    detailPostRepository: DetailPostRepository
+    private val detailPostRepository: DetailPostRepository
 ): ViewModel(){
+//    private val recipeId = MainApplication.prefs.getInt("recipeId", 0)
 
-    val recipeId = MainApplication.prefs.getInt("recipeId", 0)
+    private val _postInfo = MutableLiveData<Resource<PostDetailData>>()
 
-    private val _postInfo = MutableLiveData<PostDetailData>()
-    val postInfo = _postInfo as LiveData<PostDetailData>
+    val postInfo : LiveData<Resource<PostDetailData>>
+        get() = _postInfo
 
     init {
-        viewModelScope.launch(Dispatchers.IO){
-            try{
-                val postInfo = detailPostRepository.getDetailPostInfo()
-                _postInfo.value = postInfo
-            } catch (error : Exception){
-                //정보 받기 에러 창을 사용자에게 보여준다
+        getDetailPostInfo()
+    }
+
+    private fun getDetailPostInfo() = viewModelScope.launch {
+        _postInfo.postValue(Resource.loading(null))
+        detailPostRepository.getDetailPost().let {
+            if(it.isSuccessful){
+                _postInfo.postValue(Resource.success(it.body()))
+            }
+            else{
+                _postInfo.postValue(Resource.error(it.errorBody().toString(), null))
             }
         }
     }

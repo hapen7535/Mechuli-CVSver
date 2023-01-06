@@ -2,7 +2,7 @@ package com.example.mechulicvs.repository.recommend
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.data.remote.api.UserDataAPI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

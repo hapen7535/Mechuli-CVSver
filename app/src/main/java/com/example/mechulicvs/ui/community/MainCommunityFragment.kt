@@ -10,11 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.remote.model.Recipeinfo
 import com.example.mechulicvs.ui.viewmodel.community.RecipeListViewModel
 import com.example.mechulicvs.databinding.FragmentCommunityMainBinding
+import com.example.mechulicvs.ui.community.adapter.RecipeListAdapter
 
 class MainCommunityFragment : Fragment() {
 

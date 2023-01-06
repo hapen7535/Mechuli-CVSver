@@ -1,4 +1,4 @@
-package com.example.mechulicvs.ui.community
+package com.example.mechulicvs.ui.community.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -11,6 +11,7 @@ import com.example.mechulicvs.data.remote.model.MenuList
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ui.viewmodel.recommend.GetRecomViewModel
 import com.example.mechulicvs.databinding.ActivityGetRecomBinding
+import com.example.mechulicvs.ui.recommend.adapter.GetRecomAdapter
 
 class GetRecomActivity : AppCompatActivity() {
 

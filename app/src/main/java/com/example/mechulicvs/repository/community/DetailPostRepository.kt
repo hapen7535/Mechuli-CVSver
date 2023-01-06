@@ -1,5 +1,6 @@
 package com.example.mechulicvs.repository.community
 
+import com.example.mechulicvs.DetailPostApiHelper
 import com.example.mechulicvs.data.DetailPostDataSource
 import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
 import com.example.mechulicvs.data.remote.model.PostDetailData
@@ -39,16 +40,9 @@ import javax.inject.Inject
 //
 //}
 
-//class DetailPostRepository @Inject constructor(
-////    private val detailPostService : GetPostDetailData
-//    private val remoteDataSource: DetailPostDataSource
-//) {
-//
-//    suspend fun getDetailPostInfo(): PostDetailData {
-//        return remoteDataSource.getDetailPostDataInfo()
-//    }
-//}
 
-interface DetailPostRepository {
-    suspend fun getDetailPost(recipeId : Int) : Response<PostDetailData>
+class DetailPostRepository @Inject constructor(
+    private val detailPostApiHelper: DetailPostApiHelper
+) {
+    suspend fun getDetailPost() = detailPostApiHelper.getDetailPost()
 }

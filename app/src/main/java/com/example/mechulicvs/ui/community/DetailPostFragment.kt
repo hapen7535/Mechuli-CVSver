@@ -7,44 +7,36 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.*
-import com.example.mechulicvs.data.remote.model.detailpost.PostElements
+import com.example.mechulicvs.data.remote.Status
 import com.example.mechulicvs.ui.viewmodel.community.CommentViewModel
-import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
 import com.example.mechulicvs.data.remote.model.Reply
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
+import com.example.mechulicvs.ui.community.adapter.DetailPostCommentAdapter
+import com.example.mechulicvs.ui.community.adapter.DetailPostImgVPAdapter
+import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailPostFragment : Fragment() {
-
-//    lateinit var detailPostViewModel: DetailPostViewModel
-    private val detailPostViewModel by viewModels<DetailPostViewModel>()
-//    @Inject lateinit var detailPostViewModel: DetailPostViewModel
+    private val detailPostViewModel : DetailPostViewModel by viewModels()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
     lateinit var detailPostCommentAdapter: DetailPostCommentAdapter
     private lateinit var commentViewModel: CommentViewModel
 
-
-//    private val commentViewModel by viewModels<CommentViewModel>() //by viewModels로 ViewModel을 지연 생성
-
     var commentList = mutableListOf<Reply>()
-
     val postingBottomSheet = BottomSheetFragment()
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,6 +48,8 @@ class DetailPostFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
+//        detailPostViewModel = ViewModelProvider(CommunityActivity()).get(DetailPostViewModel::class.java)
         return inflater.inflate(R.layout.fragment_detail_post, container, false)
     }
 
@@ -71,7 +65,7 @@ class DetailPostFragment : Fragment() {
 
         var commentRating = 0.0
 
-        postingBottomSheet.show(childFragmentManager , BottomSheetFragment.TAG)
+        postingBottomSheet.show(childFragmentManager, BottomSheetFragment.TAG)
 
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
@@ -81,41 +75,60 @@ class DetailPostFragment : Fragment() {
 
         binding.commentNickNameAddTv.text = loginNickname
 
-
-//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
-//        detailPostViewModel.getResultRepository().observe(communityActivity, Observer {
-
         detailPostViewModel.postInfo.observe(communityActivity, Observer {
-            val postDetailInfo = it.result
-//            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
-            if (postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility =
-                View.INVISIBLE
-            val imagesList = mutableListOf<String>()
-            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2); imagesList.add(
-            postDetailInfo.recipeImg3
-        ); imagesList.add(postDetailInfo.recipeImg4); imagesList.add(postDetailInfo.recipeImg5);
-            for (i in 0 until postDetailInfo.replyCount) {
-                commentList.add(postDetailInfo.replyList[i])
+
+            when (it.status) {
+                Status.ERROR -> {
+                    Log.d("ERROR", it.message.toString())
+                }
+                Status.SUCCESS -> {
+                    it.data.let { res ->
+                        val postDetailInfo = res?.result
+                        if (postDetailInfo != null) {
+                            if (postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility =
+                                View.INVISIBLE
+//                            val imagesList = mutableListOf<String>()
+//                            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2);
+//                            imagesList.add(postDetailInfo.recipeImg3)
+//                            imagesList.add(postDetailInfo.recipeImg4)
+//                            imagesList.add(postDetailInfo.recipeImg5)
+                            val imagesList = setImageList(
+                                postDetailInfo.recipeImg1,
+                                postDetailInfo.recipeImg2,
+                                postDetailInfo.recipeImg3,
+                                postDetailInfo.recipeImg4,
+                                postDetailInfo.recipeImg5
+                            )
+                            for (i in 0 until postDetailInfo.replyCount) {
+                                commentList.add(postDetailInfo.replyList[i])
+                            }
+
+                            detailPostImgVPAdapter =
+                                DetailPostImgVPAdapter(communityActivity, imagesList)
+                            postImgsVP.adapter = detailPostImgVPAdapter
+                            TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
+                            }.attach()
+
+                            detailPostCommentAdapter =
+                                DetailPostCommentAdapter(communityActivity, commentList)
+
+                            binding.commentsListRv.adapter = detailPostCommentAdapter
+                            val layoutManager = LinearLayoutManager(communityActivity)
+                            binding.commentsListRv.layoutManager = layoutManager
+                            binding.commentsListRv.setHasFixedSize(true)
+                            val decoration = DividerItemDecoration(
+                                binding.commentsListRv.context,
+                                LinearLayoutManager(communityActivity).orientation
+                            )
+                            binding.commentsListRv.addItemDecoration(decoration)
+                            binding.recipeContentsTv.text = postDetailInfo.recipeCont
+                            binding.commentDetailCountTv.text = postDetailInfo.replyCount.toString()
+                        }
+                    }
+                }
             }
-            detailPostImgVPAdapter = DetailPostImgVPAdapter(communityActivity, imagesList)
-            postImgsVP.adapter = detailPostImgVPAdapter
-            TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
-            }.attach()
 
-            detailPostCommentAdapter = DetailPostCommentAdapter(communityActivity, commentList)
-
-            binding.commentsListRv.adapter = detailPostCommentAdapter
-            val layoutManager = LinearLayoutManager(communityActivity)
-            binding.commentsListRv.layoutManager = layoutManager
-            binding.commentsListRv.setHasFixedSize(true)
-            val decoration = DividerItemDecoration(
-                binding.commentsListRv.context,
-                LinearLayoutManager(communityActivity).orientation
-            )
-            binding.commentsListRv.addItemDecoration(decoration)
-
-            binding.recipeContentsTv.text = postDetailInfo.recipeCont
-            binding.commentDetailCountTv.text = postDetailInfo.replyCount.toString()
+//            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
 
         })
 //            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
@@ -174,10 +187,6 @@ class DetailPostFragment : Fragment() {
                     is ApiState.Success -> {
                         it.data?.let { it1 -> commentList.plusAssign(it1.result) }
                         detailPostCommentAdapter.notifyDataSetChanged()
-//                        Log.d("commentCount", commentList.size.toString())
-//                        Log.d("ratingCount", ((binding.ratingCountTv.text.toString()
-//                            .toInt() * binding.commentDetailCountTv.text.toString().toInt()
-//                                + it.data!!.result.replyScore) / commentList.size).toString())
 
                     }
                     is ApiState.Error -> {
@@ -193,6 +202,23 @@ class DetailPostFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+    }
+
+    private fun setImageList(
+        imageUrl1: String,
+        imageUrl2: String,
+        imageUrl3: String,
+        imageUrl4: String,
+        imageUrl5: String,
+    ): MutableList<String> {
+        val imageList = mutableListOf<String>()
+        imageList.add(imageUrl1)
+        imageList.add(imageUrl2)
+        imageList.add(imageUrl3)
+        imageList.add(imageUrl4)
+        imageList.add(imageUrl5)
+
+        return imageList
     }
 
     fun getChangedText(inputComment: Editable): String {

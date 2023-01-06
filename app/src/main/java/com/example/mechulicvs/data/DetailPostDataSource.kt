@@ -1,6 +1,6 @@
 package com.example.mechulicvs.data
 
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
 import javax.inject.Inject
 

@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import coil.transform.CircleCropTransformation
-import com.example.mechulicvs.MainApplication
+import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.data.remote.model.Result
 import com.example.mechulicvs.R
 import com.example.mechulicvs.ui.viewmodel.recommend.DetailAddRatingSetViewModel
