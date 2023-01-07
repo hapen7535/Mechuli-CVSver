@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,6 +20,7 @@ import com.example.mechulicvs.data.remote.Status
 import com.example.mechulicvs.ui.viewmodel.community.CommentViewModel
 import com.example.mechulicvs.data.remote.model.Reply
 import com.example.mechulicvs.databinding.FragmentDetailPostBinding
+import com.example.mechulicvs.ui.community.BottomSheetFragment.Companion.TAG
 import com.example.mechulicvs.ui.community.adapter.DetailPostCommentAdapter
 import com.example.mechulicvs.ui.community.adapter.DetailPostImgVPAdapter
 import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
@@ -28,7 +30,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailPostFragment : Fragment() {
-    private val detailPostViewModel : DetailPostViewModel by viewModels()
 
     lateinit var communityActivity: CommunityActivity
     lateinit var detailPostImgVPAdapter: DetailPostImgVPAdapter
@@ -37,6 +38,9 @@ class DetailPostFragment : Fragment() {
 
     var commentList = mutableListOf<Reply>()
     val postingBottomSheet = BottomSheetFragment()
+
+    private val detailPostViewModel : DetailPostViewModel by activityViewModels()
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,11 +52,8 @@ class DetailPostFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        detailPostViewModel = ViewModelProvider(this)[DetailPostViewModel::class.java]
-//        detailPostViewModel = ViewModelProvider(CommunityActivity()).get(DetailPostViewModel::class.java)
         return inflater.inflate(R.layout.fragment_detail_post, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,11 +73,14 @@ class DetailPostFragment : Fragment() {
         //다시 메인 커뮤니티로 돌아갈 때 보이게 해야함
 
         val loginNickname = MainApplication.prefs.getString("userNickname", "")
-
         binding.commentNickNameAddTv.text = loginNickname
 
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            val detailPostInfo = detailPostViewModel.postInfo.value?.data?.result?.AvgScore
+            Log.d(TAG, "$detailPostInfo")
+        }
+/*
         detailPostViewModel.postInfo.observe(communityActivity, Observer {
-
             when (it.status) {
                 Status.ERROR -> {
                     Log.d("ERROR", it.message.toString())
@@ -87,11 +91,6 @@ class DetailPostFragment : Fragment() {
                         if (postDetailInfo != null) {
                             if (postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility =
                                 View.INVISIBLE
-//                            val imagesList = mutableListOf<String>()
-//                            imagesList.add(postDetailInfo.recipeImg1); imagesList.add(postDetailInfo.recipeImg2);
-//                            imagesList.add(postDetailInfo.recipeImg3)
-//                            imagesList.add(postDetailInfo.recipeImg4)
-//                            imagesList.add(postDetailInfo.recipeImg5)
                             val imagesList = setImageList(
                                 postDetailInfo.recipeImg1,
                                 postDetailInfo.recipeImg2,
@@ -127,10 +126,11 @@ class DetailPostFragment : Fragment() {
                     }
                 }
             }
+        })
+        */
 
 //            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
 
-        })
 //            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
 //
 //            if (it.userNickName != loginNickname) {
@@ -199,11 +199,6 @@ class DetailPostFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-    }
-
     private fun setImageList(
         imageUrl1: String,
         imageUrl2: String,
@@ -221,7 +216,7 @@ class DetailPostFragment : Fragment() {
         return imageList
     }
 
-    fun getChangedText(inputComment: Editable): String {
+    private fun getChangedText(inputComment: Editable): String {
         var comment = ""
         if (inputComment.isNotEmpty()) {
             comment = inputComment.toString()
