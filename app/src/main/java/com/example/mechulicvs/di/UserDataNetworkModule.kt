@@ -40,5 +40,9 @@ object UserDataNetworkModule {
     @Provides
     fun provideApiHelper(detailPostApiHelper: DetailPostRepositoryImpl) : DetailPostApiHelper = detailPostApiHelper
 
+    @Singleton
+    @Provides
+    fun provideRemoteRepository(dataSourceImpl : DetailPostRepositoryImpl) =
+        DetailPostRepository(dataSourceImpl)
 
 }

@@ -6,6 +6,7 @@ import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CommunityActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCommunityBinding

@@ -39,7 +39,7 @@ class DetailPostFragment : Fragment() {
     var commentList = mutableListOf<Reply>()
     val postingBottomSheet = BottomSheetFragment()
 
-    private val detailPostViewModel : DetailPostViewModel by activityViewModels()
+    private val detailPostViewModel : DetailPostViewModel by viewModels()
 
 
     override fun onAttach(context: Context) {

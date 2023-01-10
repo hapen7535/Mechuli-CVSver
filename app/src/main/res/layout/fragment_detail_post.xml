@@ -84,7 +84,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{postViewModel.postInfo.data.result.replyCount}"
+            android:text="@{String.valueOf(postViewModel.postInfo.data.result.replyCount), default = 0}"
             android:id="@+id/comment_count_tv"
             android:fontFamily="@font/notosanskrmedium"
             android:textSize="15sp"
@@ -104,7 +104,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(postViewModel.postInfo.data.result.avgScore)}"
+            android:text="@{String.valueOf(postViewModel.postInfo.data.result.avgScore), default = 0.0}"
             android:id="@+id/rating_count_tv"
             android:fontFamily="@font/notosanskrmedium"
             android:includeFontPadding="false"
@@ -221,7 +221,7 @@
                 android:fontFamily="@font/notosanskrmedium"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:text="@{postViewModel.postInfo.data.result.recipeCost}"
+                android:text="@{String.valueOf(postViewModel.postInfo.data.result.recipeCost)}"
                 />
 
             <TextView
@@ -311,7 +311,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{postViewModel.postInfo.data.result.replyCount}"
+                    android:text="@{String.valueOf(postViewModel.postInfo.data.result.replyCount), default = 0}"
                     android:id="@+id/comment_detail_count_tv"
                     android:fontFamily="@font/notosanskrmedium"
                     android:textSize="15sp"
