@@ -2,11 +2,13 @@ package com.example.mechulicvs.ui.community
 
 import android.content.Context
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -40,6 +42,8 @@ class DetailPostFragment : Fragment() {
     val postingBottomSheet = BottomSheetFragment()
 
     private val detailPostViewModel : DetailPostViewModel by viewModels()
+    private var _binding : FragmentDetailPostBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onAttach(context: Context) {
@@ -52,21 +56,20 @@ class DetailPostFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_detail_post, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_post, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var fragmentDetailPostBinding: FragmentDetailPostBinding? = null
-        val binding = FragmentDetailPostBinding.bind(view)
-        fragmentDetailPostBinding = binding
-
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.postViewModel = detailPostViewModel
         val postImgsVP = binding.recipeImagesVp
         val postImgsTL = binding.viewpagerIndicatorTb
 
         var commentRating = 0.0
 
-        postingBottomSheet.show(childFragmentManager, BottomSheetFragment.TAG)
+//        postingBottomSheet.show(childFragmentManager, BottomSheetFragment.TAG)
 
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
@@ -75,11 +78,6 @@ class DetailPostFragment : Fragment() {
         val loginNickname = MainApplication.prefs.getString("userNickname", "")
         binding.commentNickNameAddTv.text = loginNickname
 
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            val detailPostInfo = detailPostViewModel.postInfo.value?.data?.result?.AvgScore
-            Log.d(TAG, "$detailPostInfo")
-        }
-/*
         detailPostViewModel.postInfo.observe(communityActivity, Observer {
             when (it.status) {
                 Status.ERROR -> {
@@ -127,46 +125,6 @@ class DetailPostFragment : Fragment() {
                 }
             }
         })
-        */
-
-//            binding.post = PostElements(postDetailInfo.recipeTitle, postDetailInfo.createTime, postDetailInfo.replyCount.toString(), postDetailInfo.AvgScore.toString(), postDetailInfo.recipeIngr, postDetailInfo.recipeCost.toString(), postDetailInfo.userNickName)
-
-//            binding.post= PostElements(it.recipeTitle, it.createTime, it.replyCount.toString(), it.AvgScore.toString(), it.recipeIngr, it.recipeCost.toString(), it.userNickName)
-//
-//            if (it.userNickName != loginNickname) {
-//                binding.detailIconIv.visibility = View.INVISIBLE
-//            }
-//
-//            val imagesList = mutableListOf<String>()
-//            imagesList.add(it.recipeImg1); imagesList.add(it.recipeImg2); imagesList.add(it.recipeImg3); imagesList.add(it.recipeImg4); imagesList.add(it.recipeImg5);
-//
-//            for (i in 0 until it.replyCount) {
-//                commentList.add(it.replyList[i])
-//            }
-//
-//            detailPostImgVPAdapter = DetailPostImgVPAdapter(communityActivity, imagesList)
-//            postImgsVP.adapter = detailPostImgVPAdapter
-//            TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
-//            }.attach()
-//
-//            detailPostCommentAdapter = DetailPostCommentAdapter(communityActivity, commentList)
-//
-//            binding.commentsListRv.adapter = detailPostCommentAdapter
-//            val layoutManager = LinearLayoutManager(communityActivity)
-//            binding.commentsListRv.layoutManager = layoutManager
-//            binding.commentsListRv.setHasFixedSize(true)
-//            val decoration = DividerItemDecoration(
-//                binding.commentsListRv.context,
-//                LinearLayoutManager(communityActivity).orientation
-//            )
-//            binding.commentsListRv.addItemDecoration(decoration)
-//
-//            binding.recipeContentsTv.text = it.recipeCont
-//            binding.commentDetailCountTv.text = it.replyCount.toString()
-//
-//
-//        })
-
 
         binding.commentRatingAddRb.setOnRatingBarChangeListener { _, rating, _ ->
             commentRating = rating.toDouble()
@@ -174,11 +132,9 @@ class DetailPostFragment : Fragment() {
 
         binding.addCommentBtn.setOnClickListener {
             val inputComment = getChangedText(binding.inputCommentEt.text)
-            Log.d("inputcomment", inputComment)
             val recipeId = MainApplication.prefs.getInt("recipeId", 0)
             val userId = MainApplication.prefs.getString("userId", "")
             commentViewModel.commentUser(userId, recipeId, inputComment, commentRating)
-
             commentViewModel.commentResult.observe(viewLifecycleOwner, Observer {
                 when (it) {
                     is ApiState.Loading -> {
@@ -197,6 +153,11 @@ class DetailPostFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setImageList(
