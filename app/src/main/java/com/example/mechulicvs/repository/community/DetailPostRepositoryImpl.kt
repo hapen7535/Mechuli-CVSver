@@ -1,5 +1,6 @@
-package com.example.mechulicvs
+package com.example.mechulicvs.repository.community
 
+import com.example.mechulicvs.data.remote.api.community.DetailPostApiHelper
 import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
 import com.example.mechulicvs.data.remote.model.PostDetailData
 import com.example.mechulicvs.di.MainApplication

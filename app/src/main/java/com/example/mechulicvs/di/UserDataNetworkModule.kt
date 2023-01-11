@@ -1,20 +1,16 @@
 package com.example.mechulicvs.di
 
-import android.app.Application
-import com.example.mechulicvs.DetailPostApiHelper
-import com.example.mechulicvs.DetailPostRepositoryImpl
+import com.example.mechulicvs.data.remote.api.community.DetailPostApiHelper
+import com.example.mechulicvs.repository.community.DetailPostRepositoryImpl
 import com.example.mechulicvs.data.Constants.Companion.BASE_URL
-import com.example.mechulicvs.data.DetailPostDataSource
 import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
 import com.example.mechulicvs.repository.community.DetailPostRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
