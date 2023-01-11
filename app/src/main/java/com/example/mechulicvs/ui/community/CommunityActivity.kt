@@ -1,6 +1,7 @@
 package com.example.mechulicvs.ui.community
 
 import android.os.Bundle
+import android.view.SurfaceControl.Transaction
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mechulicvs.R
 import com.example.mechulicvs.databinding.ActivityCommunityBinding
@@ -19,25 +20,29 @@ class CommunityActivity : AppCompatActivity() {
         binding = ActivityCommunityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        loadRecipeList()
+
+        binding.writePostBtn.setOnClickListener {
+            changeToWriteRecipe()
+        }
+    }
+
+    private fun changeToWriteRecipe(){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(
+            R.id.community_fragment_frame,
+            WritePostFragment()
+        )
+        transaction.commit()
+    }
+
+    private fun loadRecipeList(){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(
             R.id.community_fragment_frame,
             MainCommunityFragment()
         )
         transaction.commit()
-
-        binding.writePostBtn.setOnClickListener {
-            transaction.add(
-                R.id.community_fragment_frame,
-                WritePostFragment()
-            )
-            transaction.commit()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
     fun changeToDetail() {
