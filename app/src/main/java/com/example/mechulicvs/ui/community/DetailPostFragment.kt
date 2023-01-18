@@ -64,6 +64,7 @@ class DetailPostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.postViewModel = detailPostViewModel
+
         val postImgsVP = binding.recipeImagesVp
         val postImgsTL = binding.viewpagerIndicatorTb
 
@@ -173,7 +174,6 @@ class DetailPostFragment : Fragment() {
         imageList.add(imageUrl3)
         imageList.add(imageUrl4)
         imageList.add(imageUrl5)
-
         return imageList
     }
 

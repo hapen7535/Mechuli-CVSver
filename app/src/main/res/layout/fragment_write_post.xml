@@ -7,6 +7,30 @@
     android:background="@color/white"
     tools:context=".ui.community.WritePostFragment">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/set_button_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/entire_layout_scroll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inside_layout">
+
     <TextView
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
@@ -194,19 +218,25 @@
 
     </ScrollView>
 
-    <Button
-        android:layout_width="317dp"
-        android:layout_height="60dp"
-        android:background="@drawable/mainbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="글쓰기"
-        android:fontFamily="@font/notosanskrbold"
-        android:textSize="18sp"
-        android:id="@+id/write_post_btn"
-        />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+        <Button
+            android:layout_width="317dp"
+            android:layout_height="60dp"
+            android:background="@drawable/mainbtn"
+            android:layout_alignParentBottom="true"
+            android:text="글쓰기"
+            android:fontFamily="@font/notosanskrbold"
+            android:textSize="18sp"
+            android:id="@+id/write_post_btn"
+            />
+
+
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
