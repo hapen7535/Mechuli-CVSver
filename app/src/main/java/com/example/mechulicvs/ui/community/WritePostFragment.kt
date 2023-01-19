@@ -30,8 +30,6 @@ class WritePostFragment : Fragment() {
 
     lateinit var communityActivity: CommunityActivity
 
-    private lateinit var pickMultipleMediaLauncher: ActivityResultLauncher<Intent>
-
     private var _binding : FragmentWritePostBinding? = null
     private val binding get() = _binding!!
 
@@ -56,43 +54,23 @@ class WritePostFragment : Fragment() {
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
 
-//        val pickMultipleMedia =
-//            registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
-//
-//                if (uris.isNotEmpty()) {
-//                    Log.d("PhotoPicker", "Number of items selected: ${uris.size}")
-//                } else {
-//                    Log.d("PhotoPicker", "No media selected")
-//                }
-//            }
-
-        pickMultipleMediaLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode != Activity.RESULT_OK) {
-                    Toast.makeText(communityActivity, "Failed picking media.", Toast.LENGTH_SHORT).show()
+        val pickMultipleMedia =
+            registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(5)) { uris ->
+                if (uris.isNotEmpty()) {
+                    Log.d("PhotoPicker", "Number of items selected: ${uris.size}")
+                    Log.d("PhotoPicker", "uris : $uris")
                 } else {
-                    val uris = it.data?.clipData ?: return@registerForActivityResult
-                    var uriPaths = ""
-                    for (index in 0 until uris.itemCount) {
-                        uriPaths += uris.getItemAt(index).uri.path
-                        uriPaths += "\n"
-                    }
-                    showSnackBar("SUCCESS: $uriPaths")
+                    Log.d("PhotoPicker", "No media selected")
                 }
             }
 
+
         binding.recipePicturesTv.setOnClickListener {
-//            pickMultipleMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
-            pickMultipleMediaLauncher.launch(
-                Intent(MediaStore.ACTION_PICK_IMAGES)
-                    .apply {
-                        type = "image/*"
-                        putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, MAX_IMAGE_NUMBER)
-                    }
-            )
+            pickMultipleMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
         }
 
     }
+
 
     private fun showSnackBar(message: String) {
         val snackBar = Snackbar.make(
