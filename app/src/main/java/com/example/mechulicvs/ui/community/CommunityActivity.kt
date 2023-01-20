@@ -12,6 +12,7 @@ class CommunityActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCommunityBinding
     private val detailFragment = DetailPostFragment()
+    private val mainCommunityFragment = MainCommunityFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,7 @@ class CommunityActivity : AppCompatActivity() {
             changeToWriteRecipe()
         }
     }
+
 
     private fun changeToWriteRecipe(){
         val transaction = supportFragmentManager.beginTransaction()
@@ -48,6 +50,13 @@ class CommunityActivity : AppCompatActivity() {
     fun changeToDetail() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.community_fragment_frame, detailFragment)
+        transaction.disallowAddToBackStack()
+        transaction.commit()
+    }
+
+    fun changeToMainCommunity() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.community_fragment_frame, mainCommunityFragment)
         transaction.disallowAddToBackStack()
         transaction.commit()
     }

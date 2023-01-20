@@ -11,8 +11,6 @@ class RecipeListViewModel(application: Application) : AndroidViewModel(applicati
 
     private var resultList = MutableLiveData<List<Recipeinfo>>()
 
-    private val context = application.applicationContext
-
     fun getResultRepository(): LiveData<List<Recipeinfo>>? {
         return resultList
     }

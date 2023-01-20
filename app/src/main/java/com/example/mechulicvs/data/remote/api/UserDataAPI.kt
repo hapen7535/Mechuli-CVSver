@@ -2,8 +2,10 @@ package com.example.mechulicvs.data.remote.api
 
 import com.example.mechulicvs.data.Constants.Companion.BASE_URL
 import com.example.mechulicvs.data.remote.api.community.GetPostDetailData
+import com.example.mechulicvs.data.remote.api.community.RecipeCreateService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 //
 //@Module
@@ -44,16 +46,17 @@ object UserDataAPI {
         retrofit.create(GetAllRecipes::class.java)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideDetailPostApiService(retrofit: Retrofit): GetPostDetailData =
+//    val getDetailPostService : GetPostDetailData by lazy{
 //        retrofit.create(GetPostDetailData::class.java)
-    val getDetailPostService : GetPostDetailData by lazy{
-        retrofit.create(GetPostDetailData::class.java)
-    }
+//    }
 
     val sendCommentDataService : SendCommentData by lazy{
         retrofit.create(SendCommentData::class.java)
     }
+
+    val sendRecipeDataService : RecipeCreateService by lazy{
+        retrofit.create(RecipeCreateService::class.java)
+    }
+
 
 }

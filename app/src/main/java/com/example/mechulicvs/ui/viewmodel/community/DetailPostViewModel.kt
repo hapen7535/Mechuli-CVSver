@@ -15,7 +15,6 @@ import javax.inject.Inject
 class DetailPostViewModel @Inject constructor(
     private val detailPostRepository: DetailPostRepository
 ): ViewModel(){
-//    private val recipeId = MainApplication.prefs.getInt("recipeId", 0)
 
     private val _postInfo = MutableLiveData<Resource<PostDetailData>>()
 
