@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.ApiState
 import com.example.mechulicvs.data.remote.model.detailpost.RecipeRequest
@@ -23,6 +24,7 @@ import com.example.mechulicvs.databinding.FragmentWritePostBinding
 import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.ui.community.adapter.RecipeIngrAdapter
 import com.example.mechulicvs.ui.viewmodel.community.RecipeCreateViewModel
+import com.example.mechulicvs.ui.viewmodel.community.RecipeListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -55,11 +57,11 @@ class WritePostFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.lifecycleOwner = viewLifecycleOwner
         val fab = activity?.findViewById<FloatingActionButton>(R.id.write_post_btn)
         fab?.visibility = View.GONE
 
-        val imagesList = mutableListOf<String>()
+        var imagesList = mutableListOf<String>()
         val ingrList = mutableListOf<String>()
 
         recipeIngrAdapter =
@@ -97,6 +99,8 @@ class WritePostFragment : Fragment() {
             val recipeCost = getChangedText(binding.recipeCostEt.text)
             val recipeDescription = getChangedText(binding.recipeContentsEt.text)
             val recipeIngr = ingrList.toString().removeSurrounding("[", "]")
+            imagesList = checkImageEmpty(imagesList)
+            Log.d("imagesList",  checkImageEmpty(imagesList).toString())
             val recipeContent = RecipeRequest(
                 id = userId,
                 recipeTitle = recipeTitle,
@@ -109,6 +113,7 @@ class WritePostFragment : Fragment() {
                 recipeImgUrl4 = imagesList[3],
                 recipeImgUrl5 = imagesList[4]
             )
+            recipeCreateViewModel = ViewModelProvider(this)[RecipeCreateViewModel::class.java]
             recipeCreateViewModel.getRecipeCreateResult(recipeContent)
             recipeCreateViewModel.recipeResult.observe(viewLifecycleOwner, Observer {
                 when (it) {
@@ -151,6 +156,19 @@ class WritePostFragment : Fragment() {
             return content
         }
         return content
+    }
+
+    private fun checkImageEmpty(imageList : MutableList<String>) : MutableList<String>{
+        val modifiedImageList = mutableListOf<String>()
+        for(i in 0 until imageList.size){
+            modifiedImageList.add(imageList[i])
+        }
+        if(imageList.size < 5){
+            for(i in imageList.size until 5){
+                modifiedImageList.add(" ")
+            }
+        }
+        return modifiedImageList
     }
 
 
