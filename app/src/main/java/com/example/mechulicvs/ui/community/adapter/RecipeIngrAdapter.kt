@@ -4,18 +4,27 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechulicvs.R
+import com.example.mechulicvs.data.remote.model.Recipeinfo
 import com.example.mechulicvs.data.remote.model.Reply
 
 class RecipeIngrAdapter(
     private val context: Context,
-    val ingrList: List<String>,
+    private val ingrList: List<String>,
 ) : RecyclerView.Adapter<RecipeIngrAdapter.ViewHolder>()
 {
+
+    private lateinit var itemClickListener: AdapterView.OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(v: String, pos: Int)
+    }
 
     private val differCallback = object : DiffUtil.ItemCallback<String>() {
 
@@ -28,6 +37,8 @@ class RecipeIngrAdapter(
         }
 
     }
+
+    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

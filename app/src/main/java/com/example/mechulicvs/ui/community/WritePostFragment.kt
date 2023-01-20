@@ -27,6 +27,7 @@ import com.example.mechulicvs.data.ApiState
 import com.example.mechulicvs.data.remote.model.detailpost.RecipeRequest
 import com.example.mechulicvs.databinding.FragmentWritePostBinding
 import com.example.mechulicvs.di.MainApplication
+import com.example.mechulicvs.ui.community.adapter.DetailPostCommentAdapter
 import com.example.mechulicvs.ui.community.adapter.RecipeIngrAdapter
 import com.example.mechulicvs.ui.viewmodel.community.CommentViewModel
 import com.example.mechulicvs.ui.viewmodel.community.RecipeCreateViewModel
@@ -69,6 +70,11 @@ class WritePostFragment : Fragment() {
         val imagesList = mutableListOf<String>()
         val ingrList = mutableListOf<String>()
 
+        recipeIngrAdapter =
+            RecipeIngrAdapter(communityActivity, ingrList)
+
+        binding.ingrListRv.adapter = recipeIngrAdapter
+
         val pickMultipleMedia =
             registerForActivityResult(
                 ActivityResultContracts.PickMultipleVisualMedia(
@@ -88,7 +94,8 @@ class WritePostFragment : Fragment() {
 
         binding.recipeIngrAddTv.setOnClickListener {
             val ingrToAdd = getChangedText(binding.recipeIngrEt.text)
-            ingrList.add(ingrToAdd)
+            ingrList.plusAssign(ingrToAdd)
+            Log.d("재료 추가", ingrToAdd)
             recipeIngrAdapter.notifyDataSetChanged()
         }
 
