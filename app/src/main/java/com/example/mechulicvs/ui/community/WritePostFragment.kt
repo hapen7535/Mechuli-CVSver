@@ -1,13 +1,8 @@
 package com.example.mechulicvs.ui.community
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.database.Cursor
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
@@ -27,9 +21,7 @@ import com.example.mechulicvs.data.ApiState
 import com.example.mechulicvs.data.remote.model.detailpost.RecipeRequest
 import com.example.mechulicvs.databinding.FragmentWritePostBinding
 import com.example.mechulicvs.di.MainApplication
-import com.example.mechulicvs.ui.community.adapter.DetailPostCommentAdapter
 import com.example.mechulicvs.ui.community.adapter.RecipeIngrAdapter
-import com.example.mechulicvs.ui.viewmodel.community.CommentViewModel
 import com.example.mechulicvs.ui.viewmodel.community.RecipeCreateViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
