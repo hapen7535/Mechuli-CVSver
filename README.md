@@ -45,8 +45,9 @@
 로그인 후에 메뉴 추천 받기 버튼을 누르면 바로 추천을 받을 수 있습니다.
   
 - 커뮤니티 기능
-<center><img src="https://user-images.githubusercontent.com/79076150/214353335-dd5c999c-1bb1-49e4-a489-abf66dc0bada.gif" width="300" height="612"></center>
+<center><img src="https://user-images.githubusercontent.com/79076150/214369531-a11cc7f7-b9bb-48b7-808e-efe8a83b0383.gif" width="300" height="612"></center>
   
+
 로그인 후에 커뮤니티에 접속할 수 있습니다.  
 커뮤니티에서는 편의점 음식 제품으로 만든 레시피를 공유할 수 있습니다.  
 다른 사용자의 레시피에 댓글을 달아, 평점을 매기고 식평을 남길 수 있습니다.  
