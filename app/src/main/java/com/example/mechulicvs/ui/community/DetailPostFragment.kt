@@ -26,6 +26,7 @@ import com.example.mechulicvs.ui.community.BottomSheetFragment.Companion.TAG
 import com.example.mechulicvs.ui.community.adapter.DetailPostCommentAdapter
 import com.example.mechulicvs.ui.community.adapter.DetailPostImgVPAdapter
 import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
+import com.example.mechulicvs.ui.viewmodel.community.RecipeCreateViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -88,8 +89,10 @@ class DetailPostFragment : Fragment() {
                     it.data.let { res ->
                         val postDetailInfo = res?.result
                         if (postDetailInfo != null) {
-                            if (postDetailInfo.userNickName != loginNickname) binding.detailIconIv.visibility =
-                                View.INVISIBLE
+                            if (postDetailInfo.userNickName != loginNickname) {
+                                binding.detailIconIv.visibility = View.INVISIBLE
+                                binding.commentAddLayout.visibility = View.INVISIBLE
+                            }
                             val imagesList = setImageList(
                                 postDetailInfo.recipeImg1,
                                 postDetailInfo.recipeImg2,
@@ -100,6 +103,8 @@ class DetailPostFragment : Fragment() {
                             for (i in 0 until postDetailInfo.replyCount) {
                                 commentList.add(postDetailInfo.replyList[i])
                             }
+
+                            if(!checkDuplicatedComment(commentList)) binding.commentAddLayout.visibility = View.INVISIBLE
 
                             detailPostImgVPAdapter =
                                 DetailPostImgVPAdapter(communityActivity, imagesList)
@@ -135,6 +140,7 @@ class DetailPostFragment : Fragment() {
             val inputComment = getChangedText(binding.inputCommentEt.text)
             val recipeId = MainApplication.prefs.getInt("recipeId", 0)
             val userId = MainApplication.prefs.getString("userId", "")
+            commentViewModel = ViewModelProvider(this)[CommentViewModel::class.java]
             commentViewModel.commentUser(userId, recipeId, inputComment, commentRating)
             commentViewModel.commentResult.observe(viewLifecycleOwner, Observer {
                 when (it) {
@@ -159,6 +165,16 @@ class DetailPostFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun checkDuplicatedComment(commentList : MutableList<Reply>) : Boolean{
+        val userId = MainApplication.prefs.getString("userId", "")
+        for(i in 0 until commentList.size){
+            if(userId == commentList[i].replyUserId){
+                return false
+            }
+        }
+        return true
     }
 
     private fun setImageList(
