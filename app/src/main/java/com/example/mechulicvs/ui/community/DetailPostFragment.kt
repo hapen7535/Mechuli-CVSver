@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,6 +17,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
+import androidx.viewpager2.widget.ViewPager2
 import com.example.mechulicvs.di.MainApplication
 import com.example.mechulicvs.R
 import com.example.mechulicvs.data.*
@@ -28,6 +33,7 @@ import com.example.mechulicvs.ui.community.adapter.DetailPostImgVPAdapter
 import com.example.mechulicvs.ui.viewmodel.community.DetailPostViewModel
 import com.example.mechulicvs.ui.viewmodel.community.RecipeCreateViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,8 +48,8 @@ class DetailPostFragment : Fragment() {
     var commentList = mutableListOf<Reply>()
     val postingBottomSheet = BottomSheetFragment()
 
-    private val detailPostViewModel : DetailPostViewModel by viewModels()
-    private var _binding : FragmentDetailPostBinding? = null
+    private val detailPostViewModel: DetailPostViewModel by viewModels()
+    private var _binding: FragmentDetailPostBinding? = null
     private val binding get() = _binding!!
 
 
@@ -57,7 +63,8 @@ class DetailPostFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_post, container, false)
+        _binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_detail_post, container, false)
         return binding.root
     }
 
@@ -89,10 +96,7 @@ class DetailPostFragment : Fragment() {
                     it.data.let { res ->
                         val postDetailInfo = res?.result
                         if (postDetailInfo != null) {
-                            if (postDetailInfo.userNickName != loginNickname) {
-                                binding.detailIconIv.visibility = View.INVISIBLE
-                                binding.commentAddLayout.visibility = View.INVISIBLE
-                            }
+                            checkIsWriter(postDetailInfo.userNickName, loginNickname, binding.detailIconIv)
                             val imagesList = setImageList(
                                 postDetailInfo.recipeImg1,
                                 postDetailInfo.recipeImg2,
@@ -104,26 +108,12 @@ class DetailPostFragment : Fragment() {
                                 commentList.add(postDetailInfo.replyList[i])
                             }
 
-                            if(!checkDuplicatedComment(commentList)) binding.commentAddLayout.visibility = View.INVISIBLE
+                            if(checkCommentDuplicated(commentList, loginNickname))binding.commentAddLayout.visibility =
+                                View.INVISIBLE
 
-                            detailPostImgVPAdapter =
-                                DetailPostImgVPAdapter(communityActivity, imagesList)
-                            postImgsVP.adapter = detailPostImgVPAdapter
-                            TabLayoutMediator(postImgsTL, postImgsVP) { tab, position ->
-                            }.attach()
+                            setPostImages(imagesList, postImgsTL, postImgsVP)
+                            setCommentsPost(commentList, binding.commentsListRv)
 
-                            detailPostCommentAdapter =
-                                DetailPostCommentAdapter(communityActivity, commentList)
-
-                            binding.commentsListRv.adapter = detailPostCommentAdapter
-                            val layoutManager = LinearLayoutManager(communityActivity)
-                            binding.commentsListRv.layoutManager = layoutManager
-                            binding.commentsListRv.setHasFixedSize(true)
-                            val decoration = DividerItemDecoration(
-                                binding.commentsListRv.context,
-                                LinearLayoutManager(communityActivity).orientation
-                            )
-                            binding.commentsListRv.addItemDecoration(decoration)
                             binding.recipeContentsTv.text = postDetailInfo.recipeCont
                             binding.commentDetailCountTv.text = postDetailInfo.replyCount.toString()
                         }
@@ -167,15 +157,41 @@ class DetailPostFragment : Fragment() {
         _binding = null
     }
 
-    private fun checkDuplicatedComment(commentList : MutableList<Reply>) : Boolean{
-        val userId = MainApplication.prefs.getString("userId", "")
+    private fun checkCommentDuplicated(commentList : MutableList<Reply>, loginNickname: String) : Boolean{
         for(i in 0 until commentList.size){
-            if(userId == commentList[i].replyUserId){
-                return false
-            }
+            if(commentList[i].replyNickName.equals(loginNickname)) return true
         }
-        return true
+        return false
     }
+
+    private fun checkIsWriter(userNickname : String, loginNickname : String, postDetailIcon : ImageView){
+        if (userNickname != loginNickname) {
+            postDetailIcon.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun setPostImages(imageList: MutableList<String>, postImageFrame : TabLayout, postImageIndicator : ViewPager2){
+        detailPostImgVPAdapter =
+            DetailPostImgVPAdapter(communityActivity, imageList)
+        postImageIndicator.adapter = detailPostImgVPAdapter
+        TabLayoutMediator(postImageFrame, postImageIndicator) { tab, position ->
+        }.attach()
+    }
+
+    private fun setCommentsPost(commentList: MutableList<Reply>, commentsFrame : RecyclerView) {
+        detailPostCommentAdapter =
+            DetailPostCommentAdapter(communityActivity, commentList)
+        commentsFrame.adapter = detailPostCommentAdapter
+        val layoutManager = LinearLayoutManager(communityActivity)
+        commentsFrame.layoutManager = layoutManager
+        commentsFrame.setHasFixedSize(true)
+        val decoration = DividerItemDecoration(
+            commentsFrame.context,
+            LinearLayoutManager(communityActivity).orientation
+        )
+        commentsFrame.addItemDecoration(decoration)
+    }
+
 
     private fun setImageList(
         imageUrl1: String,
