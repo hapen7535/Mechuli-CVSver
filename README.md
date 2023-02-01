@@ -22,7 +22,7 @@
 - Asynchronus Task : Coroutine
 - Android Architecture Components : ViewModel, LiveData, DataBinding
 - Image Loading : Coil
-- Architecture Pattern : MVVM
+- Architecture : MVVM
 
 ### 💿시연 영상
 - 회원가입
