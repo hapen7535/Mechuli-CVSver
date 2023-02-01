@@ -54,7 +54,7 @@
   
 ---
   
-### ⚙️프로젝트 구성 Project Architecture
+### ⚙️프로젝트 아키텍처 Project Architecture
 <center><img src="https://user-images.githubusercontent.com/79076150/214353899-b24717b3-cbf1-4fa6-b691-c1e272b3d4d4.png" width="800" height="450"></center>
 
 
